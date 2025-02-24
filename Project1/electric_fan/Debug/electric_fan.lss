@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00000108  00000000  00000000  0000200c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000004bd  00000000  00000000  00002114  2**0
+ 10 .debug_str    000004fd  00000000  00000000  00002114  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000110  00000000  00000000  000025d1  2**0
+ 11 .debug_loc    00000110  00000000  00000000  00002611  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000068  00000000  00000000  000026e1  2**0
+ 12 .debug_ranges 00000068  00000000  00000000  00002721  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -147,20 +147,12 @@ Disassembly of section .text:
   c6:	9c cf       	rjmp	.-200    	; 0x0 <__vectors>
 
 000000c8 <INTn_Init>:
- */ 
-#include "btn.h"
-
-void INTn_Init(uint8_t n)
-{
-	BTN_INT_C &= ~(1 << BTN_STOP) & ~(1 << BTN_FAST) & ~(1 << BTN_MID);
   c8:	83 b1       	in	r24, 0x03	; 3
   ca:	8f 78       	andi	r24, 0x8F	; 143
   cc:	83 b9       	out	0x03, r24	; 3
-	EICRB |= 1 << ISC41 | 1 << ISC51 | 1 << ISC61;
   ce:	8a b7       	in	r24, 0x3a	; 58
   d0:	8a 62       	ori	r24, 0x2A	; 42
   d2:	8a bf       	out	0x3a, r24	; 58
-	EIMSK |= 1 << INT4 | 1 << INT5 | 1 << INT6;
   d4:	89 b7       	in	r24, 0x39	; 57
   d6:	80 67       	ori	r24, 0x70	; 112
   d8:	89 bf       	out	0x39, r24	; 57
@@ -338,61 +330,33 @@ void FND_4_Display()
  1b8:	08 95       	ret
 
 000001ba <pwm_Init>:
-    }
-}
-
-void pwm_Init()
-{
-	DDRB |= 1 << PINB4;
  1ba:	87 b3       	in	r24, 0x17	; 23
  1bc:	80 61       	ori	r24, 0x10	; 16
  1be:	87 bb       	out	0x17, r24	; 23
-	// Fast PWM
-	TCCR0 |= 1 << WGM01 | 1 << WGM00 | 1 << COM01;
  1c0:	83 b7       	in	r24, 0x33	; 51
  1c2:	88 66       	ori	r24, 0x68	; 104
  1c4:	83 bf       	out	0x33, r24	; 51
-	// Prescaler 256, 62,500Hz, 16us
-	TCCR0 |= 1 << CS02 | 1 << CS01;
  1c6:	83 b7       	in	r24, 0x33	; 51
  1c8:	86 60       	ori	r24, 0x06	; 6
  1ca:	83 bf       	out	0x33, r24	; 51
-	OCR0 = 0;
  1cc:	11 be       	out	0x31, r1	; 49
  1ce:	08 95       	ret
 
 000001d0 <main>:
-
-void pwm_Init();
-
-int main(void)
-{	
-	FND_Init(&FND_1_DDR);
  1d0:	8a e3       	ldi	r24, 0x3A	; 58
  1d2:	90 e0       	ldi	r25, 0x00	; 0
  1d4:	83 df       	rcall	.-250    	; 0xdc <FND_Init>
-	FND_Init(&FND_4_DDR);
  1d6:	84 e3       	ldi	r24, 0x34	; 52
  1d8:	90 e0       	ldi	r25, 0x00	; 0
  1da:	80 df       	rcall	.-256    	; 0xdc <FND_Init>
-	FND_C_DDR |= 1 << 0 | 1 << 1 | 1 << 2 | 1 << 3;
  1dc:	87 b3       	in	r24, 0x17	; 23
  1de:	8f 60       	ori	r24, 0x0F	; 15
-	pwm_Init();
  1e0:	87 bb       	out	0x17, r24	; 23
-	INTn_Init(PINE4);
  1e2:	eb df       	rcall	.-42     	; 0x1ba <pwm_Init>
  1e4:	84 e0       	ldi	r24, 0x04	; 4
  1e6:	70 df       	rcall	.-288    	; 0xc8 <INTn_Init>
-	
-	OCR0 = 0;
  1e8:	11 be       	out	0x31, r1	; 49
-	sei();
  1ea:	78 94       	sei
-    /* Replace with your application code */
-    while (1) 
-    {
-		FND_A_Display(&FND_1_DDR, fan_state);
  1ec:	60 91 0b 01 	lds	r22, 0x010B	; 0x80010b <fan_state>
  1f0:	70 e0       	ldi	r23, 0x00	; 0
  1f2:	8a e3       	ldi	r24, 0x3A	; 58
@@ -409,29 +373,18 @@ int main(void)
  1fc:	01 97       	sbiw	r24, 0x01	; 1
  1fe:	f1 f7       	brne	.-4      	; 0x1fc <main+0x2c>
  200:	00 c0       	rjmp	.+0      	; 0x202 <main+0x32>
-		_delay_ms(10);
-		FND_4_Display();
  202:	00 00       	nop
  204:	7c df       	rcall	.-264    	; 0xfe <FND_4_Display>
  206:	f2 cf       	rjmp	.-28     	; 0x1ec <main+0x1c>
 
 00000208 <__vector_5>:
-	// Prescaler 256, 62,500Hz, 16us
-	TCCR0 |= 1 << CS02 | 1 << CS01;
-	OCR0 = 0;
-}
-ISR(INT4_vect)
-{
  208:	1f 92       	push	r1
  20a:	0f 92       	push	r0
  20c:	0f b6       	in	r0, 0x3f	; 63
  20e:	0f 92       	push	r0
  210:	11 24       	eor	r1, r1
-	fan_state = STOP;
  212:	10 92 0b 01 	sts	0x010B, r1	; 0x80010b <fan_state>
-	OCR0 = 0;
  216:	11 be       	out	0x31, r1	; 49
-}
  218:	0f 90       	pop	r0
  21a:	0f be       	out	0x3f, r0	; 63
  21c:	0f 90       	pop	r0
@@ -439,21 +392,16 @@ ISR(INT4_vect)
  220:	18 95       	reti
 
 00000222 <__vector_6>:
-ISR(INT5_vect)
-{
  222:	1f 92       	push	r1
  224:	0f 92       	push	r0
  226:	0f b6       	in	r0, 0x3f	; 63
  228:	0f 92       	push	r0
  22a:	11 24       	eor	r1, r1
  22c:	8f 93       	push	r24
-	fan_state = MID;
  22e:	81 e0       	ldi	r24, 0x01	; 1
  230:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <fan_state>
-	OCR0 = 127;
  234:	8f e7       	ldi	r24, 0x7F	; 127
  236:	81 bf       	out	0x31, r24	; 49
-}
  238:	8f 91       	pop	r24
  23a:	0f 90       	pop	r0
  23c:	0f be       	out	0x3f, r0	; 63
@@ -462,18 +410,14 @@ ISR(INT5_vect)
  242:	18 95       	reti
 
 00000244 <__vector_7>:
-ISR(INT6_vect)
-{
  244:	1f 92       	push	r1
  246:	0f 92       	push	r0
  248:	0f b6       	in	r0, 0x3f	; 63
  24a:	0f 92       	push	r0
  24c:	11 24       	eor	r1, r1
  24e:	8f 93       	push	r24
-	fan_state = FAST;
  250:	82 e0       	ldi	r24, 0x02	; 2
  252:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <fan_state>
-	OCR0 = 255;
  256:	8f ef       	ldi	r24, 0xFF	; 255
  258:	81 bf       	out	0x31, r24	; 49
  25a:	8f 91       	pop	r24
