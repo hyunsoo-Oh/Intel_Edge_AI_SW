@@ -2,6 +2,11 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudio,c
 
 ### C ###
+
+# Folder
+.metadata/
+Debug/
+
 # Prerequisites
 *.d
 
