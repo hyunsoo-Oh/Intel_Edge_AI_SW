@@ -125,9 +125,6 @@ extern SPI_HandleTypeDef hspi1;
 #define     Reserved33            0x3E
 #define     Reserved34			  0x3F
 
-#define		RequestTime			  200
-#define		ResponseTime		  5000
-
 // Functions for manipulating the MFRC522
 void MFRC522_Init(void);
 uchar MFRC522_Request(uchar reqMode, uchar *TagType);

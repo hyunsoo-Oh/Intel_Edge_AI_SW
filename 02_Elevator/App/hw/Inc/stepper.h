@@ -9,8 +9,6 @@
 
 // 회전 관련 설정
 #define STEPS_PER_REVOLUTION 4096
-#define DIR_CW 0     // 시계방향
-#define DIR_CCW 1    // 반시계 방향
 
 // 모터 제어 핀 정의
 #define IN1_Port 	GPIOC
@@ -28,9 +26,11 @@
 #define Stepper_Pin TIM10
 
 // 스태퍼모터 동작 방향
-#define DIR_CW            0
-#define DIR_CCW           1
-
+enum
+{
+	DIR_CW,
+	DIR_CCW
+};
 // 총 사용 스탭수
 #define DRIVE_RESOLUTION  4096
 

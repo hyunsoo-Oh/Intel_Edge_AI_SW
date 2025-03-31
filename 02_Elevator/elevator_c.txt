@@ -1,0 +1,117 @@
+#include "elevator.h"
+
+uint8_t CheckRFID()
+{
+	static uint32_t prevTime = 0xFFFFFFFF;
+
+	if (prevTime == 0xFFFFFFFF)
+		prevTime = HAL_GetTick();
+	uint32_t curTime = HAL_GetTick();
+
+	if (curTime - prevTime > ckTime)
+	{
+		status = MFRC522_Request(PICC_REQIDL, str);
+		status = MFRC522_Anticoll(str);
+		memcpy(sNum, str, 5);
+		if((sNum[0]==195) && (sNum[1]==159) && (sNum[2]==70) && (sNum[3]==150) && (sNum[4]==140) )
+		{
+			ret = 1;
+			ckTime = ResponseTime;
+//			printf("%s \r\n", MSG1);
+			prevTime = HAL_GetTick();
+		}
+		else if((sNum[0]==18) && (sNum[1]==35) && (sNum[2]==141) && (sNum[3]==83) && (sNum[4]==239) )
+		{
+			ret = 1;
+			ckTime = ResponseTime;
+//			printf("%s \r\n", MSG2);
+			prevTime = HAL_GetTick();
+		}
+		else
+		{
+			ret = 0;
+			ckTime = RequestTime;
+//			printf("%s \r\n", MSG3);
+			prevTime = HAL_GetTick();
+		}
+	}
+	return ret;
+}
+
+uint8_t Button(uint8_t btn)
+{
+	if(btn != 0)
+	{
+		if(btn == 4)
+		{
+			if(!GetStateStep())
+			{
+				OpenDoor();
+			}
+		}
+		else if(btn == 5)
+		{
+			if(!GetStateStep() && GetStateDoor() == OPENED)
+			{
+				CloseDoor();
+			}
+		}
+		else
+		{
+			if(cnt < 4)
+			{
+				targetFloor = btn;
+			}
+		}
+		return 1;
+	}
+	return 0;
+}
+
+void FloorCheck()
+{
+	if(prevFloor != currFloor)
+	{
+		if(targetFloor == currFloor)
+		{
+			StopMotor();
+		}
+	}
+}
+
+void LED_Switch()
+{
+	if(GetStateStep())
+	{
+		LED_G_OFF();
+		LED_R_ON();
+	}
+	else
+	{
+		LED_R_OFF();
+		LED_G_ON();
+	}
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if(GPIO_Pin == PHOTO_INT1_Pin)
+	{
+		currFloor = 1;
+		FloorCheck();
+	}
+	else if(GPIO_Pin == PHOTO_INT2_Pin)
+	{
+		currFloor = 2;
+		FloorCheck();
+	}
+	else if(GPIO_Pin == PHOTO_INT3_Pin)
+	{
+		currFloor = 3;
+		FloorCheck();
+	}
+	else if(GPIO_Pin == IR_Pin)
+	{
+		IRflag = 1;
+	}
+}

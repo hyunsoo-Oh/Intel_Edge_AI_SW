@@ -1,0 +1,25 @@
+#ifndef ELEVATOR_H_
+#define ELEVATOR_H_
+
+#include "hw.h"
+
+typedef enum {
+	STATE_IDLE,
+	STATE_MOVING_UP,
+	STATE_MOVING_DOWN,
+	STATE_ARRIVED
+} ElevatorState;
+
+typedef struct {
+	uint8_t 					rfid_Auth : 1;
+	ElevatorState			elevatorState : 2;
+	uint8_t 					currentFloor;
+	uint8_t 					targetFloor;
+} ElevatorState_t;
+
+uint8_t CheckRFID()
+uint8_t Button(uint8_t btn);
+void FloorCheck();
+void LED_Switch();
+
+#endif /* ELEVATOR_H_ */

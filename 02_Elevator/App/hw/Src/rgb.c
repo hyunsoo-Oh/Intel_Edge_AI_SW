@@ -20,17 +20,20 @@ void LED_TOGGLE(uint8_t num){
 
 void LED_R_ON()
 {
-	LED_ON(0);
+	LEDsOff();
+	LED_ON(R);
 }
 
 void LED_G_ON()
 {
-	LED_ON(1);
+	LEDsOff();
+	LED_ON(G);
 }
 
 void LED_B_ON()
 {
-	LED_ON(2);
+	LEDsOff();
+	LED_ON(B);
 }
 
 void LED_R_OFF()

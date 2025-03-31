@@ -3,13 +3,9 @@
 #define AP_AP_H_
 
 #include "hw.h"
+#include "elevator.h"
 
 void apInit();
 void apMain();
-
-void RFID();
-uint8_t Button(uint8_t btn);
-void FloorCheck();
-void LED_Switch();
 
 #endif /* AP_AP_H_ */

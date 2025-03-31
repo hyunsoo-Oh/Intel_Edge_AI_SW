@@ -7,15 +7,6 @@
 
 #include "Inc/rc522.h"
 
-static uint8_t status;
-static uint8_t str[16];
-static uint8_t sNum[5];
-
-uint32_t ckTime = 200;
-volatile uint8_t ret = 0;
-
-
-
 /*
  * Function Name: RC522_SPI_Transfer
  * Description: A common function used by Write_MFRC522 and Read_MFRC522
@@ -404,25 +395,25 @@ uchar MFRC522_SelectTag(uchar *serNum)
 
 	//ClearBitMask(Status2Reg, 0x08);			//MFCrypto1On=0
 
-    buffer[0] = PICC_SElECTTAG;
-    buffer[1] = 0x70;
-    for (i=0; i<5; i++)
-    {
-    	buffer[i+2] = *(serNum+i);
-    }
+	buffer[0] = PICC_SElECTTAG;
+	buffer[1] = 0x70;
+	for (i=0; i<5; i++)
+	{
+		buffer[i+2] = *(serNum+i);
+	}
 	CalulateCRC(buffer, 7, &buffer[7]);
-    status = MFRC522_ToCard(PCD_TRANSCEIVE, buffer, 9, buffer, &recvBits);
+	status = MFRC522_ToCard(PCD_TRANSCEIVE, buffer, 9, buffer, &recvBits);
 
-    if ((status == MI_OK) && (recvBits == 0x18))
-    {
-		size = buffer[0];
+	if ((status == MI_OK) && (recvBits == 0x18))
+	{
+	size = buffer[0];
 	}
-    else
-    {
-		size = 0;
+	else
+	{
+	size = 0;
 	}
 
-    return size;
+	return size;
 }
 
 /*
@@ -545,42 +536,4 @@ void MFRC522_Halt(void)
 	CalulateCRC(buff, 2, &buff[2]);
 
 	MFRC522_ToCard(PCD_TRANSCEIVE, buff, 4, buff,&unLen);
-}
-
-uint8_t CheckRFID()
-{
-	static uint32_t prevTime = 0xFFFFFFFF;
-
-	if (prevTime == 0xFFFFFFFF)
-		prevTime = HAL_GetTick();
-	uint32_t curTime = HAL_GetTick();
-
-	if (curTime - prevTime > ckTime)
-	{
-		status = MFRC522_Request(PICC_REQIDL, str);
-		status = MFRC522_Anticoll(str);
-		memcpy(sNum, str, 5);
-		if((sNum[0]==195) && (sNum[1]==159) && (sNum[2]==70) && (sNum[3]==150) && (sNum[4]==140) )
-		{
-			ret = 1;
-			ckTime = ResponseTime;
-//			printf("%s \r\n", MSG1);
-			prevTime = HAL_GetTick();
-		}
-		else if((sNum[0]==18) && (sNum[1]==35) && (sNum[2]==141) && (sNum[3]==83) && (sNum[4]==239) )
-		{
-			ret = 1;
-			ckTime = ResponseTime;
-//			printf("%s \r\n", MSG2);
-			prevTime = HAL_GetTick();
-		}
-		else
-		{
-			ret = 0;
-			ckTime = RequestTime;
-//			printf("%s \r\n", MSG3);
-			prevTime = HAL_GetTick();
-		}
-	}
-	return ret;
 }

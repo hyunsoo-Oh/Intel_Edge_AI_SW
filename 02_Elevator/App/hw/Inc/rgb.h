@@ -21,6 +21,11 @@ typedef struct
 	GPIO_PinState  offState;
 }RGB;
 
+enum
+{
+	R, G, B
+};
+
 void LED_ON(uint8_t num);
 void LED_OFF(uint8_t num);
 void LED_TOGGLE(uint8_t num);
