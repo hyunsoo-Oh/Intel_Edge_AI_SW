@@ -24,7 +24,6 @@ void apInit()
 
 void apMain()
 {
-//	uint8_t prv_rxData[5] = "00000";
 	while(1)
 	{
 		motor.left_direction  = (MotorDir)(pc_rxData[0]);
