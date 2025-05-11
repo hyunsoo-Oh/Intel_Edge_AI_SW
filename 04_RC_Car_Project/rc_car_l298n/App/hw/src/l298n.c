@@ -58,7 +58,7 @@ static void MOTOR_BControl(MotorDir motor)
 	}
 }
 
-void IN_DRIVE_Break()
+static void IN_DRIVE_Break()
 {
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, SET);
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, SET);
@@ -87,15 +87,15 @@ static void MOTOR_SetDrive(uint8_t l_dir, uint8_t r_dir)
 			MOTOR_BControl(DIR_FORWARD);
 			break;
 		default:
-			IN_DRIVE_Break();
+			IN_DRIVE_Break(DIR_STOP, DIR_STOP);
 			break;
 	}
 }
 
-static void MOTOR_Speed(uint16_t l_speed, uint16_t r_speed)
+static void MOTOR_Speed(uint16_t left, uint16_t right)
 {
-	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, l_speed);
-	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, r_speed);
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, DRIVE_SPEED(left, 1000));
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, DRIVE_SPEED(right, 1000));
 }
 
 void MOTOR_Rotate(uint8_t dir)

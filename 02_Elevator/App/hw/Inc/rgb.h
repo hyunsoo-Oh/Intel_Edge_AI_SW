@@ -33,13 +33,5 @@ void LED_TOGGLE(uint8_t num);
 void LED_R_ON();
 void LED_G_ON();
 void LED_B_ON();
-void LED_R_OFF();
-void LED_G_OFF();
-void LED_B_OFF();
-void LED_R_Toggle();
-void LED_G_Toggle();
-void LED_B_Toggle();
-void LEDsOn();
-void LEDsOff();
 
 #endif /* INC_RGB_H_ */

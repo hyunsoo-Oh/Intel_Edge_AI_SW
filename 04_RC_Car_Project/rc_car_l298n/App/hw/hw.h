@@ -12,6 +12,9 @@
 #include "usart.h"
 #include "tim.h"
 #include "gpio.h"
+#include "l298n.h"
+#include "hc05.h"
+#include "adxl345.h"
 
 void hwInit();
 

@@ -20,62 +20,21 @@ void LED_TOGGLE(uint8_t num){
 
 void LED_R_ON()
 {
-	LEDsOff();
+	LED_OFF(G);
+	LED_OFF(B);
 	LED_ON(R);
 }
 
 void LED_G_ON()
 {
-	LEDsOff();
+	LED_OFF(R);
 	LED_ON(G);
+	LED_OFF(B);
 }
 
 void LED_B_ON()
 {
-	LEDsOff();
+	LED_OFF(R);
+	LED_OFF(G);
 	LED_ON(B);
-}
-
-void LED_R_OFF()
-{
-	LED_OFF(0);
-}
-
-void LED_G_OFF()
-{
-	LED_OFF(1);
-}
-
-void LED_B_OFF()
-{
-	LED_OFF(2);
-}
-
-void LED_R_Toggle()
-{
-	LED_TOGGLE(0);
-}
-
-void LED_G_Toggle()
-{
-	LED_TOGGLE(1);
-}
-
-void LED_B_Toggle()
-{
-	LED_TOGGLE(2);
-}
-
-void LEDsOn()
-{
-	LED_R_ON();
-	LED_G_ON();
-	LED_B_ON();
-}
-
-void LEDsOff()
-{
-	LED_R_OFF();
-	LED_G_OFF();
-	LED_B_OFF();
 }

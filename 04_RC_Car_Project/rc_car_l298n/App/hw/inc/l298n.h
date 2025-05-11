@@ -21,6 +21,7 @@
 #define IN3_PIN				GPIO_PIN_12
 
 #define DRIVE_KEY(l,r)   	((l << 2) | (r))
+#define DRIVE_SPEED(s, hz)	(s / 100) * hz
 
 typedef enum {
 	DIR_STOP = 'S',
@@ -36,13 +37,12 @@ typedef enum {
 typedef struct {
 	MotorDir 	left_direction;
 	MotorDir 	right_direction;
-	uint16_t	left_speed;
-	uint16_t	right_speed;
+	uint8_t	left_speed;
+	uint8_t	right_speed;
 } MotorState;
 
 void MOTER_DRIVE_Init();
 
-void IN_DRIVE_Break();
 void MOTOR_Rotate(uint8_t dir);
 void MOTOR_SetMotor(MotorState motor);
 

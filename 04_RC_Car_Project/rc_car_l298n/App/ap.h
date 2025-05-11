@@ -9,7 +9,6 @@
 #define AP_H_
 
 #include "hw.h"
-#include "l298n.h"
 
 void apInit();
 void apMain();

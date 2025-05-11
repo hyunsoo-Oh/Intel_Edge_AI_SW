@@ -1,0 +1,8 @@
+/*
+ * adxl345.c
+ *
+ *  Created on: May 10, 2025
+ *      Author: User
+ */
+
+
