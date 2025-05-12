@@ -17,7 +17,7 @@ extern MotorState motor;
 void apInit()
 {
 	HAL_UART_Receive_DMA(&huart1, bt_rxData, 8);
-	HAL_UART_Receive_DMA(&huart2, pc_rxData, 8);
+//	HAL_UART_Receive_DMA(&huart2, pc_rxData, 8);
 	MOTER_DRIVE_Init();
 }
 
