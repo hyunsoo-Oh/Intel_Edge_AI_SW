@@ -69,16 +69,17 @@ void ULTRASONIC_Read()
 			ULTRASONIC_TRIG_On(p);
 			delay_us(idx);
 			ULTRASONIC_TRIG_Off(p);
-			prev_time = __HAL_TIM_GET_COUNTER(&htim10);
+
+//			prev_time = __HAL_TIM_GET_COUNTER(&htim10);
 			__HAL_TIM_ENABLE_IT(&htim3, p->it_flag);
 			p->status = MEASURE_STATE;
 			break;
 		case MEASURE_STATE:
-			curr_time = __HAL_TIM_GET_COUNTER(&htim10);
-			if (curr_time - prev_time > 50000)
-			{
-				p->status = DONE_STATE;
-			}
+//			curr_time = __HAL_TIM_GET_COUNTER(&htim10);
+//			if (curr_time - prev_time > 50000)
+//			{
+//				p->status = DONE_STATE;
+//			}
 			break;
 		case DONE_STATE:
 			delay_ms(&idx);
