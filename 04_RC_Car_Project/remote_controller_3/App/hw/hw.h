@@ -17,6 +17,11 @@
 
 #include "parsing.h"
 
+#define BTN_SK1		GPIO_PIN_6
+#define BTN_SK2		GPIO_PIN_7
+#define BTN_SWA		GPIO_PIN_4
+#define BTN_SWB		GPIO_PIN_5
+
 void hwInit();
 
 #endif /* HW_HW_H_ */

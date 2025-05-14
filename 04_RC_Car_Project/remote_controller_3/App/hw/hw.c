@@ -37,3 +37,18 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13);
 	}
 }
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	switch (GPIO_Pin)
+	{
+		case BTN_SK1:
+			break;
+		case BTN_SK2:
+			break;
+		case BTN_SWA:
+			break;
+		case BTN_SWB:
+			break;
+	}
+}
