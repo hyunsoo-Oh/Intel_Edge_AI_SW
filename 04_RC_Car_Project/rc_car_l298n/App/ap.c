@@ -16,6 +16,7 @@ extern MotorState motor;
 
 void apInit()
 {
+	ADXL345_Init();
 	HAL_UART_Receive_DMA(&huart1, bt_rxData, 8);
 //	HAL_UART_Receive_DMA(&huart2, pc_rxData, 8);
 	MOTER_DRIVE_Init();
@@ -27,12 +28,5 @@ void apMain()
 	{
 		BLUETOOTH_Parsing(&motor, bt_rxData);
 		MOTOR_SetMotor(motor);
-//		if (txFlag == 1)
-//		{
-//			txFlag = 0;
-//			memcpy(txData, bt_rxData, sizeof(txData));
-//			HAL_UART_Transmit_DMA(&huart1, txData, sizeof(txData));
-//			HAL_UART_Transmit_DMA(&huart2, txData, sizeof(txData));
-//		}
 	}
 }

@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://docs.sunfounder.com/projects/sf-components/en/latest/modules/module_adxl345.html -->
+<html class="js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths translated-ltr" lang="ko" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ADXL345 모듈 - SunFounder 구성 요소 설명서</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script async="" src="./ADXL345 Module_files/get_counts"></script><script async="" src="./ADXL345 Module_files/64867e50ab7e090012d1dca6.js.다운로드"></script><script src="./ADXL345 Module_files/3626774964229244" async=""></script><script async="" src="./ADXL345 Module_files/fbevents.js.다운로드"></script><script type="text/javascript" src="./ADXL345 Module_files/modernizr.min.js.다운로드"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="./ADXL345 Module_files/documentation_options.js.다운로드"></script>
+        <script src="./ADXL345 Module_files/jquery.js.다운로드"></script>
+        <script src="./ADXL345 Module_files/underscore.js.다운로드"></script>
+        <script src="./ADXL345 Module_files/doctools.js.다운로드"></script>
+        
+        <script src="./ADXL345 Module_files/custom.js.다운로드"></script><style type="text/css">:root, :host {
+  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+  --fa-font-light: normal 300 1em/1 "Font Awesome 6 Pro";
+  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";
+  --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-regular: normal 400 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-light: normal 300 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-thin: normal 100 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+  --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-regular: normal 400 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-light: normal 300 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-thin: normal 100 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-duotone-solid: normal 900 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-regular: normal 400 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-light: normal 300 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-thin: normal 100 1em/1 "Font Awesome 6 Sharp Duotone";
+}
+
+svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+.svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-2xs {
+  vertical-align: 0.1em;
+}
+.svg-inline--fa.fa-xs {
+  vertical-align: 0em;
+}
+.svg-inline--fa.fa-sm {
+  vertical-align: -0.0714285705em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.2em;
+}
+.svg-inline--fa.fa-xl {
+  vertical-align: -0.25em;
+}
+.svg-inline--fa.fa-2xl {
+  vertical-align: -0.3125em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-li {
+  width: var(--fa-li-width, 2em);
+  top: 0.25em;
+}
+.svg-inline--fa.fa-fw {
+  width: var(--fa-fw-width, 1.25em);
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  transform-origin: center center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: var(--fa-counter-background-color, #ff253a);
+  border-radius: var(--fa-counter-border-radius, 1em);
+  box-sizing: border-box;
+  color: var(--fa-inverse, #fff);
+  line-height: var(--fa-counter-line-height, 1);
+  max-width: var(--fa-counter-max-width, 5em);
+  min-width: var(--fa-counter-min-width, 1.5em);
+  overflow: hidden;
+  padding: var(--fa-counter-padding, 0.25em 0.5em);
+  right: var(--fa-right, 0);
+  text-overflow: ellipsis;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-counter-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: var(--fa-bottom, 0);
+  right: var(--fa-right, 0);
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: var(--fa-bottom, 0);
+  left: var(--fa-left, 0);
+  right: auto;
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  top: var(--fa-top, 0);
+  right: var(--fa-right, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: var(--fa-left, 0);
+  right: auto;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top left;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-2xs {
+  font-size: 0.625em;
+  line-height: 0.1em;
+  vertical-align: 0.225em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+  line-height: 0.0833333337em;
+  vertical-align: 0.125em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+  line-height: 0.0714285718em;
+  vertical-align: 0.0535714295em;
+}
+
+.fa-lg {
+  font-size: 1.25em;
+  line-height: 0.05em;
+  vertical-align: -0.075em;
+}
+
+.fa-xl {
+  font-size: 1.5em;
+  line-height: 0.0416666682em;
+  vertical-align: -0.125em;
+}
+
+.fa-2xl {
+  font-size: 2em;
+  line-height: 0.03125em;
+  vertical-align: -0.1875em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: var(--fa-li-margin, 2.5em);
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: calc(-1 * var(--fa-li-width, 2em));
+  position: absolute;
+  text-align: center;
+  width: var(--fa-li-width, 2em);
+  line-height: inherit;
+}
+
+.fa-border {
+  border-color: var(--fa-border-color, #eee);
+  border-radius: var(--fa-border-radius, 0.1em);
+  border-style: var(--fa-border-style, solid);
+  border-width: var(--fa-border-width, 0.08em);
+  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
+}
+
+.fa-pull-left {
+  float: left;
+  margin-right: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-pull-right {
+  float: right;
+  margin-left: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-beat {
+  animation-name: fa-beat;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-bounce {
+  animation-name: fa-bounce;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+}
+
+.fa-fade {
+  animation-name: fa-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-beat-fade {
+  animation-name: fa-beat-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-flip {
+  animation-name: fa-flip;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-shake {
+  animation-name: fa-shake;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin {
+  animation-name: fa-spin;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 2s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin-reverse {
+  --fa-animation-direction: reverse;
+}
+
+.fa-pulse,
+.fa-spin-pulse {
+  animation-name: fa-spin;
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, steps(8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-beat,
+.fa-bounce,
+.fa-fade,
+.fa-beat-fade,
+.fa-flip,
+.fa-pulse,
+.fa-shake,
+.fa-spin,
+.fa-spin-pulse {
+    animation-delay: -1ms;
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+    transition-delay: 0s;
+    transition-duration: 0s;
+  }
+}
+@keyframes fa-beat {
+  0%, 90% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(var(--fa-beat-scale, 1.25));
+  }
+}
+@keyframes fa-bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+  }
+  30% {
+    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+  }
+  50% {
+    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+@keyframes fa-fade {
+  50% {
+    opacity: var(--fa-fade-opacity, 0.4);
+  }
+}
+@keyframes fa-beat-fade {
+  0%, 100% {
+    opacity: var(--fa-beat-fade-opacity, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(var(--fa-beat-fade-scale, 1.125));
+  }
+}
+@keyframes fa-flip {
+  50% {
+    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+  }
+}
+@keyframes fa-shake {
+  0% {
+    transform: rotate(-15deg);
+  }
+  4% {
+    transform: rotate(15deg);
+  }
+  8%, 24% {
+    transform: rotate(-18deg);
+  }
+  12%, 28% {
+    transform: rotate(18deg);
+  }
+  16% {
+    transform: rotate(-22deg);
+  }
+  20% {
+    transform: rotate(22deg);
+  }
+  32% {
+    transform: rotate(-12deg);
+  }
+  36% {
+    transform: rotate(12deg);
+  }
+  40%, 100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  transform: scale(1, -1);
+}
+
+.fa-flip-both,
+.fa-flip-horizontal.fa-flip-vertical {
+  transform: scale(-1, -1);
+}
+
+.fa-rotate-by {
+  transform: rotate(var(--fa-rotate-angle, 0));
+}
+
+.fa-stack {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: var(--fa-stack-z-index, auto);
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+
+.sr-only,
+.fa-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:not(:focus),
+.fa-sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}</style><link type="image/x-icon" rel="shortcut icon" href="https://ezblock.cc/readDocFile/sunfounderIcon.png">
+    
+    <script type="text/javascript" src="./ADXL345 Module_files/theme.js.다운로드"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="./ADXL345 Module_files/theme.css" type="text/css">
+  <link rel="stylesheet" href="./ADXL345 Module_files/pygments.css" type="text/css">
+  <link rel="stylesheet" href="./ADXL345 Module_files/custom.css" type="text/css">
+    <link rel="index" title="색인" href="https://docs.sunfounder.com/projects/sf-components/en/latest/genindex.html">
+    <link rel="search" title="찾다" href="https://docs.sunfounder.com/projects/sf-components/en/latest/search.html">
+    <link rel="prev" title="초음파 모듈" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_ultrasonic_module.html"> 
+
+<!-- RTD Extra Head -->
+
+
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "build_date": "2022-11-07T06:17:47Z", "builder": "sphinx", "canonical_url": null, "commit": "1a4d41e2", "docroot": "/docs/source/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "modules/module_adxl345", "programming_language": "words", "project": "sf-components", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "G-B947WJSNKS", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+
+
+<!-- end RTD <extrahead> -->
+<script async="" type="text/javascript" src="./ADXL345 Module_files/readthedocs-addons.js.다운로드"></script><meta name="readthedocs-project-slug" content="sf-components"><meta name="readthedocs-version-slug" content="latest"><meta name="readthedocs-resolver-filename" content="/modules/module_adxl345.html"><meta name="readthedocs-http-status" content="200"><script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '3626774964229244');
+      fbq('track', 'PageView');
+  </script><noscript>
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=3626774964229244&ev=PageView&noscript=1"/>
+  </noscript><script async="" src="./ADXL345 Module_files/js"></script><script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B947WJSNKS');
+  </script><script id="ethicaladsjs" type="text/javascript" async="true" src="./ADXL345 Module_files/ethicalads.min.js.다운로드"></script><style type="text/css">#st-2 {
+  font-family: "Helvetica Neue", Verdana, Helvetica, Arial, sans-serif;;
+  -moz-transition: all 0.2s ease-in; -ms-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; -webkit-transition: all 0.2s ease-in; transition: all 0.2s ease-in;
+  backface-visibility: hidden;
+  display: block;
+  position: fixed;
+  opacity: 1;
+  text-align: left;
+  top: 160px;
+  z-index: 94034;
+}
+#st-2.st-right {
+  right: 0px;
+}
+#st-2.st-hidden.st-right {
+  right: -48px;
+}
+#st-2.st-hidden {
+  width: 96px;
+}
+#st-2.st-preview {
+  display: none!important;
+  opacity: 0!important;
+}
+#st-2 > div {
+  clear: right;
+  float: right;
+}
+#st-2 .st-btn {
+  -moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+  -moz-transition: all 0.2s ease-in; -ms-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; -webkit-transition: all 0.2s ease-in; transition: all 0.2s ease-in;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: NaNpx;
+  height: 48px;
+  line-height: 24px;
+  margin-bottom: 0;
+  opacity: 1;
+  overflow: hidden;
+  padding: 12px;
+  position: relative;
+  text-align: left;
+  top: 0;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 48px;
+}
+#st-2 .st-btn.st-first {
+  border-top: none;
+  border-top-left-radius: 4px;
+}
+#st-2 .st-btn.st-last {
+  border-bottom: none;
+  border-bottom-left-radius: 4px;
+}
+#st-2 .st-btn > svg {
+  -moz-transition: all 0.2s ease-in; -ms-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; -webkit-transition: all 0.2s ease-in; transition: all 0.2s ease-in;
+  height: 24px;
+  margin-left: 0;
+  vertical-align: top;
+  width: 24px;
+}
+#st-2 .st-btn > img {
+  -moz-transition: all 0.2s ease-in; -ms-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; -webkit-transition: all 0.2s ease-in; transition: all 0.2s ease-in;
+  height: 24px;
+  margin-left: 0;
+  vertical-align: top;
+  width: 24px;
+}
+#st-2 .st-btn > span {
+  -moz-transition: all 0.2s ease-in; -ms-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; -webkit-transition: all 0.2s ease-in; transition: all 0.2s ease-in;
+  color: #fff;
+  display: inline-block;
+  font-weight: 500;
+  left: -35px;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  padding: 0 6px;
+  position: relative;
+  vertical-align: top;
+  filter: alpha(opacity=0);
+}
+#st-2 .st-btn.st-hide-label > span {
+  display: none !important;
+}
+#st-2 .st-total {
+  -moz-transition: all 0.2s ease-in; -ms-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; -webkit-transition: all 0.2s ease-in; transition: all 0.2s ease-in;
+  background: #fff;
+  color: #555;
+  display: inline-block;
+  font-weight: 500;
+  line-height: 18px;
+  margin-right: 0;
+  min-height: 34px;
+  max-width: 80px;
+  opacity: 1;
+  padding: 4px 0;
+  text-align: center;
+  width: 48px;
+}
+#st-2 .st-total.st-hidden {
+  display: none;
+}
+#st-2 .st-total > span {
+  display: block;
+  font-size: 18px;
+  line-height: 21px;
+  padding: 0;
+}
+#st-2 .st-total > span.st-shares {
+  font-size: 11px;
+  line-height: 11px;
+}
+#st-2 .st-toggle {
+  right: -48px;
+  -moz-transition: all 0.2s ease-in; -ms-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; -webkit-transition: all 0.2s ease-in; transition: all 0.2s ease-in;
+  background: #ccc;
+  border-bottom-left-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 24px;
+  position: relative;
+  text-align: center;
+  width: 48px;
+}
+#st-2.st-hidden .st-toggle {
+  border-top-left-radius: 4px;
+}
+#st-2.st-right .st-toggle .st-right {
+  display: inline-block;
+}
+#st-2.st-right.st-hidden .st-toggle .st-right {
+  display: none;
+}
+#st-2.st-right .st-toggle .st-left {
+  display: none;
+}
+#st-2.st-right.st-hidden .st-toggle .st-left {
+  display: inline-block;
+}#st-2:hover .st-toggle {
+  right: 0;
+}
+#st-2.st-hidden:hover .st-toggle {
+  right: 48px;
+}
+#st-2.st-toggleable:hover .st-btn.st-last {
+  border-bottom-left-radius: 0;
+}
+#st-2.st-toggleable:hover .st-btn.st-last:hover {
+  border-bottom-left-radius: 4px;
+}
+#st-2 .st-btn:hover {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+#st-2.st-has-labels .st-btn:hover {
+  width: 120px;
+}
+#st-2:not(.st-has-labels) .st-btn:hover {
+  width: 62px;
+}
+#st-2 .st-btn.st-hide-label:hover {
+  width: 62px;
+}
+#st-2 .st-btn:hover > svg {
+  margin-left: 5px;
+}
+#st-2 .st-btn:hover > img {
+  margin-left: 5px;
+}
+#st-2 .st-btn:hover > span {
+  opacity: 1;
+  display: inline-block;
+  left: 0;
+  filter: alpha(opacity=100);
+}
+@media (max-width: 1024px) {
+  #st-2 .st-btn:hover > svg {
+    margin-left: 0;
+  }
+  #st-2 .st-btn:hover > span {
+    display: none;
+  }
+}@media (max-width: 1024px) {
+  #st-2 {
+  bottom: 0;
+  display: flex;
+  left: 0;
+  right: 0;
+  top: auto;
+  width: 100%;
+}
+#st-2.st-hidden {
+  bottom: -48px;
+  width: 100%;
+}
+#st-2.st-hidden.st-left {
+  left: 0;
+}
+#st-2.st-hidden.st-right {
+  right: 0;
+}
+#st-2 > div {
+  -moz-flex: 1;
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  clear: none;
+  flex: 1;
+  float: none;
+}
+#st-2 .st-total {
+  background: #fff;
+  padding: 6px 8px;
+}
+#st-2 .st-btn {
+  -moz-border-radius: 0 !important;
+-webkit-border-radius: 0 !important;
+border-radius: 0 !important;
+  text-align: center;
+  width: auto;
+}
+#st-2 .st-btn > span {
+  display: none;
+}
+#st-2 .st-toggle {
+  display: none;
+}body { padding-bottom: 48px; }
+}#st-2 .st-btn[data-network='twitter'] {
+  background-color: #000000
+}
+#st-2 .st-btn[data-network='twitter'] img {
+  filter: 
+}
+#st-2 .st-btn[data-network='twitter'] > span {
+  color: #fff
+}
+#st-2 .st-btn[data-network='facebook'] {
+  background-color: #4267B2
+}
+#st-2 .st-btn[data-network='facebook'] img {
+  filter: 
+}
+#st-2 .st-btn[data-network='facebook'] > span {
+  color: #fff
+}
+#st-2 .st-btn[data-network='linkedin'] {
+  background-color: #0077b5
+}
+#st-2 .st-btn[data-network='linkedin'] img {
+  filter: 
+}
+#st-2 .st-btn[data-network='linkedin'] > span {
+  color: #fff
+}
+#st-2 .st-btn[data-network='pinterest'] {
+  background-color: #CB2027
+}
+#st-2 .st-btn[data-network='pinterest'] img {
+  filter: 
+}
+#st-2 .st-btn[data-network='pinterest'] > span {
+  color: #fff
+}
+#st-2 .st-btn[data-network='reddit'] {
+  background-color: #ff4500
+}
+#st-2 .st-btn[data-network='reddit'] img {
+  filter: 
+}
+#st-2 .st-btn[data-network='reddit'] > span {
+  color: #fff
+}
+#st-2 .st-btn[data-network='vk'] {
+  background-color: #4c6c91
+}
+#st-2 .st-btn[data-network='vk'] img {
+  filter: 
+}
+#st-2 .st-btn[data-network='vk'] > span {
+  color: #fff
+}#st-2 .st-btn[data-network='snapchat'] > span {
+  color: #333};
+}#st-2 .st-btn[data-network='copy']:hover {
+  width: max-content;
+}</style><style>[data-ea-publisher].loaded,[data-ea-type].loaded{font-size:14px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:normal;font-style:normal;letter-spacing:0px;vertical-align:baseline;line-height:1.3em}[data-ea-publisher].loaded a,[data-ea-type].loaded a{text-decoration:none}[data-ea-publisher].loaded .ea-pixel,[data-ea-type].loaded .ea-pixel{display:none}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{margin:1em 1em .5em 1em;padding:1em;background:rgba(0,0,0,.03);color:#505050}[data-ea-publisher].loaded .ea-content a:link,[data-ea-type].loaded .ea-content a:link{color:#505050}[data-ea-publisher].loaded .ea-content a:visited,[data-ea-type].loaded .ea-content a:visited{color:#505050}[data-ea-publisher].loaded .ea-content a:hover,[data-ea-type].loaded .ea-content a:hover{color:#373737}[data-ea-publisher].loaded .ea-content a:active,[data-ea-type].loaded .ea-content a:active{color:#373737}[data-ea-publisher].loaded .ea-content a strong,[data-ea-publisher].loaded .ea-content a b,[data-ea-type].loaded .ea-content a strong,[data-ea-type].loaded .ea-content a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a:link,[data-ea-type].loaded .ea-callout a:link{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:visited,[data-ea-type].loaded .ea-callout a:visited{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:hover,[data-ea-type].loaded .ea-callout a:hover{color:#505050}[data-ea-publisher].loaded .ea-callout a:active,[data-ea-type].loaded .ea-callout a:active{color:#505050}[data-ea-publisher].loaded .ea-callout a strong,[data-ea-publisher].loaded .ea-callout a b,[data-ea-type].loaded .ea-callout a strong,[data-ea-type].loaded .ea-callout a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a,[data-ea-type].loaded .ea-callout a{font-size:.8em}[data-ea-publisher].loaded .ea-domain,[data-ea-type].loaded .ea-domain{margin-top:.75em;font-size:.8em;text-align:center;color:#9d9d9d}[data-ea-publisher].loaded.dark .ea-content,[data-ea-type].loaded.dark .ea-content{background:rgba(255,255,255,.05);color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:link,[data-ea-type].loaded.dark .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:visited,[data-ea-type].loaded.dark .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:hover,[data-ea-type].loaded.dark .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a:active,[data-ea-type].loaded.dark .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a strong,[data-ea-publisher].loaded.dark .ea-content a b,[data-ea-type].loaded.dark .ea-content a strong,[data-ea-type].loaded.dark .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.dark .ea-callout a:link,[data-ea-type].loaded.dark .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:visited,[data-ea-type].loaded.dark .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:hover,[data-ea-type].loaded.dark .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a:active,[data-ea-type].loaded.dark .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a strong,[data-ea-publisher].loaded.dark .ea-callout a b,[data-ea-type].loaded.dark .ea-callout a strong,[data-ea-type].loaded.dark .ea-callout a b{color:#50baf9}[data-ea-publisher].loaded.dark .ea-domain,[data-ea-type].loaded.dark .ea-domain{color:#909090}@media(prefers-color-scheme: dark){[data-ea-publisher].loaded.adaptive .ea-content,[data-ea-type].loaded.adaptive .ea-content{background:rgba(255,255,255,.05);color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:link,[data-ea-type].loaded.adaptive .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:visited,[data-ea-type].loaded.adaptive .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:hover,[data-ea-type].loaded.adaptive .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a:active,[data-ea-type].loaded.adaptive .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a strong,[data-ea-publisher].loaded.adaptive .ea-content a b,[data-ea-type].loaded.adaptive .ea-content a strong,[data-ea-type].loaded.adaptive .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.adaptive .ea-callout a:link,[data-ea-type].loaded.adaptive .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:visited,[data-ea-type].loaded.adaptive .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:hover,[data-ea-type].loaded.adaptive .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a:active,[data-ea-type].loaded.adaptive .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a strong,[data-ea-publisher].loaded.adaptive .ea-callout a b,[data-ea-type].loaded.adaptive .ea-callout a strong,[data-ea-type].loaded.adaptive .ea-callout a b{color:#50baf9}[data-ea-publisher].loaded.adaptive .ea-domain,[data-ea-type].loaded.adaptive .ea-domain{color:#909090}}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,.15)}[data-ea-publisher].loaded.raised .ea-content,[data-ea-type].loaded.raised .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,.15)}[data-ea-publisher].loaded.bordered .ea-content,[data-ea-type].loaded.bordered .ea-content{border:1px solid rgba(0,0,0,.04);border-radius:3px;box-shadow:none}[data-ea-publisher].loaded.bordered.dark .ea-content,[data-ea-type].loaded.bordered.dark .ea-content{border:1px solid rgba(255,255,255,.07)}@media(prefers-color-scheme: dark){[data-ea-publisher].loaded.bordered.adaptive .ea-content,[data-ea-type].loaded.bordered.adaptive .ea-content{border:1px solid rgba(255,255,255,.07)}}[data-ea-publisher].loaded.flat .ea-content,[data-ea-type].loaded.flat .ea-content{border:0px;border-radius:3px;box-shadow:none}[data-ea-type=image].loaded,[data-ea-publisher]:not([data-ea-type]).loaded,.ea-type-image{display:inline-block}[data-ea-type=image].loaded .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content,.ea-type-image .ea-content{max-width:180px;overflow:auto;text-align:center}[data-ea-type=image].loaded .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>a>img,.ea-type-image .ea-content>a>img{width:120px;height:90px;display:inline-block}[data-ea-type=image].loaded .ea-content>.ea-text,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>.ea-text,.ea-type-image .ea-content>.ea-text{margin-top:1em;font-size:1em;text-align:center}[data-ea-type=image].loaded .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded .ea-callout,.ea-type-image .ea-callout{max-width:180px;margin:0em 1em 1em 1em;padding-left:1em;padding-right:1em;font-style:italic;text-align:right}[data-ea-type=image].loaded.horizontal .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content,.ea-type-image.horizontal .ea-content{max-width:320px}[data-ea-type=image].loaded.horizontal .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content>a>img,.ea-type-image.horizontal .ea-content>a>img{float:left;margin-right:1em}[data-ea-type=image].loaded.horizontal .ea-content .ea-text,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content .ea-text,.ea-type-image.horizontal .ea-content .ea-text{margin-top:0em;text-align:left;overflow:auto}[data-ea-type=image].loaded.horizontal .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-callout,.ea-type-image.horizontal .ea-callout{max-width:320px;text-align:right}[data-ea-type=text].loaded,.ea-type-text{font-size:14px}[data-ea-type=text].loaded .ea-content,.ea-type-text .ea-content{text-align:left}[data-ea-type=text].loaded .ea-callout,.ea-type-text .ea-callout{margin:.5em 1em 1em 1em;padding-left:1em;padding-right:1em;text-align:right;font-style:italic}[data-ea-style=stickybox].loaded{position:fixed;bottom:20px;right:20px;z-index:100}[data-ea-style=stickybox].loaded .ea-type-image .ea-stickybox-hide{cursor:pointer;position:absolute;top:.75em;right:.75em;background-color:#fefefe;border:1px solid #088cdb;border-radius:50%;color:#088cdb;font-size:1em;text-align:center;height:1.5em;width:1.5em;line-height:1.4}@media(max-width: 1300px){[data-ea-style=stickybox].loaded{position:static;bottom:0;right:0;margin:auto;text-align:center}[data-ea-style=stickybox].loaded .ea-stickybox-hide{display:none}}@media(min-width: 1301px){[data-ea-style=stickybox].loaded .ea-type-image .ea-content{background:#dcdcdc}[data-ea-style=stickybox].loaded.dark .ea-type-image .ea-content{background:#505050}}@media(min-width: 1301px)and (prefers-color-scheme: dark){[data-ea-style=stickybox].loaded.adaptive .ea-type-image .ea-content{background:#505050}}[data-ea-style=fixedfooter].loaded{position:fixed;bottom:0;left:0;z-index:200;width:100%;max-width:100%}[data-ea-style=fixedfooter].loaded .ea-type-text{width:100%;max-width:100%;display:flex;z-index:200;background:#dcdcdc}[data-ea-style=fixedfooter].loaded .ea-type-text .ea-content{border:0px;border-radius:3px;box-shadow:none}[data-ea-style=fixedfooter].loaded .ea-type-text .ea-content{background-color:inherit;max-width:100%;margin:0;padding:1em;flex:auto}[data-ea-style=fixedfooter].loaded .ea-type-text .ea-callout{max-width:100%;margin:0;padding:1em;flex:initial}@media(max-width: 576px){[data-ea-style=fixedfooter].loaded .ea-type-text .ea-callout{display:none}}[data-ea-style=fixedfooter].loaded .ea-type-text .ea-fixedfooter-hide{cursor:pointer;color:#505050;padding:1em;flex:initial;margin:auto 0}[data-ea-style=fixedfooter].loaded .ea-type-text .ea-fixedfooter-hide span{padding:.25em;font-size:.8em;font-weight:bold;border:.15em solid #505050;border-radius:.5em;white-space:nowrap}[data-ea-style=fixedfooter].loaded.dark .ea-type-text{background:#505050}[data-ea-style=fixedfooter].loaded.dark .ea-type-text .ea-fixedfooter-hide span{color:#dcdcdc;border-color:#dcdcdc}@media(prefers-color-scheme: dark){[data-ea-style=fixedfooter].loaded.adaptive .ea-type-text{background:#505050}[data-ea-style=fixedfooter].loaded.adaptive .ea-type-text .ea-fixedfooter-hide span{color:#dcdcdc;border-color:#dcdcdc}}</style><script src="./ADXL345 Module_files/saved_resource" type="text/javascript" async=""></script><link type="text/css" rel="stylesheet" charset="UTF-8" href="./ADXL345 Module_files/m=el_main_css"></head>
+
+<body class="wy-body-for-nav">
+
+  
+<nav id="nav-bar">
+  <ul class="nav-bar-items" id="nav-bar-items">
+    <li class="nav-bar-logo">
+      <a href="https://sunfounder.com/">
+        <img class="logo-img" src="./ADXL345 Module_files/sunfounder_LOGO_160x@2x.png">
+      </a>
+    </li>
+  <div id="advertisingBox">
+<div id="advertising">
+  <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">배우다&nbsp;</font></font></span>
+  <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">아두이노/라즈베리파이/ESP32&nbsp;</font></font></span>
+  <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">신뢰하다&nbsp;</font></font></span>
+  <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">선파운더</font></font></span>
+</div>
+<div class="nav-bar__itemBox">
+  <li class="nav-bar__item">
+    <a href="https://www.sunfounder.com/collections/deals" class="nav-bar__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">거래</font></font><svg class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
+        <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none" stroke-linecap="square"></path>
+      </svg><svg class="icon icon--nav-triangle" viewBox="0 0 20 9" role="presentation">
+        <g fill="none" fill-rule="evenodd">
+          <path d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z" fill="#ffffff"></path>
+          <path d="M-.00922471 9C1.38887087 7.61849126 4.26661926 4.80337304 8.62402045.5546454c.75993175-.7409708 1.98812015-.7393145 2.74596565.0037073L19.9800494 9h-1.3748787l-7.9226239-7.7676545c-.3789219-.3715101-.9930172-.3723389-1.3729808-.0018557-3.20734177 3.1273507-5.6127118 5.4776841-7.21584193 7.05073579C1.82769633 8.54226204 1.58379521 8.7818599 1.36203986 9H-.00922471z" fill="#e1e3e4"></path>
+        </g>
+      </svg></a>
+    <ul id="dropdown-desktop-menu-0-1" class="nav-dropdown nav-dropdown--restrict" data-type="menu" aria-hidden="true">
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/deals-for-arduino-1" class="nav-dropdown__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라즈베리파이용</font></font></a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/deals-for-arduino" class="nav-dropdown__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">아두이노용</font></font></a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-bar__item">
+    <a href="https://www.sunfounder.com/collections/raspberry-pi-store" class="nav-bar__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라즈베리파이</font></font><svg class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
+        <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none" stroke-linecap="square"></path>
+      </svg><svg class="icon icon--nav-triangle" viewBox="0 0 20 9" role="presentation">
+        <g fill="none" fill-rule="evenodd">
+          <path d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z" fill="#ffffff"></path>
+          <path d="M-.00922471 9C1.38887087 7.61849126 4.26661926 4.80337304 8.62402045.5546454c.75993175-.7409708 1.98812015-.7393145 2.74596565.0037073L19.9800494 9h-1.3748787l-7.9226239-7.7676545c-.3789219-.3715101-.9930172-.3723389-1.3729808-.0018557-3.20734177 3.1273507-5.6127118 5.4776841-7.21584193 7.05073579C1.82769633 8.54226204 1.58379521 8.7818599 1.36203986 9H-.00922471z" fill="#e1e3e4"></path>
+        </g>
+      </svg></a>
+    <ul id="dropdown-desktop-menu-0-2" class="nav-dropdown " data-type="menu" aria-hidden="true">
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/the-raspberry-pi" class="nav-dropdown__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라즈베리파이</font></font></a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberrypi-kits" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">키트 및 번들</font></font><svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-0" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+              <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-kits-bundles" class="nav-dropdown__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라즈베리파이 5 키트</font></font></a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-4-3-kits" class="nav-dropdown__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라즈베리파이 4/3 키트</font></font></a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/pico-w-pico" class="nav-dropdown__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">피코 W &amp; 피코</font></font></a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-cases" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">사례</font></font><svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-1" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+              <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-5-cases" class="nav-dropdown__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라즈베리파이 5</font></font></a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-4-cases" class="nav-dropdown__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라즈베리파이 4</font></font></a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/monitors" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">터치스크린 및 디스플레이</font></font><svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-2" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+              <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-5-touchsceens-display" class="nav-dropdown__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라즈베리파이 5</font></font></a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-4-touchsceens-display" class="nav-dropdown__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라즈베리파이 4</font></font></a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/robotics" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로봇공학</font></font><svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-3" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+              <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-5-4-robotics" class="nav-dropdown__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라즈베리파이 5/4</font></font></a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-4-3b-robotics" class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 4/3B+</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/pico-robotics" class="nav-dropdown__link link" data-type="menuitem">Pico</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/power-supply" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">Power Supply<svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-4" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+              <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-power-supplies" class="nav-dropdown__link link" data-type="menuitem">Power Supplies</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-switches" class="nav-dropdown__link link" data-type="menuitem">Switches</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-cables" class="nav-dropdown__link link" data-type="menuitem">Cables</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-ups" class="nav-dropdown__link link" data-type="menuitem">UPS</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-power-over-ethernet-poe" class="nav-dropdown__link link" data-type="menuitem">Power over Ethernet (PoE)</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-sd-cards" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">SD Card<svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-5" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+              <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/card-reader" class="nav-dropdown__link link" data-type="menuitem">Card Reader</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-hats-gpio" class="nav-dropdown__link link" data-type="menuitem">Hats &amp; GPIO</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-cooling" class="nav-dropdown__link link" data-type="menuitem">Cooling</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/microphone-audio" class="nav-dropdown__link link" data-type="menuitem">Microphone/Audio</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-camera" class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi Camera</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-arcade" class="nav-dropdown__link link" data-type="menuitem">Arcade</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-usb-add-ons" class="nav-dropdown__link link" data-type="menuitem">USB Add-ons</a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-bar__item">
+    <a href="https://www.sunfounder.com/collections/for-arduino" class="nav-bar__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">아두이노용</font></font><svg class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
+        <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none" stroke-linecap="square"></path>
+      </svg><svg class="icon icon--nav-triangle" viewBox="0 0 20 9" role="presentation">
+        <g fill="none" fill-rule="evenodd">
+          <path d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z" fill="#ffffff"></path>
+          <path d="M-.00922471 9C1.38887087 7.61849126 4.26661926 4.80337304 8.62402045.5546454c.75993175-.7409708 1.98812015-.7393145 2.74596565.0037073L19.9800494 9h-1.3748787l-7.9226239-7.7676545c-.3789219-.3715101-.9930172-.3723389-1.3729808-.0018557-3.20734177 3.1273507-5.6127118 5.4776841-7.21584193 7.05073579C1.82769633 8.54226204 1.58379521 8.7818599 1.36203986 9H-.00922471z" fill="#e1e3e4"></path>
+        </g>
+      </svg></a>
+    <ul id="dropdown-desktop-menu-0-3" class="nav-dropdown " data-type="menu" aria-hidden="true">
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/official-arduino-boards" class="nav-dropdown__link link" data-type="menuitem">Official Arduino Boards</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/arduino-compatible-boards" class="nav-dropdown__link link" data-type="menuitem">Arduino Compatible Boards</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/arduino-kits-bundles" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">Kits &amp; Bundles<svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-0" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+              <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/kits-with-orignal-arduino-board" class="nav-dropdown__link link" data-type="menuitem">Kits with Orignal Arduino Board </a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/kits-with-arduino-compatible-board" class="nav-dropdown__link link" data-type="menuitem">Kits with Arduino Compatible
+              Board</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/arduino-robotics" class="nav-dropdown__link link" data-type="menuitem">Robotics</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/arduino-cases-1" class="nav-dropdown__link link" data-type="menuitem">Cases</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/servos-1" class="nav-dropdown__link link" data-type="menuitem">Servos</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/power-supplies" class="nav-dropdown__link link" data-type="menuitem">Power Supplies</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/lcd-display" class="nav-dropdown__link link" data-type="menuitem">LCD Display</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/relay" class="nav-dropdown__link link" data-type="menuitem">Relay</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/arduino-modules-1" class="nav-dropdown__link link" data-type="menuitem">Modules</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/accessories-tools" class="nav-dropdown__link link" data-type="menuitem">Accessories &amp; Tools</a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-bar__item">
+    <a href="https://www.sunfounder.com/collections/esp32-1" class="nav-bar__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ESP32</font></font></a>
+  </li>
+  <li class="nav-bar__item">
+    <a href="https://docs.sunfounder.com/" class="nav-bar__link link" data-type="menuitem" target="_blank" rel="noopener"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">온라인 튜토리얼</font></font></a>
+  </li>
+  <li class="nav-bar__item">
+    <a href="https://forum.sunfounder.com/" class="nav-bar__link link" data-type="menuitem" target="_blank" rel="noopener"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">법정</font></font></a>
+  </li>
+  <li class="nav-bar__item">
+    <a href="http://wiki.sunfounder.cc/index.php?title=Main_Page" class="nav-bar__link link" data-type="menuitem" target="_blank" rel="noopener"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">위키</font></font></a>
+  </li>
+  <li class="nav-bar__item">
+    <a href="https://www.sunfounder.com/blogs/news" class="nav-bar__link link" data-type="menuitem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      블로그</font></font></a>
+  </li>
+</div>
+</div></ul>
+</nav>
+
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://docs.sunfounder.com/projects/sf-components/en/latest/index.html" class="icon icon-home"> SunFounder Components
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://docs.sunfounder.com/projects/sf-components/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="문서 검색">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="메인 네비게이션">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_uno.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SunFounder R3 보드</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_esp8266.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ESP8266 모듈</font></font></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_breadboard.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">브레드보드</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_resistor.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">저항기</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_ceramic_cap.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">세라믹 커패시터</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_electrolytic_cap.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">전해 커패시터</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_wires.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">점퍼 와이어</font></font></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_74hc595.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">74HC595</font></font></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_led.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">주도의</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_rgb_led.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RGB LED</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_7_segment.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">7세그먼트 디스플레이</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_i2c_lcd.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">I2C LCD1602</font></font></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_buzzer.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">부저</font></font></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_tt_motor.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TT 모터</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_servo.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서보 기구</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_pump.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">원심 펌프</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_l298n_module.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L298N 모듈</font></font></a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_button.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">단추</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_reed.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리드 스위치</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_potentiometer.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">전위차계</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_joystick_module.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">조이스틱 모듈</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_receiver.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IR 수신기</font></font></a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_photoresistor.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">포토레지스터</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_thermistor.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서미스터</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_dht11.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DHT11 습도 센서</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_track_module.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라인 추적 모듈</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_moisture_module.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">토양 수분 모듈</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_avoidance_module.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">장애물 회피 모듈</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_ultrasonic_module.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">초음파 모듈</font></font></a></li>
+<li class="toctree-l1 current"><a class="reference internal current" href="https://docs.sunfounder.com/projects/sf-components/en/latest/modules/module_adxl345.html#"><span class="toctree-expand"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ADXL345 모듈</font></font></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/modules/module_adxl345.html#about-adxl345-module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ADXL345 모듈에 대하여</font></font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/modules/module_adxl345.html#how-to-use"><span class="toctree-expand"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">어떻게 사용하나요?</font></font></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/modules/module_adxl345.html#use-with-arduino">Use with Arduino</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://docs.sunfounder.com/projects/sf-components/en/latest/modules/module_adxl345.html#use-with-raspberry-pi">Use with Raspberry Pi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://docs.sunfounder.com/projects/sf-components/en/latest/index.html">SunFounder Components</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="빵가루 탐색">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://docs.sunfounder.com/projects/sf-components/en/latest/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문서</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">»</font></font></li>
+        
+      <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ADXL345 모듈</font></font></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/sunfounder/sf-components/blob/docs/docs/source/modules/module_adxl345.rst" class="fa fa-github"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GitHub에서 편집</font></font></a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="adxl345-module">
+<span id="module-adxl345"></span><h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ADXL345 모듈</font></font><a class="headerlink" href="https://docs.sunfounder.com/projects/sf-components/en/latest/modules/module_adxl345.html#adxl345-module" title="이 헤드라인에 대한 영구 링크"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¶</font></font></a></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 프로젝트의 목적은 ADXL345 모듈을 소개하고 Arduino와 Raspberry Pi와 함께 사용하는 방법을 보여드리는 것입니다.</font></font></p>
+<div class="section" id="about-adxl345-module">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ADXL345 모듈에 대하여</font></font><a class="headerlink" href="https://docs.sunfounder.com/projects/sf-components/en/latest/modules/module_adxl345.html#about-adxl345-module" title="이 헤드라인에 대한 영구 링크"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¶</font></font></a></h2>
+<a class="reference internal image-reference" href="./ADXL345 Module_files/adxl345_pin.jpg"><img alt="../_images/adxl345_pin.jpg" class="align-center" src="./ADXL345 Module_files/adxl345_pin.jpg" style="width: 500px;"></a>
+<ul class="simple">
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GND</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : 전원 공급 장치의 음극.</font></font></p></li>
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VCC</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : 전원공급장치는 3-5V에 연결됩니다.</font></font></p></li>
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CS</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : 칩 선택.</font></font></p></li>
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">INT1</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : 출력 1을 중단합니다.</font></font></p></li>
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">INT2</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : 출력 2를 중단합니다.</font></font></p></li>
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SD0</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : 직렬 데이터 출력(SPI 4선), 예비 I2C 주소 선택(I2C).</font></font></p></li>
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SDA</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : 직렬 데이터(I2C), 직렬 데이터 입력(SPI 라인 4), 직렬 데이터 입력, 출력(SPI 라인 3)</font></font></p></li>
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SCL</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> : 직렬 데이터(I2C), 직렬 데이터 입력(SPI 라인 4), 직렬 데이터 입력, 출력(SPI 라인 3)</font></font></p></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ADXL345는 작고 얇은 초저전력 3축 가속도계로, 최대 ±16g의 고해상도(13비트) 측정 성능을 제공합니다. 디지털 출력 데이터는 16비트 2의 보수 형식으로 제공되며, SPI(3선 또는 4선) 또는 I2C 디지털 인터페이스를 통해 접근할 수 있습니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ADXL345는 모바일 기기 애플리케이션에 매우 적합합니다. 기울기 감지 애플리케이션에서 정적 중력 가속도뿐만 아니라 움직임이나 충격으로 인한 동적 가속도도 측정합니다. 높은 분해능(3.9mg/LSB) 덕분에 1.0° 미만의 경사 변화도 측정할 수 있습니다.</font></font></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL345-EP.pdf"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ADXL345 - 데이터시트</font></font></a></p></li>
+</ul>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">주요 특징</font></font></strong></p>
+<ul class="simple">
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">유형: GY-291</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">칩: ADXL345</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">전원 공급 장치: 3~5V</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">통신 모드: 표준 IIC/SPI 통신 프로토콜</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">측정 범위: ±2g±16g</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3축, ± 2g/ ± 4g/ ± 8g/ ± 16g</font></font></p></li>
+</ul>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">애플리케이션</font></font></strong></p>
+<ul class="simple">
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">휴대폰</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">의료기기</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">게임 및 포인팅 장치</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">산업용 기기</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개인용 내비게이션 장치</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HDD 낙하 방지</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">태블릿 컴퓨터 화면 뒤집기</font></font></p></li>
+</ul>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">원칙</font></font></strong></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ADXL345는 다음과 같이 작동합니다.</font></font></p>
+<img alt="../_이미지/adxl345_칩.png" src="./ADXL345 Module_files/adxl345_chip.webp">
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ADXL345의 감지 축</font></font></strong></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈을 엎어놓으면 Z_OUT은 최대값인 +1g가 되고, 엎어놓으면 Z_OUT은 최소값이 됩니다. 어떤 면에 놓이더라도 평평한 표면에 놓이면 X_OUT은 Ax축 방향으로 증가하고, Y_OUT도 Ay축 방향으로 증가합니다. 아래 그림을 참조하세요. 따라서 모듈을 회전시키면 X_OUT, Y_OUT, Z_OUT의 변화를 확인할 수 있습니다.</font></font></p>
+<img alt="../_images/adxl345_gravity.png" src="./ADXL345 Module_files/adxl345_gravity.webp">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">출력과 중력 방향의 관계</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개략도</font></font></strong></p>
+<a class="reference internal image-reference" href="./ADXL345 Module_files/adxl345_schematic.jpg"><img alt="../_images/adxl345_schematic.jpg" src="./ADXL345 Module_files/adxl345_schematic.jpg" style="width: 800px;"></a>
+</div>
+<div class="section" id="how-to-use">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">어떻게 사용하나요?</font></font><a class="headerlink" href="https://docs.sunfounder.com/projects/sf-components/en/latest/modules/module_adxl345.html#how-to-use" title="이 헤드라인에 대한 영구 링크"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¶</font></font></a></h2>
+<div class="section" id="use-with-arduino">
+<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">아두이노와 함께 사용하세요</font></font><a class="headerlink" href="https://docs.sunfounder.com/projects/sf-components/en/latest/modules/module_adxl345.html#use-with-arduino" title="이 헤드라인에 대한 영구 링크"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¶</font></font></a></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Arduino 사용자라면 다음 단계에 따라 모듈을 사용할 수 있습니다.</font></font></p>
+<ol class="arabic">
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회로를 구성합니다.</font></font></p>
+<blockquote>
+<div><img alt="../_images/adxl345_circuit_ar.png" src="./ADXL345 Module_files/adxl345_circuit_ar.webp">
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라이브러리 관리자</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 에서 </font></font><code class="docutils literal notranslate"><span class="pre">adxl345</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">설치할 라이브러리를 </font><font style="vertical-align: inherit;">입력 하고 선택하세요. </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adafruit ADXL345가</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 여기에 설치되어 있으며, </font><font style="vertical-align: inherit;">팝업 창에서 </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"모두 설치"를 선택하는 것이 좋습니다.</font></font></strong><font style="vertical-align: inherit;"></font></p>
+<blockquote>
+<div><img alt="../_images/adxl345_library.png" src="./ADXL345 Module_files/adxl345_library.webp">
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">샘플 코드를 엽니다.</font></font></p>
+<blockquote>
+<div><img alt="../_images/adxl345_sensortest.png" src="./ADXL345 Module_files/adxl345_sensortest.webp">
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">보드와 포트를 선택하세요. 여기서는 Arduino Uno이고, 다른 보드를 사용하는 경우 다른 보드를 선택할 수 있습니다.</font></font></p>
+<blockquote>
+<div><img alt="../_이미지/adxl345_보드.png" src="./ADXL345 Module_files/adxl345_board.webp">
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Arduino 보드에 코드를 업로드합니다.</font></font></p>
+<blockquote>
+<div><img alt="../_이미지/adxl345_업로드.png" src="./ADXL345 Module_files/adxl345_upload.webp">
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">시리얼 모니터에서 통신 속도를 9600으로 설정하면 X, Y, Z축의 가속도를 확인할 수 있습니다. 모듈을 사방으로 돌려 출력되는 값이 어떻게 변하는지 확인할 수 있습니다.</font></font></p>
+<blockquote>
+<div><img alt="../_이미지/adxl345_value.png" src="./ADXL345 Module_files/adxl345_value.webp">
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="use-with-raspberry-pi">
+<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라즈베리파이와 함께 사용하세요</font></font><a class="headerlink" href="https://docs.sunfounder.com/projects/sf-components/en/latest/modules/module_adxl345.html#use-with-raspberry-pi" title="이 헤드라인에 대한 영구 링크"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¶</font></font></a></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Raspberry Pi에서 ADXL345 모듈을 사용하려면 다음 튜토리얼을 참조하세요.</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1. 라즈베리파이와 ADXL345 모듈 연결</font></font></strong></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">아래 그림을 따라 ADXL345 모듈을 먼저 브레드보드에 연결한 후 라즈베리파이를 연결하세요. 브레드보드가 없어도 암수 케이블을 사용하여 라즈베리파이에 직접 연결할 수 있습니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈의 </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GND</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 핀을 Raspberry Pi의 물리적 </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">핀 6번(GND)</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 에 연결합니다 . </font><font style="vertical-align: inherit;">모듈의 </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VCC</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 핀을 Raspberry Pi의 물리적 </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">핀 1번(3v3)</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 에 연결합니다. 모듈의 </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SDA</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 핀을 Raspberry Pi의 물리적 </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">핀 3번(SDA)</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 에 연결합니다. 모듈의 </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SCL</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 핀을 Raspberry Pi의 물리적 </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">핀 5번(SCL) 에 연결합니다.</font></font></strong><font style="vertical-align: inherit;"></font></p>
+<img alt="../_images/adxl345_circuit_py.png" src="./ADXL345 Module_files/adxl345_circuit_py.webp">
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2. 라즈베리파이 구성하기</font></font></strong></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Raspberry Pi가 ADXL345 모듈에서 데이터를 검색하려면 먼저 Raspberry Pi의 구성을 변경해야 합니다.</font></font></p>
+<ol class="arabic">
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">먼저 다음 두 명령을 실행하여 모든 것이 최신 상태인지 확인해 보겠습니다.</font></font></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">upgrade</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Raspberry Pi에서 I2C를 활성화하려면 Raspberry Pi를 업데이트한 후 Raspberry 구성 도구를 실행해야 합니다.</font></font></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">raspi</span><span class="o">-</span><span class="n">config</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><font style="vertical-align: inherit;"></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 화면에서 3개의 인터페이스 옵션</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 메뉴 로 이동해야 합니다 </font><font style="vertical-align: inherit;">.</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">화살표 키를 사용하여 raspi-config 도구 메뉴를 탐색할 수 있습니다. ENTER 키를 눌러 옵션을 선택하세요.</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이제 인터페이스 옵션 메뉴에서 I5 I2C를</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 선택하세요 </font><font style="vertical-align: inherit;">.</font></font></p></li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ARM I2C 인터페이스를 활성화할지 묻는 메시지가 표시되면 </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;예&gt;를</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 선택합니다 .</font></font></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이제 I2C가 활성화되었으므로 ADXL345 모듈과 통신하는 데 사용할 패키지를 설치할 수 있습니다. 최신 Raspberry Pi OS(Bullseye)에는 이러한 도구가 기본적으로 설치되어 있으므로 이 단계는 건너뛸 수 있습니다.</font></font></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="n">python3</span><span class="o">-</span><span class="n">smbus</span> <span class="n">i2c</span><span class="o">-</span><span class="n">tools</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이제 Raspberry Pi가 ADXL345 모듈을 인식하는지 확인해 보겠습니다.</font></font></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">i2cdetect</span> <span class="o">-</span><span class="n">y</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 명령을 실행하면 명령줄에 꽤 많은 정보가 표시되는 것을 볼 수 있습니다. 이 결과에는 적어도 하나의 숫자(예: </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">53)</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 가 표시되어야 합니다 .</font></font></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pi@raspberrypi:~ $ sudo i2cdetect -y 1
+    0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- --
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+50: -- -- -- 53 -- -- -- -- -- -- -- -- -- -- -- --
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+70: -- -- -- -- -- -- -- --
+</pre></div>
+</div>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">아무 것도 나타나지 않으면 ADXL345 가속도계가 Raspberry Pi에 제대로 연결되어 있고 센서 핀의 모든 납땜 부위가 깨끗한지 확인하세요. 오류가 발생하면 I2C를 다시 활성화해 보세요.</font></font></p>
+</div></blockquote>
+</li>
+</ol>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3. 코드 작성</font></font></strong></p>
+<p><font style="vertical-align: inherit;"></font><a href="https://github.com/adafruit/Adafruit_CircuitPython_ADXL34x" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ADXL345와 통신하려면 Adafruit의 ADXL34x Python 라이브러리를</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 사용 </font><font style="vertical-align: inherit;">하지만, 이 라이브러리는 Python 2.x를 지원하지 않으므로 먼저 Python 버전을 확인해야 합니다.</font></font></p>
+<ol class="arabic">
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">를 입력하면 </font></font><code class="docutils literal notranslate"><span class="pre">python</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 버전의 Python이 나타나고 를 눌러 </font></font><code class="docutils literal notranslate"><span class="pre">exit()</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">종료할 수 있습니다.</font></font></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pi@raspberrypi:~ $ python
+Python 3.9.2 (default, Feb 28 2021, 17:03:44)
+[GCC 10.2.1 20210110] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; exit()
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Python 2.x가 있는 경우 다음 명령을 사용하여 Python 3을 설치하세요.</font></font></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이제 다음 명령을 사용하여 </font></font><a href="https://github.com/adafruit/Adafruit_CircuitPython_ADXL34x" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adafruit의 ADXL34x Python 라이브러리를</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 설치할 수 있습니다 .</font></font></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">adafruit</span><span class="o">-</span><span class="n">circuitpython</span><span class="o">-</span><span class="n">adxl34x</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이제 필요한 모든 패키지가 Raspberry Pi에 설치되었으므로 가속도계에서 정보를 읽는 Python 스크립트를 작성할 수 있습니다. 다음 명령을 사용하여 새 빈 스크립트를 만드세요.</font></font></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">adxl345</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">다음 샘플 코드를 복사해 넣으세요.</font></font></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">board</span>
+<span class="kn">import</span> <span class="nn">adafruit_adxl34x</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">board</span><span class="o">.</span><span class="n">I2C</span><span class="p">()</span>  <span class="c1"># uses board.SCL and board.SDA</span>
+
+<span class="c1"># For ADXL345</span>
+<span class="n">accelerometer</span> <span class="o">=</span> <span class="n">adafruit_adxl34x</span><span class="o">.</span><span class="n">ADXL345</span><span class="p">(</span><span class="n">i2c</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%f</span><span class="s2"> </span><span class="si">%f</span><span class="s2"> </span><span class="si">%f</span><span class="s2">"</span> <span class="o">%</span> <span class="n">accelerometer</span><span class="o">.</span><span class="n">acceleration</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모든 코드가 정확한지 확인한 후에는 를 누르고 를 눌러 </font></font><code class="docutils literal notranslate"><span class="pre">CTRL+X</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">저장 </font></font><code class="docutils literal notranslate"><span class="pre">Y</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">하세요 </font></font><code class="docutils literal notranslate"><span class="pre">ENTER</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+</div></blockquote>
+</li>
+<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이제 코드가 완성되었으니 스크립트를 실행해 보겠습니다.</font></font></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">./</span><span class="n">adxl345</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 코드를 실행하면 가속도계에서 값이 읽혀지는 것을 볼 수 있습니다.</font></font></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pi@raspberrypi:~/Documents $ python3 ./adxl345.py
+0.000000 0.000000 0.000000
+0.000000 -0.196133 9.218251
+0.000000 -0.156906 9.061345
+0.000000 -0.196133 9.022118
+0.000000 -0.156906 9.022118
+0.000000 -0.117680 9.022118
+0.000000 -0.156906 9.061345
+0.000000 -0.117680 9.061345
+0.000000 -0.117680 9.061345
+0.000000 -0.156906 9.061345
+0.000000 -0.117680 9.022118
+0.000000 -0.156906 9.061345
+0.000000 -0.156906 9.061345
+-0.039227 -0.156906 8.982891
+</pre></div>
+</div>
+<p><font style="vertical-align: inherit;"></font><code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">스크립트 실행을 중지하려면 </font><font style="vertical-align: inherit;">누르세요 .</font></font></p>
+</div></blockquote>
+</li>
+</ol>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4. ADXL345 가속도계 라이브러리에 대한 추가 정보</font></font></strong></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">가속도( )를 읽는 것 외에도 </font></font><code class="docutils literal notranslate"><span class="pre">accelerometer.acceleration</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 라이브러리는 다음과 같은 감지를 수행할 수도 있습니다.</font></font></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">acceleration</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- x, y 및 z 축의 가속도 값</font></font></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enable_motion_detection</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- 동작 감지를 활성화합니다. 임계값을 설정할 수 있습니다. 임계값은 기본적으로 18입니다.</font></font></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enable_tap_detection</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- 탭 감지를 활성화합니다. 단일 또는 이중 탭 감지가 가능합니다.</font></font></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enable_freefall_detection</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- 자유낙하 감지를 활성화합니다. 임계값과 시간을 설정할 수 있습니다. 임계값은 기본적으로 10이고, 시간은 기본적으로 25입니다.</font></font></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">events</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- 동작 감지, 탭 감지, 자유낙하 감지가 활성화되었을 때 이벤트를 읽는 데 사용됩니다. 읽으려는 이벤트를 지정해야 합니다.</font></font></p></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">구체적인 사용 예는 </font></font><a class="reference external" href="https://github.com/adafruit/Adafruit_CircuitPython_ADXL34x/tree/main/examples"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://github.com/adafruit/Adafruit_CircuitPython_ADXL34x/tree/main/examples</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 에서 확인하세요 .</font></font></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          <div id="readthedocs-ea-text-footer" class="raised loaded" data-ea-type="text" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-keywords="only words|readthedocs-project-822145|readthedocs-project-sf-components" data-ea-campaign-types="community|house|paid"><div class="ea-placement ea-type-text"><div class="ea-content"><div class="ea-text"><a href="https://server.ethicalads.io/proxy/click/8174/0196c764-5d6c-7703-b36f-aa8c5cd7f331/" rel="nofollow noopener sponsored" target="_blank"><strong class="ea-headline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발자를 위한 AI 기반 광고 네트워크. </font></font></strong><span class="ea-body"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EthicalAds를 통해 적합한 개발자에게 메시지를 전달하세요.</font></font></span></a></div></div><div class="ea-callout"><a rel="nofollow noopener" target="_blank" href="https://www.ethicalads.io/advertisers/?ref=ea-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EthicalAds의 광고</font></font></a></div></div><img src="./ADXL345 Module_files/saved_resource(1)" class="ea-pixel"></div></div>
+          <footer style="opacity: 1;">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="푸터 탐색">
+      
+      
+        <a href="https://docs.sunfounder.com/projects/sf-components/en/latest/component_ultrasonic_module.html" class="btn btn-neutral float-left" title="초음파 모듈" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이전의</font></font></a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        © 저작권 2022, SunFounder
+      
+         </font></font><span class="commit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          Revision </font></font><code>1a4d41e2</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.
+        </font></font></span>
+      
+
+    </p>
+  </div></footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+
+<script type="text/javascript" src="./ADXL345 Module_files/sharethis.js.다운로드" async=""></script><readthedocs-flyout><template shadowrootmode="open"><!---->
+      <div class=" floating container bottom-right ">
+        <!--?lit$191587065$-->
+      <header>
+        <img class="logo" alt="문서를 읽어보세요" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmc6c3ZnCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZyIKICAgeD0iMHB4IgogICB5PSIwcHgiCiAgIHZpZXdCb3g9IjY5NCAxOTcgMzQ2LjY5ODU1IDM5OS45ODQ3NyIKICAgc29kaXBvZGk6ZG9jbmFtZT0ibG9nby1saWdodC5zdmciCiAgIHdpZHRoPSIzNDYuNjk4NTUiCiAgIGhlaWdodD0iMzk5Ljk4NDc3IgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMuMiAoMDkxZTIwZWYwZiwgMjAyMy0xMS0yNSwgY3VzdG9tKSIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHN2ZzpkZWZzCiAgICAgaWQ9ImRlZnMxMiIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzEyIgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzAwMDAwMCIKICAgICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICAgIGlua3NjYXBlOnNob3dwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBpbmtzY2FwZTpkZXNrY29sb3I9IiNkMWQxZDEiCiAgICAgaW5rc2NhcGU6em9vbT0iMS4yNTIiCiAgICAgaW5rc2NhcGU6Y3g9Ijk5OC40MDI1NiIKICAgICBpbmtzY2FwZTpjeT0iMTk5LjY4MDUxIgogICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMzQ0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSIxMzg5IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNyIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZyIgLz4KICA8c3ZnOmcKICAgICBpZD0ibG9nbyIKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgwLjU1NzUzNjQ0LDAsMCwwLjU1NzUzNjQ0LDY2LjUzMTgxMiwxMDUwLjEyNjIpIj4KICAgIDxzdmc6cGF0aAogICAgICAgc3R5bGU9ImZpbGw6I2ZjZmNmYyIKICAgICAgIGQ9Im0gMTQwOC4xLC0xMTgxLjcgYyAtNy41LDEgLTEyLjcsNy44IC0xMS43LDE1LjMgMC43LDUuNCA0LjYsOS45IDkuOSwxMS4zIDAsMCAzMy4yLDExIDg5LjcsMTUuNiA0NS40LDMuNyA5Ni45LC0zLjIgOTYuOSwtMy4yIDcuNSwtMC4yIDEzLjUsLTYuNSAxMy4yLC0xNCAtMC4zLC03LjUgLTYuNSwtMTMuNSAtMTQsLTEzLjIgLTAuOSwwIC0xLjgsMC4xIC0yLjYsMC4zIDAsMCAtNTAuNCw2LjIgLTkxLjMsMi45IC01NCwtNC40IC04My40LC0xNC4zIC04My40LC0xNC4zIC0yLjIsLTAuNyAtNC41LC0xIC02LjcsLTAuNyB6IG0gMCwtNjcuNiBjIC03LjUsMSAtMTIuNyw3LjggLTExLjcsMTUuMyAwLjcsNS40IDQuNiw5LjkgOS45LDExLjMgMCwwIDMzLjIsMTEgODkuNywxNS42IDQ1LjQsMy43IDk2LjksLTMuMiA5Ni45LC0zLjIgNy41LC0wLjIgMTMuNSwtNi41IDEzLjIsLTE0IC0wLjMsLTcuNSAtNi41LC0xMy41IC0xNCwtMTMuMiAtMC45LDAgLTEuOCwwLjEgLTIuNiwwLjMgMCwwIC01MC40LDYuMiAtOTEuMywyLjkgLTU0LC00LjQgLTgzLjQsLTE0LjMgLTgzLjQsLTE0LjMgLTIuMiwtMC43IC00LjUsLTEgLTYuNywtMC43IHogbSAwLC02Ny42IGMgLTcuNSwxIC0xMi43LDcuOCAtMTEuNywxNS4zIDAuNyw1LjQgNC42LDkuOSA5LjksMTEuMyAwLDAgMzMuMiwxMSA4OS43LDE1LjYgNDUuNCwzLjcgOTYuOSwtMy4yIDk2LjksLTMuMiA3LjUsLTAuMiAxMy41LC02LjUgMTMuMiwtMTQgLTAuMywtNy41IC02LjUsLTEzLjUgLTE0LC0xMy4yIC0wLjksMCAtMS44LDAuMSAtMi42LDAuMyAwLDAgLTUwLjQsNi4yIC05MS4zLDIuOSAtNTQsLTQuNCAtODMuNCwtMTQuMyAtODMuNCwtMTQuMyAtMi4yLC0wLjcgLTQuNSwtMSAtNi43LC0wLjcgeiBtIDAsLTY3LjUgYyAtNy41LDEgLTEyLjcsNy44IC0xMS43LDE1LjMgMC43LDUuNCA0LjYsOS45IDkuOSwxMS4zIDAsMCAzMy4yLDExIDg5LjcsMTUuNiA0NS40LDMuNyA5Ni45LC0zLjIgOTYuOSwtMy4yIDcuNSwtMC4yIDEzLjUsLTYuNSAxMy4yLC0xNCAtMC4zLC03LjUgLTYuNSwtMTMuNSAtMTQsLTEzLjIgLTAuOSwwIC0xLjgsMC4xIC0yLjYsMC4zIDAsMCAtNTAuNCw2LjIgLTkxLjMsMi45IC01NCwtNC40IC04My40LC0xNC4zIC04My40LC0xNC4zIC0yLjIsLTAuOCAtNC41LC0xIC02LjcsLTAuNyB6IG0gLTk0LjcsLTcxLjMgYyAtNzEsMC41IC05Ny41LDIyLjMgLTk3LjUsMjIuMyB2IDUzMC4zIGMgMCwwIDI1LjgsLTIyLjMgMTA5LC0xOC45IDgzLjIsMy40IDEwMC4zLDMyLjYgMjAyLjUsMzQuNiAxMDIuMiwyLjEgMTI3LjksLTE1LjcgMTI3LjksLTE1LjcgbCAxLjUsLTU0MC42IGMgMCwwIC00NiwxMyAtMTM1LjUsMTMuNyAtODkuNSwwLjcgLTExMSwtMjIuOCAtMTkzLjIsLTI1LjUgLTUuMSwtMC4xIC0xMCwtMC4yIC0xNC43LC0wLjIgeiBtIDU5LjQsMzQuNiBjIDAsMCA0MywxNC4yIDEyMi41LDE4LjIgNjcuMiwzLjMgMTM0LjUsLTYuNiAxMzQuNSwtNi42IFYgLTkyOSBjIDAsMCAtMzQuMSwxNy45IC0xMTkuMywxMS44IC02NiwtNC43IC0xMzguNywtMjkuNyAtMTM4LjcsLTI5LjcgeiBtIC00MS41LDEyLjUgYyA3LjYsMCAxMy43LDYuMiAxMy43LDEzLjcgMCw3LjUgLTYuMiwxMy43IC0xMy43LDEzLjcgMCwwIC0yMi4zLDAuMSAtMzUuOCwxLjUgLTIyLjgsMi4zIC0zOC4zLDEwLjYgLTM4LjMsMTAuNiAtNi43LDMuNSAtMTUsMSAtMTguNSwtNS43IC0zLjUsLTYuNyAtMSwtMTUgNS43LC0xOC41IDAsMCAwLDAgMCwwIDAsMCAyMC4yLC0xMC43IDQ4LjQsLTEzLjUgMTYuMywtMS43IDM4LjUsLTEuOCAzOC41LC0xLjggeiBtIC0xMy4yLDY3LjggYyA3LjYsLTAuMiAxMy4zLDAgMTMuMywwIDcuNSwwLjkgMTIuOSw3LjggMTIsMTUuMyAtMC44LDYuMyAtNS43LDExLjIgLTEyLDEyIDAsMCAtMjIuMywwLjEgLTM1LjgsMS41IC0yMi44LDIuMyAtMzguMywxMC42IC0zOC4zLDEwLjYgLTYuNywzLjUgLTE1LDAuOSAtMTguNSwtNS44IC0zLjUsLTYuNyAtMC45LC0xNSA1LjgsLTE4LjUgMCwwIDIwLjIsLTEwLjcgNDguNCwtMTMuNSA3LjksLTAuOSAxNy41LC0xLjQgMjUuMSwtMS42IHogbSAxMy4yLDY3LjUgYyA3LjYsMCAxMy43LDYuMiAxMy43LDEzLjcgMCw3LjYgLTYuMiwxMy43IC0xMy43LDEzLjcgMCwwIC0yMi4zLC0wLjEgLTM1LjgsMS4yIC0yMi44LDIuMyAtMzguMywxMC42IC0zOC4zLDEwLjYgLTYuNywzLjUgLTE1LDAuOSAtMTguNSwtNS44IC0zLjUsLTYuNyAtMC45LC0xNSA1LjgsLTE4LjUgMCwwIDIwLjIsLTEwLjcgNDguNCwtMTMuNSAxNi4yLC0xLjUgMzguNCwtMS40IDM4LjQsLTEuNCB6IgogICAgICAgaWQ9InBhdGgxIiAvPgogIDwvc3ZnOmc+CiAgPGRpdgogICAgIGlkPSJzYWthLWd1aS1yb290Ij4KICAgIDxkaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPHN0eWxlIC8+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgPC9kaXY+Cjwvc3ZnOnN2Zz4K">
+        <!--?lit$191587065$--> <!--?lit$191587065$--><span class="version">
+        <!--?lit$191587065$--><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="code-branch" class="svg-inline--fa fa-code-branch icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M80 104a24 24 0 1 0 0-48 24 24 0 1 0 0 48zm80-24c0 32.8-19.7 61-48 73.3l0 87.8c18.8-10.9 40.7-17.1 64-17.1l96 0c35.3 0 64-28.7 64-64l0-6.7C307.7 141 288 112.8 288 80c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3l0 6.7c0 70.7-57.3 128-128 128l-96 0c-35.3 0-64 28.7-64 64l0 6.7c28.3 12.3 48 40.5 48 73.3c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-32.8 19.7-61 48-73.3l0-6.7 0-198.7C19.7 141 0 112.8 0 80C0 35.8 35.8 0 80 0s80 35.8 80 80zm232 0a24 24 0 1 0 -48 0 24 24 0 1 0 48 0zM80 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"></path></svg> <!--?lit$191587065$--><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">최신</font></font>
+      </span> 
+        <span class="caret"><!--?lit$191587065$--><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" class="svg-inline--fa fa-caret-down icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"></path></svg></span>
+      </header>
+    
+        <main class=" closed ">
+          <!--?lit$191587065$--> <!--?lit$191587065$-->
+      <dl class="versions">
+        <dt>Versions</dt>
+        <!--?lit$191587065$--><!----><dd><!--?lit$191587065$--><strong><!--?lit$191587065$--><a href="https://docs.sunfounder.com/projects/sf-components/en/latest/modules/module_adxl345.html"><!--?lit$191587065$-->latest</a></strong></dd><!---->
+      </dl>
+    
+          <!--?lit$191587065$-->
+      <dl class="downloads">
+        <dt>Downloads</dt>
+        <!--?lit$191587065$--><!----><dd>
+              <a href="https://docs.sunfounder.com/_/downloads/sf-components/en/latest/epub/"><!--?lit$191587065$-->EPUB</a>
+            </dd><!----><!----><dd>
+              <a href="https://docs.sunfounder.com/_/downloads/sf-components/en/latest/htmlzip/"><!--?lit$191587065$-->HTML</a>
+            </dd><!----><!----><dd>
+              <a href="https://docs.sunfounder.com/_/downloads/sf-components/en/latest/pdf/"><!--?lit$191587065$-->PDF</a>
+            </dd><!---->
+      </dl>
+     <!--?lit$191587065$-->
+      <dl>
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="https://app.readthedocs.org/projects/sf-components/?utm_source=sf-components&amp;utm_content=flyout">Project Home</a>
+        </dd>
+        <dd>
+          <a href="https://app.readthedocs.org/projects/sf-components/builds/?utm_source=sf-components&amp;utm_content=flyout">Builds</a>
+        </dd>
+      </dl>
+    
+          <!--?lit$191587065$--> <!--?lit$191587065$-->
+        <dl>
+          <dt>Search</dt>
+          <dd>
+            <form id="flyout-search-form">
+              <input type="text" name="q" aria-label="Search docs" placeholder="Search docs">
+            </form>
+          </dd>
+        </dl>
+      
+          <hr>
+          <!--?lit$191587065$-->
+      <small>
+        <span>
+          <a href="https://docs.readthedocs.io/page/addons.html?utm_source=sf-components&amp;utm_content=flyout">Addons documentation</a></span>
+        <span> ― </span>
+        <span>Hosted by
+          <a href="https://about.readthedocs.com/?utm_source=sf-components&amp;utm_content=flyout">Read the Docs</a></span>
+      </small>
+    
+        </main>
+      </div>
+    </template></readthedocs-flyout><readthedocs-notification class="raised toast"><template shadowrootmode="open"><!----></template></readthedocs-notification><readthedocs-search class="raised floating"><template shadowrootmode="open"><!---->
+      <div role="search" hidden="">
+        <div class="background"></div>
+        <div class="content">
+          <form class="  ">
+            <label><!--?lit$191587065$--><svg aria-labelledby="svg-inline--fa-title-fTpQt9dCY4QH" data-prefix="fas" data-icon="magnifying-glass" class="svg-inline--fa fa-magnifying-glass" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title id="svg-inline--fa-title-fTpQt9dCY4QH">Search docs</title><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg></label>
+            <input placeholder="Search docs" type="search" autocomplete="off">
+          </form>
+          <!--?lit$191587065$-->
+      <div class="filters">
+        <span class="filters-title">Filters</span>
+        <ul>
+          <!--?lit$191587065$--><!---->
+              <li>
+                <input type="checkbox" id="filter-0" value="subprojects:sunfounder/latest">
+                <label for="filter-0"> <!--?lit$191587065$-->Include subprojects </label>
+              </li>
+            <!---->
+        </ul>
+      </div>
+    
+          <div class="results">
+            <!--?lit$191587065$--><p>No recent searches</p>
+          </div>
+          <div class="footer">
+            <ul class="help">
+              <li><code>Enter</code> to select</li>
+              <li><code>Up</code>/<code>Down</code> to navigate</li>
+              <li><code>Esc</code> to close</li>
+            </ul>
+            <div class="credits">
+              Search powered by
+              <a href="https://about.readthedocs.com/?utm_source=sf-components&amp;utm_content=search">
+                <img alt="Read the Docs" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJzdmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSI2OTQgMTk3IDIwMDAgNDAwIj4KPGcgaWQ9ImxvZ28iIHRyYW5zZm9ybT0ibWF0cml4KDAuNTU3NTM2NDQsMCwwLDAuNTU3NTM2NDQsNjguMzA4MTM1LDEwNTAuMTI2MikiPgoJPHBhdGggc3R5bGU9ImZpbGw6IzMyMzIyQSIgZD0iTTE0MDguMS0xMTgxLjdjLTcuNSwxLTEyLjcsNy44LTExLjcsMTUuMyAgIGMwLjcsNS40LDQuNiw5LjksOS45LDExLjNjMCwwLDMzLjIsMTEsODkuNywxNS42YzQ1LjQsMy43LDk2LjktMy4yLDk2LjktMy4yYzcuNS0wLjIsMTMuNS02LjUsMTMuMi0xNHMtNi41LTEzLjUtMTQtMTMuMiAgIGMtMC45LDAtMS44LDAuMS0yLjYsMC4zYzAsMC01MC40LDYuMi05MS4zLDIuOWMtNTQtNC40LTgzLjQtMTQuMy04My40LTE0LjNDMTQxMi42LTExODEuNywxNDEwLjMtMTE4MiwxNDA4LjEtMTE4MS43eiAgICBNMTQwOC4xLTEyNDkuM2MtNy41LDEtMTIuNyw3LjgtMTEuNywxNS4zYzAuNyw1LjQsNC42LDkuOSw5LjksMTEuM2MwLDAsMzMuMiwxMSw4OS43LDE1LjZjNDUuNCwzLjcsOTYuOS0zLjIsOTYuOS0zLjIgICBjNy41LTAuMiwxMy41LTYuNSwxMy4yLTE0cy02LjUtMTMuNS0xNC0xMy4yYy0wLjksMC0xLjgsMC4xLTIuNiwwLjNjMCwwLTUwLjQsNi4yLTkxLjMsMi45Yy01NC00LjQtODMuNC0xNC4zLTgzLjQtMTQuMyAgIEMxNDEyLjYtMTI0OS4zLDE0MTAuMy0xMjQ5LjYsMTQwOC4xLTEyNDkuM3ogTTE0MDguMS0xMzE2LjljLTcuNSwxLTEyLjcsNy44LTExLjcsMTUuM2MwLjcsNS40LDQuNiw5LjksOS45LDExLjMgICBjMCwwLDMzLjIsMTEsODkuNywxNS42YzQ1LjQsMy43LDk2LjktMy4yLDk2LjktMy4yYzcuNS0wLjIsMTMuNS02LjUsMTMuMi0xNHMtNi41LTEzLjUtMTQtMTMuMmMtMC45LDAtMS44LDAuMS0yLjYsMC4zICAgYzAsMC01MC40LDYuMi05MS4zLDIuOWMtNTQtNC40LTgzLjQtMTQuMy04My40LTE0LjNDMTQxMi42LTEzMTYuOSwxNDEwLjMtMTMxNy4yLDE0MDguMS0xMzE2Ljl6IE0xNDA4LjEtMTM4NC40ICAgYy03LjUsMS0xMi43LDcuOC0xMS43LDE1LjNjMC43LDUuNCw0LjYsOS45LDkuOSwxMS4zYzAsMCwzMy4yLDExLDg5LjcsMTUuNmM0NS40LDMuNyw5Ni45LTMuMiw5Ni45LTMuMmM3LjUtMC4yLDEzLjUtNi41LDEzLjItMTQgICBzLTYuNS0xMy41LTE0LTEzLjJjLTAuOSwwLTEuOCwwLjEtMi42LDAuM2MwLDAtNTAuNCw2LjItOTEuMywyLjljLTU0LTQuNC04My40LTE0LjMtODMuNC0xNC4zICAgQzE0MTIuNi0xMzg0LjUsMTQxMC4zLTEzODQuNywxNDA4LjEtMTM4NC40eiBNMTMxMy40LTE0NTUuN2MtNzEsMC41LTk3LjUsMjIuMy05Ny41LDIyLjN2NTMwLjNjMCwwLDI1LjgtMjIuMywxMDktMTguOSAgIGM4My4yLDMuNCwxMDAuMywzMi42LDIwMi41LDM0LjZjMTAyLjIsMi4xLDEyNy45LTE1LjcsMTI3LjktMTUuN2wxLjUtNTQwLjZjMCwwLTQ2LDEzLTEzNS41LDEzLjdzLTExMS0yMi44LTE5My4yLTI1LjUgICBDMTMyMy0xNDU1LjYsMTMxOC4xLTE0NTUuNywxMzEzLjQtMTQ1NS43eiBNMTM3Mi44LTE0MjEuMWMwLDAsNDMsMTQuMiwxMjIuNSwxOC4yYzY3LjIsMy4zLDEzNC41LTYuNiwxMzQuNS02LjZ2NDgwLjUgICBjMCwwLTM0LjEsMTcuOS0xMTkuMywxMS44Yy02Ni00LjctMTM4LjctMjkuNy0xMzguNy0yOS43TDEzNzIuOC0xNDIxLjF6IE0xMzMxLjMtMTQwOC42YzcuNiwwLDEzLjcsNi4yLDEzLjcsMTMuNyAgIHMtNi4yLDEzLjctMTMuNywxMy43YzAsMC0yMi4zLDAuMS0zNS44LDEuNWMtMjIuOCwyLjMtMzguMywxMC42LTM4LjMsMTAuNmMtNi43LDMuNS0xNSwxLTE4LjUtNS43cy0xLTE1LDUuNy0xOC41YzAsMCwwLDAsMCwwICAgYzAsMCwyMC4yLTEwLjcsNDguNC0xMy41QzEzMDkuMS0xNDA4LjUsMTMzMS4zLTE0MDguNiwxMzMxLjMtMTQwOC42eiBNMTMxOC4xLTEzNDAuOGM3LjYtMC4yLDEzLjMsMCwxMy4zLDAgICBjNy41LDAuOSwxMi45LDcuOCwxMiwxNS4zYy0wLjgsNi4zLTUuNywxMS4yLTEyLDEyYzAsMC0yMi4zLDAuMS0zNS44LDEuNWMtMjIuOCwyLjMtMzguMywxMC42LTM4LjMsMTAuNmMtNi43LDMuNS0xNSwwLjktMTguNS01LjggICBjLTMuNS02LjctMC45LTE1LDUuOC0xOC41YzAsMCwyMC4yLTEwLjcsNDguNC0xMy41QzEzMDAuOS0xMzQwLjEsMTMxMC41LTEzNDAuNiwxMzE4LjEtMTM0MC44eiBNMTMzMS4zLTEyNzMuMyAgIGM3LjYsMCwxMy43LDYuMiwxMy43LDEzLjdjMCw3LjYtNi4yLDEzLjctMTMuNywxMy43YzAsMC0yMi4zLTAuMS0zNS44LDEuMmMtMjIuOCwyLjMtMzguMywxMC42LTM4LjMsMTAuNiAgIGMtNi43LDMuNS0xNSwwLjktMTguNS01LjhjLTMuNS02LjctMC45LTE1LDUuOC0xOC41YzAsMCwyMC4yLTEwLjcsNDguNC0xMy41QzEzMDkuMS0xMjczLjQsMTMzMS4zLTEyNzMuMywxMzMxLjMtMTI3My4zeiIvPgo8L2c+CjxnIGlkPSJ0ZXh0Ij4KCTxwYXRoIHN0eWxlPSJmaWxsOiMzMjMyMkEiIGQ9Ik0xMTI4LjYsNDkxLjlWNDcwbDguOS0wLjhjNS4yLTAuNSw3LjgtMy4xLDcuOC03LjZWMzM2bC0xNS40LTAuOHYtMjNoNzMuOCAgIGMyMC45LDAsMzYuOSwzLjksNDguMSwxMS42YzExLjIsNy43LDE2LjgsMjAuNSwxNi44LDM4LjFjMCwxMi4zLTMuMiwyMi4zLTkuNywzMC4zYy02LjMsNy45LTEzLjksMTMuNy0yMi43LDE3LjMgICBjNi41LDIuMywxMS42LDcuOCwxNS40LDE2LjVsMTkuNSw0Mi40bDE1LjQsMC41djIzaC02Ni44VjQ3MGw3LjgtMC44YzQuMS0wLjUsNi4yLTIuMiw2LjItNC45YzAtMS4xLTAuNC0yLjMtMS4xLTMuOGwtMTIuNy0yNyAgIGMtMi00LjUtNC4yLTcuNy02LjgtOS41Yy0yLjMtMi01LjgtMy0xMC4zLTNoLTI0LjZ2NDdsMTcuNiwwLjh2MjNMMTEyOC42LDQ5MS45IE0xMTc4LjMsMzk1LjRoMjMuNWMyMi4yLDAsMzMuMi05LjksMzMuMi0yOS43ICAgYzAtMTEuNC0zLTE4LjctOC45LTIyLjJjLTUuOC0zLjQtMTUuMS01LjEtMjguMS01LjFoLTE5LjdWMzk1LjQiLz4KCTxwYXRoIHN0eWxlPSJmaWxsOiMzMjMyMkEiIGQ9Ik0xMzU2LDM1MS45YzEzLjUsMCwyNC4yLDMuMywzMi4yLDEwYzcuOSw2LjUsMTEuOSwxNS43LDExLjksMjcuNmMwLDcuOS0xLjcsMTUtNS4xLDIxLjEgICBjLTMuNCw1LjktNy43LDEwLjYtMTIuNywxNC4xYy01LDMuNC0xMS4yLDYuMi0xOC40LDguNGMtMTIuMSwzLjYtMjUuNyw1LjQtNDAuOCw1LjRjMC41LDkuNSwzLjUsMTcuMyw4LjksMjMuMiAgIGM1LjQsNS44LDEzLjcsOC42LDI0LjksOC42YzExLjIsMCwyMi4zLTQsMzMuNS0xMS45bDEwLjMsMjEuOWMtMy42LDMuMi05LjcsNi42LTE4LjQsMTBjLTguNSwzLjQtMTguMiw1LjEtMjkuMiw1LjEgICBjLTIyLDAtMzguMS02LTQ4LjQtMTguMWMtMTAuMy0xMi4zLTE1LjQtMjktMTUuNC01MC4zYzAtMjEuMyw1LjktMzkuMSwxNy42LTUzLjVDMTMxOC41LDM1OS4xLDEzMzQuOSwzNTEuOSwxMzU2LDM1MS45ICAgIE0xMzQzLjYsNDEzLjhjNi43LTEuMywxMi44LTMuOSwxOC40LTcuOGM1LjYtNC4xLDguNC05LDguNC0xNC42YzAtMTEtNS40LTE2LjUtMTYuMi0xNi41Yy0xMC4xLDAtMTcuOCw0LjEtMjMuMiwxMi4yICAgYy01LjQsNy45LTguNCwxNy41LTguOSwyOC42QzEzMjkuOSw0MTUuNSwxMzM3LjEsNDE0LjksMTM0My42LDQxMy44Ii8+Cgk8cGF0aCBzdHlsZT0iZmlsbDojMzIzMjJBIiBkPSJNMTUyOS42LDM2MS40djEwMC41YzAsMi45LDAuNSw0LjksMS40LDUuOWMxLjEsMS4xLDIuOSwxLjcsNS40LDEuOWw4LjYsMC41djIxLjZoLTQzdi0xNS43ICAgbC0wLjgtMC4zYy05LDEzLTIxLjQsMTkuNS0zNywxOS41Yy0xOC40LDAtMzItNS45LTQwLjgtMTcuNmMtOC44LTExLjctMTMuMi0yNy43LTEzLjItNDguMWMwLTI0LjUsNS45LTQzLjYsMTcuOC01Ny4zICAgYzExLjktMTMuNywyOS43LTIwLjUsNTMuNS0yMC41QzE0OTYuOCwzNTEuOSwxNTEyLjksMzU1LjEsMTUyOS42LDM2MS40IE0xNDk4LjMsNDQ4Ljl2LTcwYy01LTIuMy0xMi0zLjUtMjAuOC0zLjUgICBjLTEyLjEsMC0yMC44LDQuOS0yNi4yLDE0LjZjLTUuNCw5LjctOC4xLDIyLjYtOC4xLDM4LjdjMCwyOS4yLDkuNCw0My44LDI4LjEsNDMuOGM3LjksMCwxNC40LTIuMywxOS41LTcgICBDMTQ5NS43LDQ2MC42LDE0OTguMyw0NTUuMSwxNDk4LjMsNDQ4LjkiLz4KCTxwYXRoIHN0eWxlPSJmaWxsOiMzMjMyMkEiIGQ9Ik0xNjE2LjMsMzUxLjljNy43LDAsMTUuMSwxLjEsMjIuMiwzLjJ2LTI3LjNjMC00LTIuMy02LjEtNy02LjVsLTExLjYtMC44di0yMS40aDUwLjN2MTY0LjMgICBjMC4yLDQuMSwyLjQsNi4yLDYuOCw2LjJsOS41LDAuNXYyMS42aC00My44VjQ3NmwtMC44LTAuM2MtOC4xLDEzLjItMjAuNCwxOS43LTM2LjgsMTkuN2MtMjAuNSwwLTM1LTYuOC00My4yLTIwLjUgICBjLTcuNi0xMi40LTExLjQtMjcuNy0xMS40LTQ1LjdjMC0yMy40LDUuOC00Mi4yLDE3LjMtNTYuMkMxNTc5LjMsMzU4LjksMTU5NS41LDM1MS45LDE2MTYuMywzNTEuOSBNMTYzOC40LDQ0OS44di03MCAgIGMtNi41LTIuOS0xMy4zLTQuMy0yMC41LTQuM2MtMTEuOSwwLTIwLjYsNC44LTI2LjIsMTQuM2MtNS40LDkuNi04LjEsMjEuNy04LjEsMzYuNWMwLDMwLjMsOS43LDQ1LjQsMjkuMiw0NS40ICAgYzcuNCwwLDEzLjUtMi4xLDE4LjQtNi4yQzE2MzYsNDYxLjEsMTYzOC40LDQ1NS45LDE2MzguNCw0NDkuOCIvPgoJPHBhdGggc3R5bGU9ImZpbGw6IzMyMzIyQSIgZD0iTTE3OTEuNyw0NzAuNmMwLDAtMTIuNSw0LjctMTkuMiw0LjdzLTkuMi0zLjMtOS4yLTExLjhjMC0zLjgsMC41LTguOCwxLjQtMTQuOWwxMC4yLTYzLjFoMzIuNiAgIGwyLjgtMTcuN2gtMzIuNmw1LjctMzQuNUwxNzYwLDMzOGwtNC43LDI5LjhsLTIzLjYsMi40bC0yLjYsMTUuNGgyMy40TDE3NDIsNDUxYy0wLjksNS40LTEuNCwxMC42LTEuNCwxNS4xICAgYzAsMTguNyw3LjgsMjguMSwyMy45LDI4LjFjMTMuMiwwLDMxLTEwLjksMzEtMTAuOUwxNzkxLjcsNDcwLjYiLz4KCTxwYXRoIHN0eWxlPSJmaWxsOiMzMjMyMkEiIGQ9Ik0xODY1LDMwOS44bC00My4zLDEuMmwtMi4xLDEzbDE5LjksNC43bC0yNiwxNjMuMmgyMi41bDcuOC00Mi42YzAsMCwxOC43LTY1LDQ5LjQtNjUgICBjOS41LDAsMTIuMyw2LjksMTIuMywxNS42YzAsMy4zLTAuNSw2LjktMC45LDEwLjRsLTEzLjUsODEuNmw0My4zLTIuNGwyLjEtMTNsLTE5LjktMy41bDEwLjYtNjYuMmMwLjctNSwxLjItOS43LDEuMi0xNCAgIGMwLTE3LTYuOS0yOC42LTI1LjgtMjguNmMtMzUuOSwwLTU0LjksNDUuNi01NS44LDQ4LjJMMTg2NSwzMDkuOCIvPgoJPHBhdGggc3R5bGU9ImZpbGw6IzMyMzIyQSIgZD0iTTIwMzUsNDY0LjdjMCwwLTIxLjUsMTAuNi0zOC44LDEwLjZjLTE3LjcsMC0yNi03LjgtMjYtMjQuNmMwLTMuMSwwLjItNi42LDAuNy0xMC4yICAgYzQ5LDAsODMtMTguNCw4My00NS42YzAtMTguNy0xNS4xLTMwLjctMzktMzAuN2MtMzcuNiwwLTY4LjMsMzguNS02OC4zLDg3LjVjMCwyNiwxNi42LDQyLjYsNDIuNiw0Mi42YzI3LjksMCw1My0xNy41LDUzLTE3LjUgICBMMjAzNSw0NjQuNyBNMTk3Myw0MjRjNi4xLTI0LjgsMjMuNC00Mi4xLDQwLjctNDIuMWMxMi4xLDAsMTcuNyw1LDE3LjcsMTUuNEMyMDMxLjUsNDEyLjksMjAwNi42LDQyNCwxOTczLDQyNCIvPgoJPHBhdGggc3R5bGU9ImZpbGw6IzMyMzIyQSIgZD0iTTIwOTMuNyw0OTEuOVY0NzBsOC45LTAuOGM1LjItMC41LDcuOC0zLjEsNy44LTcuNlYzMzZsLTE1LjQtMC44di0yM2g3NC4xICAgYzI2LjUsMCw0Ny4xLDcsNjEuOSwyMS4xYzE1LDE0LjEsMjIuNCwzNC45LDIyLjQsNjIuNGMwLDE3LjEtMi4zLDMyLjEtNi44LDQ0LjljLTQuNSwxMi42LTEwLjYsMjIuNS0xOC40LDI5LjcgICBjLTE1LjUsMTQuNC0zNC44LDIxLjYtNTcuOCwyMS42TDIwOTMuNyw0OTEuOSBNMjE0My40LDMzOC40VjQ2NmgyNy42YzE1LjUsMCwyNy42LTUuNiwzNi4yLTE2LjhjOC42LTExLjIsMTMtMjcuNCwxMy00OC43ICAgYzAtNDEuNC0xNy42LTYyLjItNTIuNy02Mi4ySDIxNDMuNCIvPgoJPHBhdGggc3R5bGU9ImZpbGw6IzMyMzIyQSIgZD0iTTIzMzAsNDcyLjJjMTkuNiwwLDI5LjUtMTUuOSwyOS41LTQ3LjZjMC0xNi0yLjMtMjguMi02LjgtMzYuNWMtNC4zLTguMy0xMS43LTEyLjQtMjIuMi0xMi40ICAgYy0xMC4zLDAtMTcuOCw0LTIyLjcsMTEuOWMtNC45LDcuOS03LjMsMTguNy03LjMsMzIuNGMwLDI1LjQsNC43LDQxLjQsMTQuMSw0Ny44QzIzMTguOCw0NzAuNywyMzIzLjksNDcyLjIsMjMzMCw0NzIuMiAgICBNMjI2Ny45LDQyMy44YzAtMTMuMywyLTI0LjksNS45LTM0LjZjNC05LjksOS4zLTE3LjUsMTUuOS0yMi43YzEyLjgtOS43LDI2LjktMTQuNiw0Mi40LTE0LjZjMTAuOCwwLDE5LjksMS44LDI3LjMsNS40ICAgYzcuNiwzLjQsMTMuNCw3LjUsMTcuNiwxMi4yYzQuMyw0LjUsNy45LDExLjIsMTAuOCwyMGMzLjEsOC42LDQuNiwxOC45LDQuNiwzMC44YzAsMjQuOS02LDQzLjctMTguMSw1Ni41ICAgYy0xMi4xLDEyLjgtMjcuNiwxOS4yLTQ2LjUsMTkuMmMtMTguNywwLTMzLjQtNi00NC4xLTE4LjFDMjI3My4yLDQ2NS42LDIyNjcuOSw0NDcuNiwyMjY3LjksNDIzLjgiLz4KCTxwYXRoIHN0eWxlPSJmaWxsOiMzMjMyMkEiIGQ9Ik0yNDM4LjIsNDIyLjVjMCwxNS4zLDIuOSwyNy4yLDguNiwzNS43YzUuOCw4LjUsMTQuMSwxMi43LDI0LjksMTIuN2MxMSwwLDIxLjgtMy45LDMyLjQtMTEuNiAgIGwxMS42LDIwLjhjLTEyLjgsMTAuNS0yOC44LDE1LjctNDguMSwxNS43Yy0xOS4zLDAtMzQuNS02LTQ1LjctMTguMWMtMTEtMTIuMy0xNi41LTMwLjMtMTYuNS01NC4xczYuMy00MS42LDE4LjktNTMuNSAgIGMxMi44LTEyLjEsMjcuMS0xOC4xLDQzLTE4LjFjMTYsMCwzMC45LDMuNyw0NC42LDExLjF2MzUuMWwtMjQuOSwxLjl2LTEzYzAtNC45LTEuOC03LjgtNS40LTguOWMtMy40LTEuMy03LTEuOS0xMC44LTEuOSAgIEMyNDQ5LjEsMzc2LjIsMjQzOC4yLDM5MS42LDI0MzguMiw0MjIuNSIvPgoJPHBhdGggc3R5bGU9ImZpbGw6IzMyMzIyQSIgZD0iTTI1OTIuOSwzNzYuNWMtNC4zLTEuNi05LjYtMi40LTE1LjctMi40Yy02LjEsMC0xMS4xLDEuNC0xNC45LDQuM2MtMy42LDIuNy01LjQsNi4xLTUuNCwxMC4zICAgYzAsNCwwLjYsNy4xLDEuOSw5LjVjMS40LDIuMiwzLjYsNC4xLDYuNSw1LjdjNC41LDIuMyw5LjksNC40LDE2LjIsNi4yYzYuMywxLjYsMTEsMywxNC4xLDQuMWMzLjEsMC45LDYuOCwyLjUsMTEuNCw0LjkgICBjNC43LDIuMyw4LjIsNC45LDEwLjUsNy42YzYuMyw2LjcsOS41LDE1LjIsOS41LDI1LjdjMCwxMy41LTUsMjQuMS0xNC45LDMxLjljLTkuNyw3LjYtMjIuMiwxMS40LTM3LjMsMTEuNCAgIGMtMjIsMC0zOC42LTIuOC00OS43LTguNHYtMzcuNmwyNC4zLTEuOXYxM2MwLDcuOSw3LjYsMTEuOSwyMi43LDExLjlzMjIuNy01LjUsMjIuNy0xNi41YzAtNC0xLjQtNy4yLTQuMS05LjcgICBjLTIuNS0yLjUtNS00LjItNy42LTUuMWMtMi41LTAuOS01LjYtMS44LTkuMi0yLjdjLTMuNC0wLjktNi44LTEuOC0xMC4zLTIuN2MtMy4yLTAuOS02LjgtMi4xLTEwLjgtMy41Yy0zLjgtMS42LTgtMy45LTEyLjctNi44ICAgYy05LjItNS45LTEzLjgtMTUuOS0xMy44LTI5LjdjMC0xNC4xLDUtMjQuOSwxNC45LTMyLjRjOS45LTcuNiwyMi4zLTExLjQsMzcuMy0xMS40YzE1LjEsMCwzMC4xLDMuNiw0NC45LDEwLjh2MzIuNGwtMjQuMywxLjkgICB2LTExLjRDMjU5OS4xLDM4MS4yLDI1OTcsMzc4LjEsMjU5Mi45LDM3Ni41Ii8+CjwvZz4KPGRpdiB4bWxucz0iIiBpZD0ic2FrYS1ndWktcm9vdCI+PGRpdj48ZGl2PjxzdHlsZS8+PC9kaXY+PC9kaXY+PC9kaXY+PC9zdmc+">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template></readthedocs-search><readthedocs-hotkeys><template shadowrootmode="open"><!----></template></readthedocs-hotkeys><div id="goog-gt-tt" class="VIpgJd-yAWNEb-L7lbkb skiptranslate" style="border-radius: 12px; margin: 0 0 0 -23px; padding: 0; font-family: &#39;Google Sans&#39;, Arial, sans-serif;" data-id=""><div id="goog-gt-vt" class="VIpgJd-yAWNEb-hvhgNd"><div class=" VIpgJd-yAWNEb-hvhgNd-l4eHX-i3jM8c"><img src="./ADXL345 Module_files/24px.svg" width="24" height="24" alt=""></div><div class=" VIpgJd-yAWNEb-hvhgNd-k77Iif-i3jM8c"><div class="VIpgJd-yAWNEb-hvhgNd-IuizWc" dir="ltr">원본 텍스트</div><div id="goog-gt-original-text" class="VIpgJd-yAWNEb-nVMfcd-fmcmS VIpgJd-yAWNEb-hvhgNd-axAV1"></div></div><div class="VIpgJd-yAWNEb-hvhgNd-N7Eqid ltr"><div class="VIpgJd-yAWNEb-hvhgNd-N7Eqid-B7I4Od ltr" dir="ltr"><div class="VIpgJd-yAWNEb-hvhgNd-UTujCb">번역 평가</div><div class="VIpgJd-yAWNEb-hvhgNd-eO9mKe">보내주신 의견은 Google 번역을 개선하는 데 사용됩니다.</div></div><div class="VIpgJd-yAWNEb-hvhgNd-xgov5 ltr"><button id="goog-gt-thumbUpButton" type="button" class="VIpgJd-yAWNEb-hvhgNd-bgm6sf" title="번역 품질 좋음" aria-label="번역 품질 좋음" aria-pressed="false"><span id="goog-gt-thumbUpIcon"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M21 7h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 0S7.08 6.85 7 7H2v13h16c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73V9c0-1.1-.9-2-2-2zM7 18H4V9h3v9zm14-7l-3 7H9V8l4.34-4.34L12 9h9v2z"></path></svg></span><span id="goog-gt-thumbUpIconFilled"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M21 7h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 0S7.08 6.85 7 7v13h11c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73V9c0-1.1-.9-2-2-2zM5 7H1v13h4V7z"></path></svg></span></button><button id="goog-gt-thumbDownButton" type="button" class="VIpgJd-yAWNEb-hvhgNd-bgm6sf" title="번역 품질 좋지 않음" aria-label="번역 품질 좋지 않음" aria-pressed="false"><span id="goog-gt-thumbDownIcon"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M3 17h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 24s7.09-6.85 7.17-7h5V4H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2zM17 6h3v9h-3V6zM3 13l3-7h9v10l-4.34 4.34L12 15H3v-2z"></path></svg></span><span id="goog-gt-thumbDownIconFilled"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M3 17h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 24s7.09-6.85 7.17-7V4H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2zm16 0h4V4h-4v13z"></path></svg></span></button></div></div><div id="goog-gt-votingHiddenPane" class="VIpgJd-yAWNEb-hvhgNd-aXYTce"><form id="goog-gt-votingForm" action="https://translate.googleapis.com/translate_voting?client=te_lib" method="post" target="votingFrame" class="VIpgJd-yAWNEb-hvhgNd-aXYTce"><input type="text" name="sl" id="goog-gt-votingInputSrcLang"><input type="text" name="tl" id="goog-gt-votingInputTrgLang"><input type="text" name="query" id="goog-gt-votingInputSrcText"><input type="text" name="gtrans" id="goog-gt-votingInputTrgText"><input type="text" name="vote" id="goog-gt-votingInputVote"></form><iframe name="votingFrame" frameborder="0" src="./ADXL345 Module_files/saved_resource.html"></iframe></div></div></div><div id="st-2" class=" st-sticky-share-buttons st-right st-toggleable st-has-labels st-show-total "><div class="st-total ">
+  <span class="st-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">23</font></font></span>
+  <span class="st-shares"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    주식
+  </font></font></span>
+</div><div class="st-btn st-first" data-network="twitter" style="display: inline-block;">
+  <img alt="트위터 공유 버튼" src="./ADXL345 Module_files/twitter.svg">
+  <span class="st-label">Tweet</span>
+</div><div class="st-btn" data-network="facebook" style="display: inline-block;">
+  <img alt="페이스북 공유 버튼" src="./ADXL345 Module_files/facebook.svg">
+  <span class="st-label">Share</span>
+</div><div class="st-btn" data-network="linkedin" style="display: inline-block;">
+  <img alt="LinkedIn 공유 버튼" src="./ADXL345 Module_files/linkedin.svg">
+  <span class="st-label">Share</span>
+</div><div class="st-btn" data-network="pinterest" style="display: inline-block;">
+  <img alt="핀터레스트 공유 버튼" src="./ADXL345 Module_files/pinterest.svg">
+  <span class="st-label">Pin</span>
+</div><div class="st-btn" data-network="reddit" style="display: inline-block;">
+  <img alt="레딧 공유 버튼" src="./ADXL345 Module_files/reddit.svg">
+  <span class="st-label">Share</span>
+</div><div class="st-btn st-last" data-network="vk" style="display: none;">
+  <img alt="vk sharing button" src="./ADXL345 Module_files/vk.svg">
+  <span class="st-label">Share</span>
+</div><div class="st-toggle">
+  <div class="st-left">
+    <img alt="arrow_left sharing button" src="./ADXL345 Module_files/arrow_left.svg">
+  </div>
+  <div class="st-right">
+    <img alt="arrow_right sharing button" src="./ADXL345 Module_files/arrow_right.svg">
+  </div>
+</div></div></body></html>

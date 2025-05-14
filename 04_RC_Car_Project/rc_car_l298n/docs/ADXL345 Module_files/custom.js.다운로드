@@ -1,0 +1,1795 @@
+function setPageLogo() {
+  var link =
+    document.querySelector("link[rel*='icon']") ||
+    document.createElement("link");
+  link.type = "image/x-icon";
+  link.rel = "shortcut icon";
+  link.href = "https://ezblock.cc/readDocFile/sunfounderIcon.png";
+  document.getElementsByTagName("head")[0].appendChild(link);
+}
+
+// 添加导航栏
+// let navBarItemsHTML = `<li class="nav-bar__item"><a href="https://www.sunfounder.com/collections/deals" class="nav-bar__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">Deals<svg class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
+// <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none" stroke-linecap="square"></path>
+// </svg><svg class="icon icon--nav-triangle" viewBox="0 0 20 9" role="presentation">
+// <g fill="none" fill-rule="evenodd">
+//   <path d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z" fill="#ffffff"></path>
+//   <path d="M-.00922471 9C1.38887087 7.61849126 4.26661926 4.80337304 8.62402045.5546454c.75993175-.7409708 1.98812015-.7393145 2.74596565.0037073L19.9800494 9h-1.3748787l-7.9226239-7.7676545c-.3789219-.3715101-.9930172-.3723389-1.3729808-.0018557-3.20734177 3.1273507-5.6127118 5.4776841-7.21584193 7.05073579C1.82769633 8.54226204 1.58379521 8.7818599 1.36203986 9H-.00922471z" fill="#e1e3e4"></path>
+// </g>
+// </svg></a><ul id="dropdown-desktop-menu-0-1" class="nav-dropdown nav-dropdown--restrict" data-type="menu" aria-hidden="true"><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/deals-for-arduino-1" class="nav-dropdown__link link" data-type="menuitem">for Raspberry Pi</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/deals-for-arduino" class="nav-dropdown__link link" data-type="menuitem">for Arduino</a></li></ul></li><li class="nav-bar__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-store" class="nav-bar__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">Raspberry Pi<svg class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
+// <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none" stroke-linecap="square"></path>
+// </svg><svg class="icon icon--nav-triangle" viewBox="0 0 20 9" role="presentation">
+// <g fill="none" fill-rule="evenodd">
+//   <path d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z" fill="#ffffff"></path>
+//   <path d="M-.00922471 9C1.38887087 7.61849126 4.26661926 4.80337304 8.62402045.5546454c.75993175-.7409708 1.98812015-.7393145 2.74596565.0037073L19.9800494 9h-1.3748787l-7.9226239-7.7676545c-.3789219-.3715101-.9930172-.3723389-1.3729808-.0018557-3.20734177 3.1273507-5.6127118 5.4776841-7.21584193 7.05073579C1.82769633 8.54226204 1.58379521 8.7818599 1.36203986 9H-.00922471z" fill="#e1e3e4"></path>
+// </g>
+// </svg></a><ul id="dropdown-desktop-menu-0-2" class="nav-dropdown " data-type="menu" aria-hidden="true"><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/the-raspberry-pi" class="nav-dropdown__link link" data-type="menuitem">The Raspberry Pi</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/raspberrypi-kits" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">Kits &amp; Bundles<svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+// <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+// </svg></a><ul id="dropdown-0" class="nav-dropdown " data-type="menu" aria-hidden="true"><svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+// <g fill="none">
+//   <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+//   <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+// </g>
+// </svg><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-kits-bundles" class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 5 Kits</a></li><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-4-3-kits" class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 4/3 Kits</a></li><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/pico-w-pico" class="nav-dropdown__link link" data-type="menuitem">Pico W &amp; Pico</a></li></ul></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/raspberry-pi-cases" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">Cases<svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+// <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+// </svg></a><ul id="dropdown-1" class="nav-dropdown " data-type="menu" aria-hidden="true"><svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+// <g fill="none">
+//   <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+//   <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+// </g>
+// </svg><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-5-cases" class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 5</a></li><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-4-cases" class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 4</a></li></ul></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/monitors" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">Touchsceens &amp; Display<svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+// <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+// </svg></a><ul id="dropdown-2" class="nav-dropdown " data-type="menu" aria-hidden="true"><svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+// <g fill="none">
+//   <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+//   <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+// </g>
+// </svg><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-5-touchsceens-display" class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 5</a></li><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-4-touchsceens-display" class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 4 </a></li></ul></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/robotics" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">Robotics<svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+// <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+// </svg></a><ul id="dropdown-3" class="nav-dropdown " data-type="menu" aria-hidden="true"><svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+// <g fill="none">
+//   <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+//   <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+// </g>
+// </svg><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-5-4-robotics" class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 5/4</a></li><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-4-3b-robotics" class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 4/3B+</a></li><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/pico-robotics" class="nav-dropdown__link link" data-type="menuitem">Pico</a></li></ul></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/power-supply" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">Power Supply<svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+// <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+// </svg></a><ul id="dropdown-4" class="nav-dropdown " data-type="menu" aria-hidden="true"><svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+// <g fill="none">
+//   <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+//   <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+// </g>
+// </svg><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-power-supplies" class="nav-dropdown__link link" data-type="menuitem">Power Supplies</a></li><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-switches" class="nav-dropdown__link link" data-type="menuitem">Switches</a></li><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-cables" class="nav-dropdown__link link" data-type="menuitem">Cables</a></li><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-ups" class="nav-dropdown__link link" data-type="menuitem">UPS</a></li><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/raspberry-pi-power-over-ethernet-poe" class="nav-dropdown__link link" data-type="menuitem">Power over Ethernet (PoE)</a></li></ul></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/raspberry-pi-sd-cards" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">SD Card<svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+// <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+// </svg></a><ul id="dropdown-5" class="nav-dropdown " data-type="menu" aria-hidden="true"><svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+// <g fill="none">
+//   <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+//   <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+// </g>
+// </svg><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/card-reader" class="nav-dropdown__link link" data-type="menuitem">Card Reader</a></li></ul></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/raspberry-pi-hats-gpio" class="nav-dropdown__link link" data-type="menuitem">Hats &amp; GPIO</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/raspberry-pi-cooling" class="nav-dropdown__link link" data-type="menuitem">Cooling</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/microphone-audio" class="nav-dropdown__link link" data-type="menuitem">Microphone/Audio</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/raspberry-pi-camera" class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi Camera</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/raspberry-pi-arcade" class="nav-dropdown__link link" data-type="menuitem">Arcade</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/raspberry-pi-usb-add-ons" class="nav-dropdown__link link" data-type="menuitem">USB Add-ons</a></li></ul></li><li class="nav-bar__item"><a href="https://www.sunfounder.com/collections/for-arduino" class="nav-bar__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">For Arduino<svg class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
+// <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none" stroke-linecap="square"></path>
+// </svg><svg class="icon icon--nav-triangle" viewBox="0 0 20 9" role="presentation">
+// <g fill="none" fill-rule="evenodd">
+//   <path d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z" fill="#ffffff"></path>
+//   <path d="M-.00922471 9C1.38887087 7.61849126 4.26661926 4.80337304 8.62402045.5546454c.75993175-.7409708 1.98812015-.7393145 2.74596565.0037073L19.9800494 9h-1.3748787l-7.9226239-7.7676545c-.3789219-.3715101-.9930172-.3723389-1.3729808-.0018557-3.20734177 3.1273507-5.6127118 5.4776841-7.21584193 7.05073579C1.82769633 8.54226204 1.58379521 8.7818599 1.36203986 9H-.00922471z" fill="#e1e3e4"></path>
+// </g>
+// </svg></a><ul id="dropdown-desktop-menu-0-3" class="nav-dropdown " data-type="menu" aria-hidden="true"><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/official-arduino-boards" class="nav-dropdown__link link" data-type="menuitem">Official Arduino Boards</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/arduino-compatible-boards" class="nav-dropdown__link link" data-type="menuitem">Arduino Compatible Boards</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/arduino-kits-bundles" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">Kits &amp; Bundles<svg class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+// <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none" stroke-linecap="square"></path>
+// </svg></a><ul id="dropdown-0" class="nav-dropdown " data-type="menu" aria-hidden="true"><svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+// <g fill="none">
+//   <path d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z" fill="#ffffff"></path>
+//   <path d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z" fill="#e1e3e4"></path>
+// </g>
+// </svg><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/kits-with-orignal-arduino-board" class="nav-dropdown__link link" data-type="menuitem">Kits with Orignal Arduino Board </a></li><li class="nav-dropdown__item"><a href="https://www.sunfounder.com/collections/kits-with-arduino-compatible-board" class="nav-dropdown__link link" data-type="menuitem">Kits with Arduino Compatible Board</a></li></ul></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/arduino-robotics" class="nav-dropdown__link link" data-type="menuitem">Robotics</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/arduino-cases-1" class="nav-dropdown__link link" data-type="menuitem">Cases</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/servos-1" class="nav-dropdown__link link" data-type="menuitem">Servos</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/power-supplies" class="nav-dropdown__link link" data-type="menuitem">Power Supplies</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/lcd-display" class="nav-dropdown__link link" data-type="menuitem">LCD Display</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/relay" class="nav-dropdown__link link" data-type="menuitem">Relay</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/arduino-modules-1" class="nav-dropdown__link link" data-type="menuitem">Modules</a></li><li class="nav-dropdown__item "><a href="https://www.sunfounder.com/collections/accessories-tools" class="nav-dropdown__link link" data-type="menuitem">Accessories &amp; Tools</a></li></ul></li><li class="nav-bar__item"><a href="https://www.sunfounder.com/collections/esp32-1" class="nav-bar__link link" data-type="menuitem">ESP32</a></li><li class="nav-bar__item"><a href="https://docs.sunfounder.com/" class="nav-bar__link link" data-type="menuitem" target="_blank" rel="noopener">Online Tutorial </a></li><li class="nav-bar__item"><a href="https://forum.sunfounder.com/" class="nav-bar__link link" data-type="menuitem" target="_blank" rel="noopener">Forum</a></li><li class="nav-bar__item"><a href="http://wiki.sunfounder.cc/index.php?title=Main_Page" class="nav-bar__link link" data-type="menuitem" target="_blank" rel="noopener">Wiki</a></li><li class="nav-bar__item"><a href="https://www.sunfounder.com/blogs/news" class="nav-bar__link link" data-type="menuitem">Blog</a></li>`
+
+let navBarItemsHTML = `<div id="advertisingBox">
+<div id="advertising">
+  <span>Learn&nbsp;</span>
+  <span>Arduino/Raspberry PI/ESP32&nbsp;</span>
+  <span>Trust&nbsp;</span>
+  <span>SunFounder</span>
+</div>
+<div class="nav-bar__itemBox">
+  <li class="nav-bar__item">
+    <a href="https://www.sunfounder.com/collections/deals" class="nav-bar__link link"
+      data-type="menuitem" aria-expanded="false" aria-haspopup="true">Deals<svg
+        class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
+        <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none"
+          stroke-linecap="square"></path>
+      </svg><svg class="icon icon--nav-triangle"
+        viewBox="0 0 20 9" role="presentation">
+        <g fill="none" fill-rule="evenodd">
+          <path
+            d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z"
+            fill="#ffffff"></path>
+          <path
+            d="M-.00922471 9C1.38887087 7.61849126 4.26661926 4.80337304 8.62402045.5546454c.75993175-.7409708 1.98812015-.7393145 2.74596565.0037073L19.9800494 9h-1.3748787l-7.9226239-7.7676545c-.3789219-.3715101-.9930172-.3723389-1.3729808-.0018557-3.20734177 3.1273507-5.6127118 5.4776841-7.21584193 7.05073579C1.82769633 8.54226204 1.58379521 8.7818599 1.36203986 9H-.00922471z"
+            fill="#e1e3e4"></path>
+        </g>
+      </svg></a>
+    <ul id="dropdown-desktop-menu-0-1" class="nav-dropdown nav-dropdown--restrict"
+      data-type="menu"
+      aria-hidden="true">
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/deals-for-arduino-1"
+          class="nav-dropdown__link link" data-type="menuitem">for Raspberry Pi</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/deals-for-arduino"
+          class="nav-dropdown__link link" data-type="menuitem">for Arduino</a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-bar__item">
+    <a href="https://www.sunfounder.com/collections/raspberry-pi-store" class="nav-bar__link link"
+      data-type="menuitem" aria-expanded="false" aria-haspopup="true">Raspberry Pi<svg
+        class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
+        <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none"
+          stroke-linecap="square"></path>
+      </svg><svg class="icon icon--nav-triangle"
+        viewBox="0 0 20 9" role="presentation">
+        <g fill="none" fill-rule="evenodd">
+          <path
+            d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z"
+            fill="#ffffff"></path>
+          <path
+            d="M-.00922471 9C1.38887087 7.61849126 4.26661926 4.80337304 8.62402045.5546454c.75993175-.7409708 1.98812015-.7393145 2.74596565.0037073L19.9800494 9h-1.3748787l-7.9226239-7.7676545c-.3789219-.3715101-.9930172-.3723389-1.3729808-.0018557-3.20734177 3.1273507-5.6127118 5.4776841-7.21584193 7.05073579C1.82769633 8.54226204 1.58379521 8.7818599 1.36203986 9H-.00922471z"
+            fill="#e1e3e4"></path>
+        </g>
+      </svg></a>
+    <ul id="dropdown-desktop-menu-0-2" class="nav-dropdown " data-type="menu" aria-hidden="true">
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/the-raspberry-pi"
+          class="nav-dropdown__link link" data-type="menuitem">The Raspberry Pi</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberrypi-kits"
+          class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
+          aria-haspopup="true">Kits &amp; Bundles<svg class="icon icon--arrow-right"
+            viewBox="0 0 8 12" role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none"
+              stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-0" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path
+                d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z"
+                fill="#ffffff"></path>
+              <path
+                d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z"
+                fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-kits-bundles"
+              class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 5 Kits</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-4-3-kits"
+              class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 4/3 Kits</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/pico-w-pico"
+              class="nav-dropdown__link link" data-type="menuitem">Pico W &amp; Pico</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-cases"
+          class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
+          aria-haspopup="true">Cases<svg class="icon icon--arrow-right" viewBox="0 0 8 12"
+            role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none"
+              stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-1" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path
+                d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z"
+                fill="#ffffff"></path>
+              <path
+                d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z"
+                fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-5-cases"
+              class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 5</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-4-cases"
+              class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 4</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/monitors" class="nav-dropdown__link link"
+          data-type="menuitem" aria-expanded="false" aria-haspopup="true">Touchsceens &amp;
+          Display<svg
+            class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none"
+              stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-2" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path
+                d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z"
+                fill="#ffffff"></path>
+              <path
+                d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z"
+                fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-5-touchsceens-display"
+              class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 5</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-4-touchsceens-display"
+              class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 4 </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/robotics" class="nav-dropdown__link link"
+          data-type="menuitem" aria-expanded="false" aria-haspopup="true">Robotics<svg
+            class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none"
+              stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-3" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path
+                d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z"
+                fill="#ffffff"></path>
+              <path
+                d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z"
+                fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-5-4-robotics"
+              class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 5/4</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-4-3b-robotics"
+              class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi 4/3B+</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/pico-robotics"
+              class="nav-dropdown__link link" data-type="menuitem">Pico</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/power-supply"
+          class="nav-dropdown__link link"
+          data-type="menuitem" aria-expanded="false" aria-haspopup="true">Power Supply<svg
+            class="icon icon--arrow-right" viewBox="0 0 8 12" role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none"
+              stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-4" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path
+                d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z"
+                fill="#ffffff"></path>
+              <path
+                d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z"
+                fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-power-supplies"
+              class="nav-dropdown__link link" data-type="menuitem">Power Supplies</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-switches"
+              class="nav-dropdown__link link" data-type="menuitem">Switches</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-cables"
+              class="nav-dropdown__link link" data-type="menuitem">Cables</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-ups"
+              class="nav-dropdown__link link" data-type="menuitem">UPS</a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/raspberry-pi-power-over-ethernet-poe"
+              class="nav-dropdown__link link" data-type="menuitem">Power over Ethernet (PoE)</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-sd-cards"
+          class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
+          aria-haspopup="true">SD Card<svg class="icon icon--arrow-right" viewBox="0 0 8 12"
+            role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none"
+              stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-5" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path
+                d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z"
+                fill="#ffffff"></path>
+              <path
+                d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z"
+                fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/card-reader"
+              class="nav-dropdown__link link" data-type="menuitem">Card Reader</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-hats-gpio"
+          class="nav-dropdown__link link" data-type="menuitem">Hats &amp; GPIO</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-cooling"
+          class="nav-dropdown__link link" data-type="menuitem">Cooling</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/microphone-audio"
+          class="nav-dropdown__link link" data-type="menuitem">Microphone/Audio</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-camera"
+          class="nav-dropdown__link link" data-type="menuitem">Raspberry Pi Camera</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-arcade"
+          class="nav-dropdown__link link" data-type="menuitem">Arcade</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/raspberry-pi-usb-add-ons"
+          class="nav-dropdown__link link" data-type="menuitem">USB Add-ons</a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-bar__item">
+    <a href="https://www.sunfounder.com/collections/for-arduino" class="nav-bar__link link"
+      data-type="menuitem" aria-expanded="false" aria-haspopup="true">For Arduino<svg
+        class="icon icon--arrow-bottom" viewBox="0 0 12 8" role="presentation">
+        <path stroke="currentColor" stroke-width="2" d="M10 2L6 6 2 2" fill="none"
+          stroke-linecap="square"></path>
+      </svg><svg class="icon icon--nav-triangle"
+        viewBox="0 0 20 9" role="presentation">
+        <g fill="none" fill-rule="evenodd">
+          <path
+            d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z"
+            fill="#ffffff"></path>
+          <path
+            d="M-.00922471 9C1.38887087 7.61849126 4.26661926 4.80337304 8.62402045.5546454c.75993175-.7409708 1.98812015-.7393145 2.74596565.0037073L19.9800494 9h-1.3748787l-7.9226239-7.7676545c-.3789219-.3715101-.9930172-.3723389-1.3729808-.0018557-3.20734177 3.1273507-5.6127118 5.4776841-7.21584193 7.05073579C1.82769633 8.54226204 1.58379521 8.7818599 1.36203986 9H-.00922471z"
+            fill="#e1e3e4"></path>
+        </g>
+      </svg></a>
+    <ul id="dropdown-desktop-menu-0-3" class="nav-dropdown " data-type="menu" aria-hidden="true">
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/official-arduino-boards"
+          class="nav-dropdown__link link" data-type="menuitem">Official Arduino Boards</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/arduino-compatible-boards"
+          class="nav-dropdown__link link" data-type="menuitem">Arduino Compatible Boards</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/arduino-kits-bundles"
+          class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
+          aria-haspopup="true">Kits &amp; Bundles<svg class="icon icon--arrow-right"
+            viewBox="0 0 8 12" role="presentation">
+            <path stroke="currentColor" stroke-width="2" d="M2 2l4 4-4 4" fill="none"
+              stroke-linecap="square"></path>
+          </svg></a>
+        <ul id="dropdown-0" class="nav-dropdown " data-type="menu" aria-hidden="true">
+          <svg class="icon icon--nav-triangle-left" viewBox="0 0 9 20" role="presentation">
+            <g fill="none">
+              <path
+                d="M9 19.52891062c-.26871321-.2694725-.56867841-.57077721-.89986354-.90388257-1.7387876-1.74886921-4.33675081-4.37290921-7.79359758-7.87182755-.4095171-.4145057-.40860098-1.0844277.00205122-1.4977971L9 .5064844v19.02242622z"
+                fill="#ffffff"></path>
+              <path
+                d="M9 20.00922471c-1.38150874-1.39809558-4.19662696-4.27584397-8.4453546-8.63324516-.7409708-.75993175-.7393145-1.98812015.0037073-2.74596565L9 .0199506v1.3748787L1.2323455 9.3174532c-.3715101.3789219-.3723389.9930172-.0018557 1.3729808 3.1273507 3.20734177 5.4776841 5.6127118 7.05073579 7.21584193.26103645.26602774.50063431.50992886.71877441.73168421v1.37126457z"
+                fill="#e1e3e4"></path>
+            </g>
+          </svg>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/kits-with-orignal-arduino-board"
+              class="nav-dropdown__link link" data-type="menuitem">Kits with Orignal Arduino Board </a>
+          </li>
+          <li class="nav-dropdown__item">
+            <a href="https://www.sunfounder.com/collections/kits-with-arduino-compatible-board"
+              class="nav-dropdown__link link" data-type="menuitem">Kits with Arduino Compatible
+              Board</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/arduino-robotics"
+          class="nav-dropdown__link link" data-type="menuitem">Robotics</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/arduino-cases-1"
+          class="nav-dropdown__link link" data-type="menuitem">Cases</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/servos-1" class="nav-dropdown__link link"
+          data-type="menuitem">Servos</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/power-supplies"
+          class="nav-dropdown__link link" data-type="menuitem">Power Supplies</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/lcd-display"
+          class="nav-dropdown__link link"
+          data-type="menuitem">LCD Display</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/relay" class="nav-dropdown__link link"
+          data-type="menuitem">Relay</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/arduino-modules-1"
+          class="nav-dropdown__link link" data-type="menuitem">Modules</a>
+      </li>
+      <li class="nav-dropdown__item ">
+        <a href="https://www.sunfounder.com/collections/accessories-tools"
+          class="nav-dropdown__link link" data-type="menuitem">Accessories &amp; Tools</a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-bar__item">
+    <a href="https://www.sunfounder.com/collections/esp32-1" class="nav-bar__link link"
+      data-type="menuitem">ESP32</a>
+  </li>
+  <li class="nav-bar__item">
+    <a href="https://docs.sunfounder.com/" class="nav-bar__link link" data-type="menuitem"
+      target="_blank" rel="noopener">Online Tutorial </a>
+  </li>
+  <li class="nav-bar__item">
+    <a href="https://forum.sunfounder.com/" class="nav-bar__link link" data-type="menuitem"
+      target="_blank" rel="noopener">Forum</a>
+  </li>
+  <li class="nav-bar__item">
+    <a href="http://wiki.sunfounder.cc/index.php?title=Main_Page" class="nav-bar__link link"
+      data-type="menuitem" target="_blank" rel="noopener">Wiki</a>
+  </li>
+  <li class="nav-bar__item">
+    <a href="https://www.sunfounder.com/blogs/news" class="nav-bar__link link"
+      data-type="menuitem">
+      Blog</a>
+  </li>
+</div>
+</div>`
+
+
+
+
+function setNavBar() {
+  let navBarItems = document.getElementById('nav-bar-items');
+  navBarItems.innerHTML += navBarItemsHTML;
+}
+
+function removeFooterRTDInfo() {
+  for (let i = 0; i < 7; i++) {
+    footer = document.getElementsByTagName("footer")[0];
+    footer.removeChild(footer.lastChild);
+  }
+  footer.style.cssText = "opacity:1;";
+}
+
+/* 设置关键字(Deprecated 弃用)
+ * 自动搜索页面的关键字，替换成超链接，对应跳转相应链接
+ */
+var setKeyword = function () {
+  let arrPage = [
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/introduction.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/gpio_extension_board.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/1.1.1_blinking_led.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/1.1.6_led_dot_matrix.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/1.1.7_i2c_lcd1602.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/1.3.2_servo.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/2.1.2_slide%20Switch.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/2.1.5_keypad.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/2.2.4_pir.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/2.2.5_ultrasonic_sensor_module.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/2.2.6_mpu6050_module.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/2.2.7_mfrc522_rfid_module.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/3.1.2_welcome.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/3.1.2_welcome.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/3.1.3_reversing_alarm.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/3.1.6_motion_control.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/3.1.8_overheat_monitor.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/3.1.9_password_lock.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/3.1.12_game_guess_number.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/3.1.12_game_guess_number.html",
+    "https://docs.sunfounder.com/projects/davinci-kit/en/latest/3.1.14_game_not_not.html",
+    "https://docs.sunfounder.com/projects/thales-kit/en/latest/index.html#",
+    "https://docs.sunfounder.com/projects/thales-kit/en/latest/index.html#",
+    "https://docs.sunfounder.com/projects/thales-kit/en/latest/index.html#",
+    "https://docs.sunfounder.com/projects/thales-kit/en/latest/introduction_to_raspberry_pi_pico.html",
+    "https://docs.sunfounder.com/projects/thales-kit/en/latest/breadboard.html#breadboard",
+    "https://docs.sunfounder.com/projects/thales-kit/en/latest/thermistor.html",
+    "https://docs.sunfounder.com/projects/thales-kit/en/latest/i2c_lcd1602.html",
+    "https://docs.sunfounder.com/projects/thales-kit/en/latest/getting_started_with_micropython.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/introduction.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/1.2_digital_write.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/1.3_analog_write.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/1.5_analog_read.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/1.6_digital_input_control_output.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/1.7_analog_input_control_output.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/1.8_serial_read.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/1.9_digital_input_pull-up.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/1.10_state_change_detection.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/1.11_interval.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.1_acommon_component.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.6_74hc595.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.7_4-digital_7-segment_display.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.8_led_matrix_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.9_i2c_lcd1602_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.9_i2c_lcd1602_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.12_servo.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.12_servo.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.13_motor.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.14_stepper_motor.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.15_button.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.16_slide_switch.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.17_tilt_switch.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.18_touch_switch_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.19_keypad.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.19_keypad.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.20_ir_receiver_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.21_relay_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.22_potentiometer.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.23_joystick_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.24_mpr121_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.24_mpr121_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.25_rotary_encoder_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.26_photoresistor.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.27_thermistor.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.28_sound_sensor_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.29_water_sensor_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.30_ir_obstacle_avoidance_sensor.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.31_pir_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.31_pir_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.32_dht11_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.33_ultrasonic_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.33_ultrasonic_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.34_mpu6050_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.34_mpu6050_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.34_mpu6050_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.35_rfid-rc522_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/2.35_rfid-rc522_module.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/3.1_Reversing_Aid.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/3.4_Guess_Number.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/3.5_Access_Control_System.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/3.5_Access_Control_System.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/3.5_Access_Control_System.html",
+    "https://docs.sunfounder.com/projects/vincent-kit/en/latest/part_4_appendix.html",
+    "https://docs.sunfounder.com/projects/electronic-kit/en/latest/index.html",
+    "https://docs.sunfounder.com/projects/electronic-kit/en/latest/index.html",
+    "https://docs.sunfounder.com/projects/electronic-kit/en/latest/index.html",
+    "https://docs.sunfounder.com/projects/electronic-kit/en/latest/index.html",
+    "https://docs.sunfounder.com/projects/electronic-kit/en/latest/lesson_1_blinking_led.html",
+    "https://docs.sunfounder.com/projects/electronic-kit/en/latest/lesson_16_servo.html",
+    "https://docs.sunfounder.com/projects/electronic-kit/en/latest/lesson_17_lcd1602.html",
+    "https://docs.sunfounder.com/projects/uno-mega-kit/en/latest/blinking_led.html",
+    "https://docs.sunfounder.com/projects/uno-mega-kit/en/latest/servo.html",
+    "https://docs.sunfounder.com/projects/uno-mega-kit/en/latest/lcd1602.html",
+    "https://docs.sunfounder.com/projects/uno-mega-kit/en/latest/ultrasonic.html",
+    "https://docs.sunfounder.com/projects/uno-mega-kit/en/latest/blinking_led_uno.html",
+    "https://docs.sunfounder.com/projects/uno-mega-kit/en/latest/servo_uno.html",
+    "https://docs.sunfounder.com/projects/uno-mega-kit/en/latest/lcd1602_uno.html",
+    "https://docs.sunfounder.com/projects/uno-mega-kit/en/latest/ultrasonic_uno.html",
+    "https://docs.sunfounder.com/projects/superkit-v2-pi/en/latest/index.html",
+    "https://docs.sunfounder.com/projects/superkit-v2-pi/en/latest/preparation/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/superkit-v2-pi/en/latest/preparation/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/superkit-v2-pi/en/latest/preparation/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/superkit-v2-pi/en/latest/preparation/set_up_your_raspberry_pi.html",
+    "https://docs.sunfounder.com/projects/superkit-v2-pi/en/latest/Lesson_8_rotary_encoder.html",
+    "https://docs.sunfounder.com/projects/superkit-v2-pi/en/latest/Lesson_12_driving_dot-matrix_by_74hc595.html",
+    "https://docs.sunfounder.com/projects/superkit-v2-pi/en/latest/Lesson_13_lcd1602.html",
+    "https://docs.sunfounder.com/projects/superkit-v2-pi/en/latest/Lesson_14_adxl345.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/t_extension_board.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/rab_holder.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/rab_holder.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_2_controlling_an_led_by_a_button.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_6_buzzer.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_6_buzzer.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_8_4n35.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_9_ne555.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_9_ne555.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_10_slide_switch.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_10_slide_switch.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_11_how_to_drive_a_dc_motor.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_11_how_to_drive_a_dc_motor.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_12_rotary_encoder.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_12_rotary_encoder.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_12_rotary_encoder.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_13_driving_leds_by_74hc595.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_13_driving_leds_by_74hc595.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_14_driving_7-segment_display_by_74hc595.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_14_driving_7-segment_display_by_74hc595.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_15_driving_dot-matrix_by_74hc595.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_15_driving_dot-matrix_by_74hc595.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_15_driving_dot-matrix_by_74hc595.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_16_lcd1602.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_16_lcd1602.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_16_lcd1602.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_17_adxl345.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_17_adxl345.html",
+    "https://docs.sunfounder.com/projects/superkit-v3-pi/en/latest/Lesson_17_adxl345.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/get_started.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/get_started.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/get_started.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_1.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_1.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_2.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_2.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_3.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_3.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_4.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_4.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_5.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_6.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_8.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_8.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_9.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_11.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_12.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_13.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_15.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_16.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_17.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_18.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_19.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_20.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_21.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_22.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_22.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_23.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_24.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_25.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_26.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_27.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_28.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_29.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_30.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_31.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_33.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_34.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_35.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_36.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_36.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_36.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_36.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_36.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_36.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-arduino/en/latest/lesson_36.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/components.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/what_we_need.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/what_we_need.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/what_we_need.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/what_we_need.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/what_we_need.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/set_up_your_raspberry_pi.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/set_up_your_raspberry_pi.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/set_up_your_raspberry_pi.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_1.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_2.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_3.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_4.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_4.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_4.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_5.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_6.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_6.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_7.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_7.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_9.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_10.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_10.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_11.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_11.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_12.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_12.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_13.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_14.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_15.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_16.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_16.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_17.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_17.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_17.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_18.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_18.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_19.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_20.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_21.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_21.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_22.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_22.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_22.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_23.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_23.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_24.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_24.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_24.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_25.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_26.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_27.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_28.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_29.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_30.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_32.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_33.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_34.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_35.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_35.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_35.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_35.html",
+    "https://docs.sunfounder.com/projects/sensorkit-v2-pi/en/latest/lesson_35.html",
+    "https://docs.sunfounder.com/projects/picar-v/en/latest/",
+    "https://docs.sunfounder.com/projects/picar-v/en/latest/components_list.html",
+    "https://docs.sunfounder.com/projects/picar-v/en/latest/introduction.html",
+    "https://docs.sunfounder.com/projects/picar-v/en/latest/servo_configuration.html",
+    "https://docs.sunfounder.com/projects/picar-s/en/latest/",
+    "https://docs.sunfounder.com/projects/picar-s/en/latest/components_list.html",
+    "https://docs.sunfounder.com/projects/picar-s/en/latest/introduction.html",
+    "https://docs.sunfounder.com/projects/picar-s/en/latest/introduction.html",
+    "https://docs.sunfounder.com/projects/picar-s/en/latest/introduction.html",
+    "https://docs.sunfounder.com/projects/picar-s/en/latest/servo_configuration.html",
+    "https://docs.sunfounder.com/projects/picar-s/en/latest/modules.html#",
+    "https://docs.sunfounder.com/projects/picar-s/en/latest/modules.html#",
+    "https://docs.sunfounder.com/projects/picar-s/en/latest/modules.html#",
+    "https://docs.sunfounder.com/projects/picar-4wd/en/latest/",
+    "https://docs.sunfounder.com/projects/picar-4wd/en/latest/",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/play_with_ezblock.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/introduction.html#about-picar-x",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_move.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_ultrasonic.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_ultrasonic.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_grayscale.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_color_detection.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_face_detection.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_sound_effect.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_background_music.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_say_hello.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_minecart.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_bullfight.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_beware_pedestrians.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/ezblock_orienteering.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/python_move.html",
+    "https://docs.sunfounder.com/projects/picar-x/en/latest/python_avoid.html",
+    "https://docs.sunfounder.com/projects/pisloth/en/latest/",
+    "https://docs.sunfounder.com/projects/pisloth/en/latest/",
+    "https://docs.sunfounder.com/projects/pisloth/en/latest/ezblock/play_with_ezblock.html",
+    "https://docs.sunfounder.com/projects/pisloth/en/latest/ezblock/move_ez.html",
+    "https://docs.sunfounder.com/projects/pisloth/en/latest/ezblock/obstacle_avoidance_ez.html",
+    "https://docs.sunfounder.com/projects/pisloth/en/latest/preparation/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/pisloth/en/latest/preparation/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/pisloth/en/latest/preparation/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/pisloth/en/latest/preparation/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/pisloth/en/latest/preparation/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/pisloth/en/latest/obstacle_avoidance.html",
+    "https://docs.sunfounder.com/projects/rollarm/en/latest/",
+    "https://docs.sunfounder.com/projects/rollarm/en/latest/",
+    "https://docs.sunfounder.com/projects/rollarm/en/latest/introduction.html",
+    "https://docs.sunfounder.com/projects/rollarm/en/latest/introduction.html",
+    "https://docs.sunfounder.com/projects/rollarm/en/latest/introduction.html",
+    "https://docs.sunfounder.com/projects/pipower/en/latest/introduction.html",
+    "https://docs.sunfounder.com/projects/rascam/en/latest/index.html",
+    "https://docs.sunfounder.com/projects/rascam/en/latest/burn_raspberry_pi_os_system.html",
+    "https://docs.sunfounder.com/projects/rascam/en/latest/burn_raspberry_pi_os_system.html",
+    "https://docs.raspad.com/en/latest/",
+    "https://docs.raspad.com/en/latest/retro_games_console.html",
+    "https://docs.raspad.com/en/latest/retro_games_console.html",
+    "https://docs.raspad.com/en/latest/iot/iot.html",
+    "https://docs.raspad.com/en/latest/gpio_programming.html",
+    "https://docs.sunfounder.com/projects/ts-7/en/latest/index.html",
+    "https://docs.sunfounder.com/projects/ts-7c/en/latest/index.html",
+    "https://docs.sunfounder.com/projects/ts-10/en/latest/",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_breadboard.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_dot_matrix.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_i2c_lcd.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_rotary_encoder.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_keypad.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_touch_switch.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_reed_switch.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_pir.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_ultrasonic_sensor.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_humiture_sensor.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_mpu6050.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_mfrc522.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/components/component_camera_module.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/what_do_we_need.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/set_up_your_raspberry_pi.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/set_up_your_raspberry_pi.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/set_up_your_raspberry_pi.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/set_up_your_raspberry_pi.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/set_up_your_raspberry_pi.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/1.1.6_led_dot_matrix_c.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/2.1.3_touch_switch_module_c.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/2.1.6_rotary_encoder_module_c.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/2.1.8_keypad_c.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/3.1.1_counting_device_c.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/3.1.3_reversing_alarm_c.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/3.1.8_password_lock_c.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/3.1.13_game_notnot_c.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/1.1.6_led_dot_matrix_python.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/1.1.7_i2c_lcd1602_python.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/2.1.3_touch_switch_module_python.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/2.1.6_rotary_encoder_module_python.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/2.1.8_keypad_python.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/4.1.7_counting_device_python.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/4.1.9_reversing_alarm_python.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/scratch/scratch_1.5_wake_up_the_owl.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/scratch/scratch_1.6_vanishing_vase.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/scratch/scratch_1.9_drumming.html",
+    "https://docs.sunfounder.com/projects/raphael-kit/en/latest/scratch/scratch_1.11_repelling_locusts.html",
+    "https://rgb-matrix.readthedocs.io/en/latest/index.html",
+    "https://rgb-matrix.readthedocs.io/en/latest/preparation/what_do_we_need.html",
+    "https://rgb-matrix.readthedocs.io/en/latest/preparation/what_do_we_need.html",
+    "https://rgb-matrix.readthedocs.io/en/latest/preparation/what_do_we_need.html",
+    "https://rgb-matrix.readthedocs.io/en/latest/preparation/what_do_we_need.html",
+    "https://rgb-matrix.readthedocs.io/en/latest/preparation/what_do_we_need.html",
+    "https://rgb-matrix.readthedocs.io/en/latest/preparation_arduino.html",
+  ],
+    arrLink = [
+      "https://www.sunfounder.com/products/sunfounder-davinci-kit",
+      "https://www.sunfounder.com/products/keyboard-mouse",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/rgb-matrix",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/sf0180-servo-motor",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/membrane-switch-keypad",
+      "https://www.sunfounder.com/products/hcsr501-infrared-sensor",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/mpu605_module",
+      "https://www.sunfounder.com/products/rfid-kit-blue",
+      "https://www.sunfounder.com/products/hcsr501-infrared-sensor",
+      "https://www.sunfounder.com/products/sf0180-servo-motor",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/mpu605_module",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/membrane-switch-keypad",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/rgb-matrix",
+      "https://www.sunfounder.com/products/pico-starter-kit",
+      "https://micropython.org/",
+      "https://www.arduino.cc/",
+      "https://www.raspberrypi.org/documentation/rp2040/getting-started/",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/analog-temperature-sensor-module",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://developer.arm.com/ip-products/processors/cortex-m",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/mega2560-starter-kit-for-arduino",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/rgb-matrix",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/collections/servos",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/membrane-switch-keypad",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/hcsr501-infrared-sensor",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/triple-axial-gyroscope",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/rfid-kit-blue",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.arduino.cc/en/software",
+      "https://www.sunfounder.com/products/electronics-fun-kit",
+      "https://www.sunfounder.com/products/arduino-unor3-control-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-nano-board",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/collections/servos",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/collections/servos",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/collections/servos",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/super-starter-kit-v2",
+      "https://www.sunfounder.com/collections/monitors",
+      "https://www.sunfounder.com/products/keyboard-mouse",
+      "https://www.sunfounder.com/collections/raspberry-pi-cases",
+      "https://www.sunfounder.com/collections/monitors",
+      "https://www.sunfounder.com/products/rotary-encoder-module",
+      "https://www.sunfounder.com/products/rgb-matrix",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/digital-accelerometer",
+      "https://www.sunfounder.com/products/starter-kit-v3-for-raspberrypi",
+      "https://www.sunfounder.com/products/t-shape-gpio-extension-board",
+      "https://www.sunfounder.com/products/new-rab-holder-kit",
+      "https://www.sunfounder.com/products/t-shape-gpio-extension-board",
+      "https://www.sunfounder.com/products/button-module",
+      "https://www.sunfounder.com/products/active-buzzer-module",
+      "https://www.sunfounder.com/products/passive-buzzer-module",
+      "https://www.sunfounder.com/products/t-shape-gpio-extension-board",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/t-shape-gpio-extension-board",
+      "https://www.sunfounder.com/products/t-shape-gpio-extension-board",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/t-shape-gpio-extension-board",
+      "https://www.sunfounder.com/products/rotary-encoder-module",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/t-shape-gpio-extension-board",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/t-shape-gpio-extension-board",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/t-shape-gpio-extension-board",
+      "https://www.sunfounder.com/products/rgb-matrix",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/t-shape-gpio-extension-board",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/t-shape-gpio-extension-board",
+      "https://www.sunfounder.com/products/digital-accelerometer",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/t-shape-gpio-extension-board",
+      "https://www.sunfounder.com/products/arduino-unor3-control-board",
+      "https://www.sunfounder.com/products/arduino-mega2560-board",
+      "https://www.sunfounder.com/products/arduino-nano-board",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/arduino-unor3-control-board",
+      "https://www.sunfounder.com/products/analog-hall-sensor",
+      "https://www.sunfounder.com/products/arduino-unor3-control-board",
+      "https://www.sunfounder.com/products/switch-hall-sensor",
+      "https://www.sunfounder.com/products/arduino-unor3-control-board",
+      "https://www.sunfounder.com/products/analog-temperature-sensor-module",
+      "https://www.sunfounder.com/products/arduino-unor3-control-board",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/7-color-led-module",
+      "https://www.sunfounder.com/products/rtc-ds1302-module",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/flame-sensor-module?",
+      "https://www.sunfounder.com/products/humiture-sensor-module",
+      "https://www.sunfounder.com/products/joystick-module",
+      "https://www.sunfounder.com/products/button-module",
+      "https://www.sunfounder.com/products/touch-switch",
+      "https://www.sunfounder.com/products/photo-interrupter-module",
+      "https://www.sunfounder.com/products/photoresistor-sensor-module",
+      "https://www.sunfounder.com/products/reed-switch-module",
+      "https://www.sunfounder.com/products/1channel-dc5v-relay-module",
+      "https://www.sunfounder.com/products/potentiometer-module",
+      "https://www.sunfounder.com/products/tilt-switch-module",
+      "https://www.sunfounder.com/products/active-buzzer-module",
+      "https://www.sunfounder.com/products/passive-buzzer-module",
+      "https://www.sunfounder.com/products/ds18b20hhc-temperature-sensor",
+      "https://www.sunfounder.com/products/rgb-led-module",
+      "https://www.sunfounder.com/products/infrared-receiver-module",
+      "https://www.sunfounder.com/products/dual-color-led-module",
+      "https://www.sunfounder.com/products/sound-sensor",
+      "https://www.sunfounder.com/products/rotary-encoder-module",
+      "https://www.sunfounder.com/products/laser-transmitter-module",
+      "https://www.sunfounder.com/products/tracking-sensor-module",
+      "https://www.sunfounder.com/products/obstacle-avoidance-sensor",
+      "https://www.sunfounder.com/products/pcf8591-converter-module",
+      "https://www.sunfounder.com/products/raindrop-sensor",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/arduino-unor3-control-board",
+      "https://www.sunfounder.com/products/rotary-encoder-module",
+      "https://www.sunfounder.com/products/thermistor-sensor-module",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/1channel-dc5v-relay-module",
+      "https://www.sunfounder.com/products/button-module",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/sensor-kit-v2-for-raspberrypi",
+      "https://www.sunfounder.com/products/dual-color-led-module",
+      "https://www.sunfounder.com/products/rgb-led-module",
+      "https://www.sunfounder.com/products/7-color-led-module",
+      "https://www.sunfounder.com/products/1channel-dc5v-relay-module?",
+      "https://www.sunfounder.com/products/laser-transmitter-module",
+      "https://www.sunfounder.com/products/button-module",
+      "https://www.sunfounder.com/products/tilt-switch-module",
+      "https://www.sunfounder.com/products/active-buzzer-module",
+      "https://www.sunfounder.com/products/passive-buzzer-module",
+      "https://www.sunfounder.com/products/reed-switch-module",
+      "https://www.sunfounder.com/products/photo-interrupter-module",
+      "https://www.sunfounder.com/products/pcf8591-converter-module",
+      "https://www.sunfounder.com/products/raindrop-sensor",
+      "https://www.sunfounder.com/products/joystick-module",
+      "https://www.sunfounder.com/products/potentiometer-module",
+      "https://www.sunfounder.com/products/analog-hall-sensor",
+      "https://www.sunfounder.com/products/switch-hall-sensor",
+      "https://www.sunfounder.com/products/analog-temperature-sensor-module",
+      "https://www.sunfounder.com/products/thermistor-sensor-module",
+      "https://www.sunfounder.com/products/sound-sensor",
+      "https://www.sunfounder.com/products/photoresistor-sensor-module",
+      "https://www.sunfounder.com/products/flame-sensor-module",
+      "https://www.sunfounder.com/products/gas-sensor-module",
+      "https://www.sunfounder.com/products/touch-switch",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/ds18b20hhc-temperature-sensor",
+      "https://www.sunfounder.com/products/rotary-encoder-module",
+      "https://www.sunfounder.com/products/humiture-sensor-module",
+      "https://www.sunfounder.com/products/obstacle-avoidance-sensor",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/mpu605_module",
+      "https://www.sunfounder.com/products/rtc-ds1302-module",
+      "https://www.sunfounder.com/products/tracking-sensor-module",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/keyboard-mouse",
+      "https://www.sunfounder.com/products/power-supply-with-switch",
+      "https://www.sunfounder.com/products/noobs-sdcard",
+      "https://www.sunfounder.com/collections/monitors",
+      "https://www.sunfounder.com/collections/raspberry-pi-cases",
+      "https://www.sunfounder.com/products/microsd-card-reader",
+      "https://www.sunfounder.com/products/noobs-sdcard",
+      "https://www.sunfounder.com/products/power-supply-with-switch",
+      "https://www.sunfounder.com/products/dual-color-led-module",
+      "https://www.sunfounder.com/products/rgb-led-module",
+      "https://www.sunfounder.com/products/7-color-led-module",
+      "https://www.sunfounder.com/products/1channel-dc5v-relay-module?",
+      "https://www.sunfounder.com/products/dual-color-led-module",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/laser-transmitter-module",
+      "https://www.sunfounder.com/products/button-module",
+      "https://www.sunfounder.com/products/dual-color-led-module",
+      "https://www.sunfounder.com/products/dual-color-led-module",
+      "https://www.sunfounder.com/products/tilt-switch-module",
+      "https://www.sunfounder.com/products/infrared-receiver-module",
+      "https://www.sunfounder.com/products/active-buzzer-module",
+      "https://www.sunfounder.com/products/passive-buzzer-module",
+      "https://www.sunfounder.com/products/reed-switch-module",
+      "https://www.sunfounder.com/products/dual-color-led-module",
+      "https://www.sunfounder.com/products/dual-color-led-module",
+      "https://www.sunfounder.com/products/photo-interrupter-module",
+      "https://www.sunfounder.com/products/pcf8591-converter-module",
+      "https://www.sunfounder.com/products/raindrop-sensor",
+      "https://www.sunfounder.com/products/joystick-module",
+      "https://www.sunfounder.com/products/photoresistor-sensor-module",
+      "https://www.sunfounder.com/products/dual-color-led-module",
+      "https://www.sunfounder.com/products/analog-hall-sensor",
+      "https://www.sunfounder.com/products/dual-color-led-module",
+      "https://www.sunfounder.com/products/switch-hall-sensor",
+      "https://www.sunfounder.com/products/analog-temperature-sensor-module",
+      "https://www.sunfounder.com/products/thermistor-sensor-module",
+      "https://www.sunfounder.com/products/sound-sensor",
+      "https://www.sunfounder.com/products/photoresistor-sensor-module",
+      "https://www.sunfounder.com/products/flame-sensor-module",
+      "https://www.sunfounder.com/products/pcf8591-converter-module",
+      "https://www.sunfounder.com/products/active-buzzer-module",
+      "https://www.sunfounder.com/products/pcf8591-converter-module",
+      "https://www.sunfounder.com/products/gas-sensor-module",
+      "https://www.sunfounder.com/products/infrared-receiver-module",
+      "https://www.sunfounder.com/products/rgb-led-module",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/touch-switch",
+      "https://www.sunfounder.com/products/dual-color-led-module",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/ds18b20hhc-temperature-sensor",
+      "https://www.sunfounder.com/products/rotary-encoder-module",
+      "https://www.sunfounder.com/products/humiture-sensor-module",
+      "https://www.sunfounder.com/products/obstacle-avoidance-sensor",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/mpu605_module",
+      "https://www.sunfounder.com/products/rtc-ds1302-module",
+      "https://www.sunfounder.com/products/tracking-sensor-module",
+      "https://www.sunfounder.com/products/active-buzzer-module",
+      "https://www.sunfounder.com/products/rgb-led-module",
+      "https://www.sunfounder.com/products/ds18b20hhc-temperature-sensor",
+      "https://www.sunfounder.com/products/pcf8591-converter-module",
+      "https://www.sunfounder.com/products/joystick-module",
+      "https://www.sunfounder.com/products/smart-video-car",
+      "https://www.sunfounder.com/products/sg90-micro-digital-servo",
+      "https://www.sunfounder.com/products/smart-video-car-kit-for-raspberrypi",
+      "https://www.sunfounder.com/products/sg90-micro-digital-servo",
+      "https://www.sunfounder.com/products/raspberrypi-sensor-car",
+      "https://www.sunfounder.com/products/sg90-micro-digital-servo",
+      "https://www.sunfounder.com/products/3channel-light-follower-module",
+      "https://www.sunfounder.com/products/5channel-line-follower-module",
+      "https://www.sunfounder.com/products/sr02-ultrasonic-distance",
+      "https://www.sunfounder.com/products/sg90-micro-digital-servo",
+      "https://www.sunfounder.com/products/16-channel-i2c-driver-shield",
+      "https://www.sunfounder.com/products/sr02-ultrasonic-distance",
+      "https://www.sunfounder.com/products/sg90-micro-digital-servo",
+      "https://www.sunfounder.com/products/raspberry-pi-car-robot-kit-4wd",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://ezblock.cc/",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/picar-x",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/pisloth",
+      "https://ezblock.cc/",
+      "https://ezblock.cc/",
+      "https://www.sunfounder.com/products/pisloth",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/power-supply-with-switch",
+      "https://www.sunfounder.com/products/noobs-sdcard",
+      "https://www.sunfounder.com/collections/monitors",
+      "https://www.sunfounder.com/products/keyboard-mouse",
+      "https://www.sunfounder.com/collections/raspberry-pi-cases",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/arduino-robot-arm-kit",
+      "https://www.sunfounder.com/products/arduino-unor3-control-board",
+      "https://www.sunfounder.com/products/sg90-micro-digital-servo",
+      "https://www.sunfounder.com/products/arduino-unor3-control-board",
+      "https://youtu.be/CJe7N48i7EE",
+      "https://www.sunfounder.com/products/power-pack",
+      "https://www.sunfounder.com/products/rpi-camera-kit",
+      "https://www.sunfounder.com/products/power-supply-with-switch",
+      "https://www.sunfounder.com/products/noobs-sdcard",
+      "https://raspad.com/products/raspadv3",
+      "https://www.sunfounder.com/products/usb-retropie-gamepad",
+      "https://www.sunfounder.com/products/keyboard-mouse",
+      "https://cloud4rpi.io/",
+      "https://raspad.com/products/raspadv3",
+      "https://www.sunfounder.com/products/7inch-ips-touchscreen",
+      "https://www.sunfounder.com/products/7inch-capacitive-touchscreen",
+      "https://www.sunfounder.com/products/10inch-touchscreen-for-raspberrypi",
+      "https://www.sunfounder.com/products/raphael-kit",
+      "https://www.sunfounder.com/products/sunfounder-breadboard-kit",
+      "https://www.sunfounder.com/products/rgb-matrix",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/rotary-encoder-module",
+      "https://www.sunfounder.com/products/membrane-switch-keypad",
+      "https://www.sunfounder.com/products/ttp223-touch-sensor-module",
+      "https://www.sunfounder.com/products/reed-switch-module",
+      "https://www.sunfounder.com/products/hcsr501-infrared-sensor",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/humiture-sensor-module",
+      "https://www.sunfounder.com/products/mpu605_module",
+      "https://www.sunfounder.com/products/rfid-kit-blue",
+      "https://www.sunfounder.com/products/ov5647-camera-module",
+      "https://www.sunfounder.com/products/power-supply-with-switch",
+      "https://www.sunfounder.com/products/noobs-sdcard",
+      "https://www.sunfounder.com/collections/monitors",
+      "https://www.sunfounder.com/products/keyboard-mouse",
+      "https://www.sunfounder.com/collections/raspberry-pi-cases",
+      "https://www.sunfounder.com/products/power-supply-with-switch",
+      "https://www.sunfounder.com/products/noobs-sdcard",
+      "https://www.sunfounder.com/products/hdmi-to-hdmi-cable",
+      "https://www.sunfounder.com/collections/monitors",
+      "https://www.sunfounder.com/products/keyboard-mouse",
+      "https://www.sunfounder.com/products/rgb-matrix",
+      "https://www.sunfounder.com/products/ttp223-touch-sensor-module",
+      "https://www.sunfounder.com/products/rotary-encoder-module",
+      "https://www.sunfounder.com/products/membrane-switch-keypad",
+      "https://www.sunfounder.com/products/hcsr501-infrared-sensor",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/membrane-switch-keypad",
+      "https://www.sunfounder.com/products/rgb-matrix",
+      "https://www.sunfounder.com/products/rgb-matrix",
+      "https://www.sunfounder.com/products/i2c-lcd1602-module",
+      "https://www.sunfounder.com/products/ttp223-touch-sensor-module",
+      "https://www.sunfounder.com/products/rotary-encoder-module",
+      "https://www.sunfounder.com/products/membrane-switch-keypad",
+      "https://www.sunfounder.com/products/hcsr501-infrared-sensor",
+      "https://www.sunfounder.com/products/hcsr04-distance-sensor",
+      "https://www.sunfounder.com/products/hcsr501-infrared-sensor",
+      "https://www.sunfounder.com/products/reed-switch-module",
+      "https://www.sunfounder.com/products/ttp223-touch-sensor-module",
+      "https://www.sunfounder.com/products/obstacle-avoidance-sensor",
+      "https://www.sunfounder.com/products/rgb-matrix-panel-for-rpi",
+      "https://www.sunfounder.com/products/power-supply-with-switch",
+      "https://www.sunfounder.com/products/noobs-sdcard",
+      "https://www.sunfounder.com/collections/monitors",
+      "https://www.sunfounder.com/products/keyboard-mouse",
+      "https://www.sunfounder.com/collections/raspberry-pi-cases",
+      "https://www.sunfounder.com/products/arduino-unor3-control-board",
+    ],
+    arrText = [
+      "Da Vinci kit",
+      "USB keyboard",
+      "breadboard",
+      "breadboard",
+      "LED dot matrix",
+      "LCD1602",
+      "servo",
+      "breadboard",
+      "keypad",
+      "human body infrared pyroelectric sensors",
+      "ultrasonic sensor",
+      "MPU-6050",
+      "RFID",
+      "PIR",
+      "servos",
+      "LCD",
+      "MPU6050",
+      "LCD",
+      "LCD",
+      "keypad",
+      "LCD",
+      "dot matrix",
+      "SunFounder Thales Kit",
+      "MicroPython",
+      "Arduino",
+      "Raspberry Pi RP2040",
+      "breadboard",
+      "temperature sensors",
+      "LCD1602",
+      "ARM Cortex-M",
+      "Mega2560",
+      "Vincent Kit",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "breadboard",
+      "Mega2560 board",
+      "Mega 2560 Board",
+      "LED Matrix Module",
+      "LCD1602",
+      "Mega2560 board",
+      "Servo",
+      "Mega2560 board",
+      "Mega 2560 Board",
+      "Mega 2560 Board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Keypad",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "breadboard",
+      "Mega2560 board",
+      "Mega 2560 Board",
+      "Mega2560 board",
+      "Mega2560 board",
+      "Mega 2560 Board",
+      "Mega 2560 Board",
+      "Mega 2560 Board",
+      "PIR Module",
+      "Mega 2560 Board",
+      "Mega2560 board",
+      "Ultrasonic module",
+      "Mega 2560 Board",
+      "MPU6050",
+      "breadboard",
+      "Mega2560 board",
+      "RFID Module",
+      "Mega2560 board",
+      "LCD",
+      "LCD1602",
+      "breadboard",
+      "Mega 2560 Board",
+      "LCD",
+      "Arduino IDE",
+      "This kit",
+      "SunFounder Uno",
+      "SunFounder Mega 2560",
+      "SunFounder Nano",
+      "breadboard",
+      "servo",
+      "LCD1602",
+      "breadboard",
+      "Servo",
+      "LCD1602",
+      "ultrasonic sensor",
+      "breadboard",
+      "Servo",
+      "LCD1602",
+      "ultrasonic sensor",
+      "super kit is suitable for the Raspberry Pi",
+      "screen",
+      "a USB keyboard and a USB mouse",
+      "case",
+      "screen",
+      "rotary encoder",
+      "dot matrix LED",
+      "LCD1602",
+      "acceleration sensor ADXL345",
+      "super kit is suitable for the Raspberry Pi",
+      "GPIO Extension Board",
+      "RAB Holder",
+      "T-Extension Board",
+      "Buttons are a common component",
+      "active buzzer",
+      "passive buzzer",
+      "T-Extension Board",
+      "Breadboard",
+      "T-Extension Board",
+      "T-Extension Board",
+      "Breadboard",
+      "Breadboard",
+      "T-Extension Board",
+      "rotary encoder",
+      "Breadboard",
+      "T-Extension Board",
+      "Breadboard",
+      "T-Extension Board",
+      "Breadboard",
+      "T-Extension Board",
+      "LED dot matrix",
+      "Breadboard",
+      "T-Extension Board",
+      "LCD1602",
+      "Breadboard",
+      "T-Extension Board",
+      "acceleration sensor ADXL345",
+      "Breadboard",
+      "T-Extension Board",
+      "Uno R3 Board",
+      "Mega 2560 Board",
+      "Nano Board",
+      "I2C LCD1602 module",
+      "SunFounder Uno board",
+      "Analog Hall sensor module",
+      "SunFounder Uno board",
+      "Switch Hall sensor module",
+      "SunFounder Uno board",
+      "Analog Temperature Sensor module",
+      "SunFounder Uno board",
+      "I2C LCD1602 module",
+      "7-color auto-flash LED module",
+      "RTC-DS1302 module",
+      "I2C LCD1602 module",
+      "flame sensor module",
+      "Humiture sensor module",
+      "Joystick PS2 module",
+      "Button module",
+      "Touch Switch module",
+      "Photo-interrupter module",
+      "Photoresistor sensor module",
+      "Reed Switch module",
+      "Relay module",
+      "Potentiometer module",
+      "Tilt switch module",
+      "Active buzzer",
+      "Passive buzzer",
+      "DS18B20 Temperature Sensor module",
+      "RGB LED module",
+      "Infrared-receiver module",
+      "Dual-color LED module",
+      "Sound Sensor module",
+      "Rotary Encoder module",
+      "Laser transmitter module",
+      "Tracking sensor module",
+      "Obstacle avoidance sensor module",
+      "AD/DA Converter PCF8591",
+      "Raindrop Sensor",
+      "Ultrasonic sensor",
+      "SunFounder Uno board",
+      "Rotary Encoder module",
+      "Thermistor module",
+      "I2C LCD1602",
+      "Relay module",
+      "Button module",
+      "Breadboard",
+      "This sensor kit",
+      "Dual-Color LED",
+      "RGB LED",
+      "Auto Flash LED",
+      "Relay Module",
+      "Laser Emitter",
+      "Button",
+      "Tilt-Switch",
+      "Active Buzzer",
+      "Passive Buzzer",
+      "Reed Switch",
+      "Photo - interrupter",
+      "AD/DA Converter PCF8591",
+      "Raindrop Sensor",
+      "Joystick PS2",
+      "Potentiometer",
+      "Analog Hall Sensor",
+      "Hall Switch Sensor",
+      "Analog Temperature Sensor",
+      "Thermistor",
+      "Sound Sensor",
+      "Photoresistor",
+      "Flame Sensor",
+      "Gas Sensor",
+      "Touch Switch",
+      "Ultrasonic",
+      "Temperature Sensor DS18B20",
+      "Rotary Encoder",
+      "Humiture Sensor",
+      "IR Obstacle Module",
+      "I2C LCD1602 Module",
+      "MPU6050 Module",
+      "RTC-DS1302 Module",
+      "Tracking Sensor",
+      "Breadboard",
+      "USB keyboard and a USB mouse",
+      "power supply",
+      "micro SD card",
+      "screen",
+      "case",
+      "Micro SD reader",
+      "Micro SD card",
+      "power adapter",
+      "Dual-color LED module",
+      "RGB LED module",
+      "7-Color Auto-flash LED module",
+      "Relay module",
+      "Dual-color LED module",
+      "Breadboard",
+      "Laser Emitter module",
+      "Button module",
+      "Dual-color LED module",
+      "Dual-color LED module",
+      "Tilt-switch module",
+      "IR receiver module",
+      "Active buzzer module",
+      "Passive buzzer module",
+      "Reed switch module",
+      "Dual-color LED module",
+      "Dual-color LED module",
+      "Photo-interrupter module",
+      "PCF8591 module",
+      "Rain Detection module",
+      "Joystick PS2 module",
+      "Potentiometer module",
+      "Dual-Color LED module",
+      "Analog Hall Switch module",
+      "Dual-color LED module",
+      "Switch hall module",
+      "Analog-temperature Sensor module",
+      "Thermistor module",
+      "Sound sensor module",
+      "Photoresistor module",
+      "Flame sensor module",
+      "PCF8591",
+      "Active Buzzer module",
+      "PCF8591",
+      "Gas sensor module",
+      "IR Receiver",
+      "RGB LED module",
+      "Breadboard",
+      "Touch sensor module",
+      "Dual-Color LED module",
+      "Ultrasonic ranging module",
+      "DS18B20 Temperature Sensor module",
+      "Rotary Encoder module",
+      "Humiture module",
+      "IR Obstacle module",
+      "I2C LCD1602",
+      "MPU-6050 module",
+      "DS1302 RTC module",
+      "Tracking sensor module",
+      "Active Buzzer",
+      "RGB LED Module",
+      "DS18B20 Temperature Sensor",
+      "PCF8591",
+      "Joystick PS2",
+      "PiCar-V",
+      "Servo",
+      "Smart Video Car Kit",
+      "servos",
+      "PiCar-S",
+      "Servo",
+      "light follower",
+      "line follower",
+      "ultrasonic obstacle avoidance",
+      "servos",
+      "PCA9685 16-channel 12-bit I2C Bus PWM driver.",
+      "HC-SR04 ultrasonic distance sensor",
+      "SunFounder SF0180 Servo",
+      "PiCar-4wd",
+      "ultrasonic module",
+      "PiCar-X",
+      "ultrasonic module",
+      "Ezblock",
+      "PiCar-X",
+      "PiCar-X",
+      "PiCar-X",
+      "Ultrasonic Sensor module",
+      "PiCar-X",
+      "PiCar-X",
+      "PiCar-X",
+      "PiCar-X",
+      "PiCar-X",
+      "PiCar-X",
+      "PiCar-X",
+      "PiCar-X",
+      "PiCar-X",
+      "PiCar-X",
+      "PiCar-X",
+      "ultrasonic module",
+      "PiSloth",
+      "Ezblock Studio",
+      "Ezblock",
+      "PiSloth",
+      "ultrasonic sensor module",
+      "power supply",
+      "Micro SD card",
+      "screen",
+      "a USB keyboard and a USB mouse",
+      "case",
+      "ultrasonic module",
+      "The Rollarm Kit for Arduino",
+      "Arduino UNO",
+      "servo",
+      "SunFounder Uno board",
+      "installation and debugging video tutorials",
+      "power supply module for Raspberry Pi",
+      "Rascam is a RPi-based camera",
+      "Power Adapter",
+      "Mirco SD Card",
+      "RasPad 3",
+      "gamepad",
+      "keyboard",
+      "Cloud4RPi",
+      "RasPad 3",
+      "7-inch touch screen",
+      "SunFounder 7 inch Touchsceen",
+      "SunFounder 10.1’’ IPS monitor",
+      "Raphael Kit",
+      "A breadboard",
+      "8x8 dot matrix module",
+      "LCD1602 with an I2C module",
+      "rotary encoder module",
+      "keypad",
+      "Touch switch module",
+      "reed switch module",
+      "PIR sensor",
+      "Ultrasonic ranging module",
+      "Humiture Sensor Module",
+      "MPU-6050",
+      "MFRC522",
+      "5MP Raspberry Pi camera module",
+      "power supply",
+      "Micro SD card",
+      "the screen",
+      "USB keyboard and a USB mouse",
+      "a case",
+      "Power Adapter",
+      "Micro SD card",
+      "HDMI cable",
+      "Screen",
+      "Keyboard",
+      "LED Matrix Module",
+      "touch switch module",
+      "A rotary encoder",
+      "A keypad",
+      "a PIR sensor",
+      "ultrasonic sensors",
+      "a keypad",
+      "the dot matrix",
+      "an LED dot matrix",
+      "LCD1602",
+      "touch switch module",
+      "A rotary encoder",
+      "A keypad",
+      "a PIR sensor",
+      "ultrasonic sensors",
+      "PIR sensor module",
+      "the reed switch module",
+      "the touch switch module",
+      "IR obstacle avoidance module",
+      "SunFounder RGB Matrix module",
+      "a power supply",
+      "an Micro SD",
+      "the screen",
+      "a USB keyboard and a USB mouse",
+      "a case",
+      "Arduino UNO",
+    ];
+  let localUrl = location.href;
+  var curIndex = [];
+  // 获取当前页面在数据中的位置
+  arrPage.forEach(function (item, index) {
+    if (item == localUrl) {
+      curIndex.push(index);
+    }
+  });
+  let curText = null;
+  // 获取所有关键字字段
+  let allP = document.getElementsByTagName("p");
+  allP = [...allP];
+  // 获取页面关键字的长度
+  let keyWordLength = 0;
+  // 添加标签
+  allP.forEach(function (item, index) {
+    if (curIndex.length > 0) {
+      let _item = item;
+      curIndex.forEach(function (item) {
+        curText = arrText[item];
+        if (_item.innerText.includes(curText)) {
+          keyWordLength = keyWordLength + 1;
+          _item.innerText = _item.innerText.replace(
+            curText,
+            `<a href="${arrLink[item]}" target="_blank">${curText}</a>`
+          );
+          _item.innerHTML = _item.innerText;
+        }
+      });
+    }
+  });
+};
+
+/* 设置分享
+ * 添加分享标签
+ */
+var addShareTag = function () {
+  // <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=64867e50ab7e090012d1dca6&product=sop' async='async'></script>
+  let _script = document.createElement('script');
+  _script.type = "text/javascript";
+  _script.src = "https://platform-api.sharethis.com/js/sharethis.js#property=64867e50ab7e090012d1dca6&product=sop";
+  _script.async = "async";
+  document.getElementsByTagName('body')[0].appendChild(_script);
+}
+
+/* 
+ * 添加追踪网站访问者行为
+ */
+var addFacebookPixel = function () {
+  // 创建<script>元素
+  var script = document.createElement('script');
+  script.innerHTML = `
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '3626774964229244');
+      fbq('track', 'PageView');
+  `;
+
+  // 将<script>元素添加到<head>标签中
+  document.head.appendChild(script);
+
+  // 创建<noscript>元素
+  var noscript = document.createElement('noscript');
+  noscript.innerHTML = `
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=3626774964229244&ev=PageView&noscript=1"/>
+  `;
+
+  // 将<noscript>元素添加到<head>标签中
+  document.head.appendChild(noscript);
+}
+
+/* 
+ * 统计访客数据
+ */
+var addGoogleTag = function () {
+  // 创建 script 标签并设置属性
+  var gtagScript = document.createElement('script');
+  gtagScript.async = true;
+  gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-B947WJSNKS';
+
+  // 创建另一个 script 标签来初始化 gtag
+  var initScript = document.createElement('script');
+  initScript.innerHTML = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B947WJSNKS');
+  `;
+
+  // 将 script 标签添加到 head 中
+  document.head.appendChild(gtagScript);
+  document.head.appendChild(initScript);
+}
+
+
+window.onload = function () {
+  setNavBar();
+  removeFooterRTDInfo();
+  // setKeyword(); (Deprecated 弃用)
+  addShareTag();
+  addFacebookPixel();
+  addGoogleTag();
+};
+setPageLogo();
