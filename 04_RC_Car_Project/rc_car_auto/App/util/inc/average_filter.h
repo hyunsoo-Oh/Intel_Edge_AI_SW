@@ -22,14 +22,20 @@
 #define OUTLIER_THRESHOLD 	50
 
 typedef struct {
+	uint16_t	up_limit;
+	uint16_t	lo_limit;
+
+};
+
+typedef struct {
 	uint16_t 	buf[16];
 	uint16_t 	sum;
     uint8_t 	max_len;
     uint8_t 	idx;
     uint8_t 	count;
-} Data_Handler;
+} MAF_Handler;
 
-void FILTER_Init(Data_Handler* h, uint8_t window_size);
-uint16_t FILTER_Update(Data_Handler* h, uint16_t new_sample);
+void FILTER_Init(MAF_Handler* h, uint8_t window_size);
+uint16_t FILTER_Update(MAF_Handler* h, uint16_t new_sample);
 
 #endif /* UTIL_INC_AVERAGE_FILTER_H_ */

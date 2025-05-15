@@ -7,7 +7,7 @@
 
 #include "average_filter.h"
 
-Data_Handler scaled_data = { 0 };
+MAF_Handler maf_data = { 0 };
 
 
 //// 구조체 초기화

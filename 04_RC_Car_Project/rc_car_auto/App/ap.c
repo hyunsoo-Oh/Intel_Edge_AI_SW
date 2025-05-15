@@ -7,11 +7,11 @@
 
 #include "ap.h"
 
+extern CarState_t mode;
 uint8_t pc_rxData[7];
 uint8_t bt_rxData[7];
 uint8_t txData[32];
 
-volatile uint8_t txFlag = 0;
 extern MotorState motor;
 extern UltraData uData[3];
 
@@ -22,6 +22,7 @@ void apInit()
 	HAL_TIM_Base_Start_IT(&htim11);
 	HAL_UART_Receive_DMA(&huart1, bt_rxData, 7);
 	HAL_UART_Receive_DMA(&huart2, pc_rxData, 7);
+	HAL_UART_Transmit_DMA(&huart2, (uint8_t*)"RC_Car_Start\r\n", strlen("RC_Car_Start\r\n"));
 	MOTER_DRIVE_Init();
 }
 
@@ -29,17 +30,22 @@ void apMain()
 {
 	while(1)
 	{
-		ULTRASONIC_GetData();
 		BLUETOOTH_Parsing(&motor, bt_rxData);
-		MOTOR_SetMotor(motor);
+		switch (mode)
+		{
+			case Active_mode:
+				ULTRASONIC_GetData();
+				MOTOR_SetMotor(motor);
+				break;
+			case Passive_mode:
+				ULTRASONIC_GetData();
+				MOTOR_SetMotor(motor);
+				AUTO_Drive();
+				break;
+		}
 
 		uint8_t len = snprintf((char*)txData, sizeof(txData),
 				"%u,%u,%u\r\n", uData[0].distance_cm, uData[1].distance_cm, uData[2].distance_cm);
-		if (txFlag == 1)
-		{
-			txFlag = 0;
-			HAL_UART_Transmit_DMA(&huart2, txData, len);
-		}
 	}
 }
 

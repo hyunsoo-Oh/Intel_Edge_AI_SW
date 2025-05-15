@@ -1,5 +1,5 @@
 /*
- * hm10.h
+ * bluetooth.h
  *
  *  Created on: May 9, 2025
  *      Author: USER
@@ -11,8 +11,8 @@
 #include "def.h"
 #include "usart.h"
 #include "l298n.h"
+#include "auto_car.h"
 
 void BLUETOOTH_Parsing(MotorState *motor, const uint8_t *rxData);
-int16_t STR_TO_Integer(char *s);
 
 #endif /* HW_INC_BLUETOOTH_H_ */
