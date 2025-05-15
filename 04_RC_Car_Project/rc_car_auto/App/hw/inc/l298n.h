@@ -37,8 +37,8 @@ typedef enum {
 typedef struct {
 	MotorDir 	left_direction;
 	MotorDir 	right_direction;
-	uint8_t	left_speed;
-	uint8_t	right_speed;
+	uint8_t		left_speed;
+	uint8_t		right_speed;
 } MotorState;
 
 void MOTER_DRIVE_Init();

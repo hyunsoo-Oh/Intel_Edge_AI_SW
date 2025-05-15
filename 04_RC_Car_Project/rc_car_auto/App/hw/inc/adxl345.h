@@ -80,6 +80,9 @@
 #define ADXL_CS_PIN			GPIO_PIN_6
 
 typedef struct {
+	uint16_t ax_data;
+	uint16_t ay_data;
+	uint16_t az_data;
 	uint8_t bw_rate;
 	uint8_t power_ctl;
 	uint8_t data_format;
@@ -88,9 +91,6 @@ typedef struct {
 	uint8_t time_inact;
 	uint8_t act_inact_ctl;
 	uint8_t fifo_ctl;
-	uint16_t ax_data;
-	uint16_t ay_data;
-	uint16_t az_data;
 } AccelConfig;
 
 typedef struct {

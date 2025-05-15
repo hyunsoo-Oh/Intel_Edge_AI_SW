@@ -13,4 +13,6 @@
 void apInit();
 void apMain();
 
+void UART_Transmit();
+
 #endif /* AP_H_ */

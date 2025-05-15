@@ -98,6 +98,7 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM5_Init();
   MX_TIM10_Init();
+  MX_TIM11_Init();
   /* USER CODE BEGIN 2 */
   apInit();
   apMain();

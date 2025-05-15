@@ -9,14 +9,14 @@
 
 uint16_t test;
 uint8_t rxData[8];
-uint16_t centerX = 2692;
-uint16_t centerY = 2024;
+uint16_t centerF = 2900;
+uint16_t centerS = 1980;
 volatile uint16_t adcData[2];
 uint8_t base_speed;
 uint8_t dir_speed;
 
-extern TransData transData;
-extern uint8_t txData[9];
+extern ControlData data;
+extern uint8_t txData[7];
 
 void apInit()
 {
@@ -30,27 +30,8 @@ void apMain()
 {
 	while (1)
 	{
-		transData.dirX = GET_Direction(0, adcData[0], centerX);
-		transData.dirY = GET_Direction(1, adcData[1], centerY);
+		data = CONTROL_Data(adcData, centerF, centerS);
 
-		base_speed = GET_Speed(transData.dirX, adcData[0], centerX);
-		dir_speed = GET_Speed(transData.dirY, adcData[1], centerY);
-		switch (transData.dirX)
-		{
-			case 'R':
-				transData.spdX = base_speed;
-				transData.spdY = base_speed - dir_speed;
-				break;
-			case 'L':
-				transData.spdX = base_speed - dir_speed;
-				transData.spdY = base_speed;
-				break;
-			case 'S':
-				transData.spdX = 0;
-				transData.spdY = 0;
-				break;
-		}
-
-		sprintf((char*)txData, "%c%02d%c%02d\r\n", transData.dirX, transData.spdX, transData.dirX, transData.spdY);
+		sprintf((char*)txData, "%c%02d%c%02d\n", data.dirF, data.spdL, data.dirF, data.spdR);
 	}
 }

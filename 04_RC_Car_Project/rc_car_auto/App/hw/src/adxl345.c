@@ -9,7 +9,10 @@
 
 uint8_t test;
 
-AccelConfig cfg = {
+static AccelConfig cfg = {
+	.ax_data = 0,
+	.ay_data = 0,
+	.az_data = 0,
 	.bw_rate = 0x0D,		/* 	400 Hz 			*/
 	.power_ctl = 0x08,		/* 	Measure			*/
 	.data_format = 0,		/* 	FULL_RES ±16g	*/
@@ -17,10 +20,7 @@ AccelConfig cfg = {
 	.thresh_inact = 0,
 	.time_inact = 0,
 	.act_inact_ctl = 0,
-	.fifo_ctl = 0,
-	.ax_data = 0,
-	.ay_data = 0,
-	.az_data = 0
+	.fifo_ctl = 0
 };
 
 AccelOffset offset = { 0, 0, 0 };

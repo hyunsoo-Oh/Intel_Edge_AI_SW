@@ -42,15 +42,18 @@ typedef struct {
     uint16_t      trig_pin;
     uint32_t      tim_channel;
     uint32_t	  it_flag;
+    SensorState_t status;
+} UltraConfig;
+
+typedef struct {
+	uint32_t      distance_cm;
     uint16_t      ic_val1;
     uint16_t      ic_val2;
     uint16_t      echo_us;
     uint8_t       capture_flag;
-    uint32_t      distance_cm;
-    SensorState_t status;
-} UltraSonic;
+} UltraData;
 
 void ULTRASONIC_Init();
-void ULTRASONIC_Read();
+void ULTRASONIC_GetData();
 
 #endif /* HW_INC_ULTRASONIC_H_ */

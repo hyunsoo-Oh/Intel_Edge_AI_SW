@@ -8,7 +8,7 @@
 
 #include "hw.h"
 
-uint8_t txData[9] = "S00S00\r\n";
+uint8_t txData[7] = "S00S00\n";
 volatile uint8_t txFlag = 0;
 
 void hwInit()

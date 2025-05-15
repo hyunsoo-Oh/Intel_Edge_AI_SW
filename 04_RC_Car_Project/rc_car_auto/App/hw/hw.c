@@ -7,8 +7,17 @@
 
 #include "hw.h"
 
+extern volatile uint8_t txFlag;
+
 void hwInit()
 {
 
 }
 
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	if (htim->Instance == TIM11)
+	{
+		txFlag = 1;
+	}
+}
