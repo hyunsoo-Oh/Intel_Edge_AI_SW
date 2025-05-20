@@ -13,4 +13,6 @@
 void apInit();
 void apMain();
 
+void BTN_Control(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, uint8_t f);
+
 #endif /* AP_H_ */

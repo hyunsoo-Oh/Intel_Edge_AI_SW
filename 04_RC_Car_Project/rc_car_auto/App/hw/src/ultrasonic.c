@@ -14,9 +14,9 @@ static UltraConfig cfg[3] = {
 };
 
 UltraData uData[3] = {
-	{ 0, 0, 0, 0, 0 },
-	{ 0, 0, 0, 0, 0 },
-	{ 0, 0, 0, 0, 0 }
+	{0, 0, 0, 30, 0},
+	{0, 0, 0, 30, 0},
+	{0, 0, 0, 30, 0}
 };
 
 void ULTRASONIC_Init()
@@ -57,7 +57,7 @@ static void delay_ms(uint8_t *idx)
 		prev_time = HAL_GetTick();
 	}
 
-	if (curr_time - prev_time > 25)
+	if (curr_time - prev_time > 30)
 	{
 		cfg[*idx].status = TRIGGER_STATE;
 		*idx = (*idx + 1) % 3;
@@ -70,7 +70,6 @@ void ULTRASONIC_GetData()
 	static uint8_t idx = 0;
 
 	UltraConfig *p = &cfg[idx];
-//	UltraData *pData = &uData[idx];
 
 	switch (p->status)
 	{
@@ -83,7 +82,6 @@ void ULTRASONIC_GetData()
 			break;
 
 		case MEASURE_STATE:
-
 			break;
 
 		case DONE_STATE:
@@ -121,10 +119,10 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 		__HAL_TIM_SET_CAPTUREPOLARITY(&htim3, p->tim_channel, TIM_INPUTCHANNELPOLARITY_RISING);
 
 		if (pData->ic_val2 > pData->ic_val1)
-			pData->echo_us = pData->ic_val2 - pData->ic_val1;
+			pData->echo_us 	= pData->ic_val2 - pData->ic_val1;
 		else
-			pData->echo_us = (0xFFFF - pData->ic_val1) + pData->ic_val2;
-		pData->distance_cm = pData->echo_us / 58;
+			pData->echo_us 	= (0xFFFF - pData->ic_val1) + pData->ic_val2;
+		pData->distance_cm 	= pData->echo_us / 58;
 		pData->capture_flag = 0;
 		p->status = DONE_STATE;
 

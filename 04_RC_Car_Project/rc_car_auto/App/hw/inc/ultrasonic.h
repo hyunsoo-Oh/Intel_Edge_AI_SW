@@ -31,6 +31,10 @@
 #define C_TRIG_PORT		GPIOB
 #define C_TRIG_PIN		GPIO_PIN_15
 
+#define SENSOR_COUNT		3
+#define STABLE_COUNT		3
+#define OUTLIER_THRESHOLD	60
+
 typedef enum {
 	TRIGGER_STATE,
 	MEASURE_STATE,
@@ -46,14 +50,16 @@ typedef struct {
 } UltraConfig;
 
 typedef struct {
-	uint32_t      distance_cm;
     uint16_t      ic_val1;
     uint16_t      ic_val2;
     uint16_t      echo_us;
+    uint16_t	  distance_cm;
     uint8_t       capture_flag;
 } UltraData;
 
 void ULTRASONIC_Init();
 void ULTRASONIC_GetData();
 
+
 #endif /* HW_INC_ULTRASONIC_H_ */
+

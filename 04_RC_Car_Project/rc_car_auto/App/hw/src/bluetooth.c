@@ -7,8 +7,26 @@
 
 #include "bluetooth.h"
 
-extern MotorState motor;
+static uint8_t dmaBuff[DMA_BUF_SIZE];
+static uint8_t cmdData[COMMAND_MAX + 1];
+static uint8_t cmdLength;
+static volatile uint8_t btFlag = 0;
+
+volatile uint8_t rxFlag = 0;
+volatile uint8_t txFlag = 0;
+
+volatile uint8_t rxFlag;
+uint8_t rxData;
+uint8_t txData[16];
+
 extern CarState_t mode;
+
+void BLUETOOTH_Init(void)
+{
+	HAL_UARTEx_ReceiveToIdle_DMA(&huart1, dmaBuff, DMA_BUF_SIZE);
+	__HAL_DMA_DISABLE_IT(huart1.hdmarx, DMA_IT_HT);
+	__HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);
+}
 
 static int16_t STR_TO_Integer(char *s)
 {
@@ -21,42 +39,72 @@ static int16_t STR_TO_Integer(char *s)
 	return val;
 }
 
-static void MODE_Change(const uint8_t *rxData)
+static void MODE_Change(const char *cmdData, uint8_t len)
 {
-    // A00A00\n 이면 Active_mode
-    if (rxData[0] == 'A' && rxData[3] == 'A') {
-        mode = Active_mode;
-        return;
-    }
-    // P00P00\n 이면 Passive_mode
-    if (rxData[0] == 'P' && rxData[3] == 'P') {
-        mode = Passive_mode;
-        return;
+    if (cmdData[0] == 'Z')
+    {
+        mode = (mode == Active_mode) ? Passive_mode : Active_mode;
     }
 }
 
-void BLUETOOTH_Parsing(MotorState *motor, const uint8_t *rxData)
+void BLUETOOTH_Parsing(MotorState *motor)
 {
-	MODE_Change(rxData);
+	if (btFlag == 1)
+	{
+		btFlag = 0;
+		MODE_Change(cmdData, cmdLength);
+	}
 
 	if (mode == Passive_mode) return;
 
-	if ((rxData[0] != 'F' && rxData[0] != 'B' && rxData[0] != 'S') ||
-		(rxData[3] != 'F' && rxData[3] != 'B' && rxData[3] != 'S') ||
-		rxData[6] != '\n')
-	{
-		memset(rxData, 0, 7);
-		memcpy(rxData, "S00S00\n", 7);
-	}
+	char front_buff[2] = { cmdData[1], cmdData[2] };
+	char side_buff[2]  = { cmdData[4], cmdData[5] };
 
-	char left_buff[2] = { rxData[1], rxData[2] };
-	char right_buff[2] = { rxData[4], rxData[5] };
-
-	motor->left_direction  = (MotorDir)(rxData[0]);
-	motor->right_direction = (MotorDir)(rxData[3]);
-	motor->left_speed      = STR_TO_Integer(left_buff);
-	motor->right_speed     = STR_TO_Integer(right_buff);
+	motor->front_direction = (MotorDir_t)(cmdData[0]);
+	motor->side_direction  = (MotorDir_t)(cmdData[3]);
+	motor->base_speed      = STR_TO_Integer(front_buff);
+	motor->dir_speed       = STR_TO_Integer(side_buff);
 }
 
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+{
+    if (huart == &huart1)
+    {
+        for (uint16_t i = 0; i < Size; i++)
+        {
+            char c = (char)dmaBuff[i];
 
+            if (c != '\n' && cmdLength < COMMAND_MAX)
+            {
+            	cmdData[cmdLength++] = c;
+            }
+            else if (c == '\n')
+            {
+            	cmdData[cmdLength] = '\0';
+				btFlag = 1;
+				cmdLength = 0;
+            }
+        }
+    }
+}
 
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+    if (huart->Instance == USART2)
+    {
+        txFlag = 1;
+    }
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	if (htim->Instance == TIM11)
+	{
+		if (txFlag == 1)
+		{
+			txFlag = 0;
+			HAL_UART_Transmit_DMA(&huart2, txData, strlen((char*)txData));
+			HAL_UART_Transmit_DMA(&huart1, txData, strlen((char*)txData));
+		}
+	}
+}
