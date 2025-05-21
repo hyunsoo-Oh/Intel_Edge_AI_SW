@@ -13,15 +13,6 @@
 #include "gpio.h"
 #include "tim.h"
 
-//#define CH2_TRIG_PORT		GPIOB
-//#define CH2_TRIG_PIN		GPIO_PIN_2
-//
-//#define CH3_TRIG_PORT		GPIOC
-//#define CH3_TRIG_PIN		GPIO_PIN_1
-//
-//#define CH4_TRIG_PORT		GPIOB
-//#define CH4_TRIG_PIN		GPIO_PIN_15
-
 #define L_TRIG_PORT		GPIOB
 #define L_TRIG_PIN		GPIO_PIN_2
 
@@ -45,7 +36,7 @@ typedef struct {
     GPIO_TypeDef *trig_port;
     uint16_t      trig_pin;
     uint32_t      tim_channel;
-    uint32_t	  it_flag;
+    uint32_t	    it_flag;
     SensorState_t status;
 } UltraConfig;
 
@@ -53,7 +44,7 @@ typedef struct {
     uint16_t      ic_val1;
     uint16_t      ic_val2;
     uint16_t      echo_us;
-    uint16_t	  distance_cm;
+    uint16_t	    distance_cm;
     uint8_t       capture_flag;
 } UltraData;
 

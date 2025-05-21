@@ -1,18 +1,22 @@
 /*
  * bluetooth.h
  *
- *  Created on: May 19, 2025
+ *  Created on: May 9, 2025
  *      Author: USER
  */
 
-#ifndef INC_BLUETOOTH_H_
-#define INC_BLUETOOTH_H_
+#ifndef HW_INC_BLUETOOTH_H_
+#define HW_INC_BLUETOOTH_H_
 
 #include "motor.h"
-#include "FreeRTOS.h"
-#include "queue.h"
+#include "def.h"
+#include "usart.h"
+#include "auto_car.h"
+
+#define DMA_BUF_SIZE		64
+#define COMMAND_MAX			6
 
 void BLUETOOTH_Init(void);
-void BLUETOOTH_Parsing(void);
+void BLUETOOTH_Parsing(MotorState *motor);
 
-#endif /* INC_BLUETOOTH_H_ */
+#endif /* HW_INC_BLUETOOTH_H_ */

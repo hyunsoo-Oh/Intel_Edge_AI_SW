@@ -9,7 +9,7 @@
 
 void delay_us(uint16_t us)
 {
-	__HAL_TIM_SET_COUNTER(&htim11, 0);  // TIM11_CNT = 0
+	__HAL_TIM_SET_COUNTER(&htim11, 0);  // TIM10_CNT = 0
 	while((__HAL_TIM_GET_COUNTER(&htim11)) < us);
 }
 

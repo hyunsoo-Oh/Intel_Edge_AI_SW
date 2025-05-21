@@ -15,7 +15,8 @@ extern MotorState motor;
 extern UltraData uData[3];
 
 // 내부 함수: 중앙값 필터
-static uint16_t median_filter(uint16_t *buf, uint8_t size) {
+static uint16_t median_filter(uint16_t *buf, uint8_t size)
+{
     uint16_t tmp[size];
     for (uint8_t i = 0; i < size; i++) tmp[i] = buf[i];
     for (uint8_t i = 0; i < size - 1; i++) {
@@ -28,7 +29,8 @@ static uint16_t median_filter(uint16_t *buf, uint8_t size) {
     return tmp[size/2];
 }
 
-void AUTO_Drive(void) {
+void AUTO_Drive(void)
+{
     // 거리 읽기 및 필터링
     static uint16_t bufLeft[FILTER_WINDOW];
     static uint16_t bufRight[FILTER_WINDOW];

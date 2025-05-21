@@ -1,12 +1,12 @@
 /*
  * motor.h
  *
- *  Created on: May 19, 2025
+ *  Created on: May 9, 2025
  *      Author: USER
  */
 
-#ifndef INC_MOTOR_H_
-#define INC_MOTOR_H_
+#ifndef HW_INC_MOTOR_H_
+#define HW_INC_MOTOR_H_
 
 #include "gpio.h"
 #include "tim.h"
@@ -20,28 +20,31 @@
 #define IN2_PIN				GPIO_PIN_10		// Right
 #define IN3_PIN				GPIO_PIN_12
 
-#define MODE_SWITCH			'Z'
+#define DRIVE_SPEED(s, hz)	((s) * (hz) / 100)
 
 typedef enum {
-	DIR_FORWARD		= 'F',
-	DIR_BACKWARD 	= 'B',
-	DIR_RIGHT		= 'R',
-	DIR_LEFT		= 'L'
+	DIR_STOP     = 'S',
+	DIR_FORWARD  = 'F',
+    DIR_BACKWARD = 'B',
+	DIR_RIGHT	 = 'R',
+	DIR_LEFT	 = 'L'
 } MotorDir_t;
 
 typedef enum {
-	PASSIVE_MODE,
-	ACTIVE_MODE
-} ModeState_t;
+	ROTATE_LEFT,
+	ROTATE_RIGHT
+} RotateDir_t;
 
 typedef struct {
-	MotorDir_t 	left_direction;
-	MotorDir_t 	right_direction;
-	uint8_t		left_speed;
-	uint8_t		right_speed;
+	MotorDir_t 	front_direction;
+	MotorDir_t 	side_direction;
+	uint8_t		base_speed;
+	uint8_t		dir_speed;
 } MotorState;
 
-void MOTOR_Init(void);
-void MOTOR_Control(MotorState *motor);
+void MOTER_DRIVE_Init();
 
-#endif /* INC_MOTOR_H_ */
+void MOTOR_Rotate(uint8_t dir);
+void MOTOR_SetMotor(MotorState motor);
+
+#endif /* HW_INC_MOTOR_H_ */

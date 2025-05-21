@@ -1,93 +1,51 @@
 /*
  * ultrasonic.c
  *
- *  Created on: May 19, 2025
+ *  Created on: May 13, 2025
  *      Author: USER
  */
 
 #include "ultrasonic.h"
 
 static UltraConfig cfg[3] = {
-	{ L_TRIG_PORT, L_TRIG_PIN, TIM_CHANNEL_2, TIM_IT_CC2, TRIGGER_STATE, 0 },
-	{ R_TRIG_PORT, R_TRIG_PIN, TIM_CHANNEL_3, TIM_IT_CC3, TRIGGER_STATE, 0 },
-	{ C_TRIG_PORT, C_TRIG_PIN, TIM_CHANNEL_4, TIM_IT_CC4, TRIGGER_STATE, 0 }
+	{ L_TRIG_PORT, L_TRIG_PIN, TIM_CHANNEL_2, TIM_IT_CC2 },
+	{ R_TRIG_PORT, R_TRIG_PIN, TIM_CHANNEL_3, TIM_IT_CC3 },
+	{ C_TRIG_PORT, C_TRIG_PIN, TIM_CHANNEL_4, TIM_IT_CC4 }
 };
 
 UltraData uData[3] = {
-	{ 0, 0, 0, 0, 0, 0, 0, 0 },
-	{ 0, 0, 0, 0, 0, 0, 0, 0 },
-	{ 0, 0, 0, 0, 0, 0, 0, 0 }
+	{0, 0, 0, 30, 0},
+	{0, 0, 0, 30, 0},
+	{0, 0, 0, 30, 0}
 };
 
 void ULTRASONIC_Init(void)
 {
 	HAL_TIM_Base_Start(&htim11);
-    for (int i = 0; i < 3; i++)
-    {
-        HAL_GPIO_WritePin(cfg[i].trig_port, cfg[i].trig_pin, GPIO_PIN_RESET);
-    }
+	for (uint8_t i = 0; i < 3; i++)
+	{
+			HAL_GPIO_WritePin(cfg[i].trig_port, cfg[i].trig_pin, GPIO_PIN_RESET);
+	}
 	HAL_TIM_IC_Start_IT(&htim3, TIM_CHANNEL_2);
 	HAL_TIM_IC_Start_IT(&htim3, TIM_CHANNEL_3);
 	HAL_TIM_IC_Start_IT(&htim3, TIM_CHANNEL_4);
 }
-static void ULTRASONIC_TRIG_On(UltraConfig *cfg)
+
+void ULTRASONIC_TRIG_On(uint8_t idx)
 {
-	HAL_GPIO_WritePin(cfg->trig_port, cfg->trig_pin, SET);
-}
-static void ULTRASONIC_TRIG_Off(UltraConfig *cfg)
-{
-	HAL_GPIO_WritePin(cfg->trig_port, cfg->trig_pin, RESET);
+	HAL_GPIO_WritePin(cfg[idx].trig_port, cfg[idx].trig_pin, SET);
 }
 
-static void ULTRASONIC_Process(void)
+void ULTRASONIC_TRIG_Off(uint8_t idx)
 {
-	static uint8_t idx = 0;
-	UltraConfig *p = &cfg[idx];
-	UltraData 	*pData 	= &uData[idx];
-
-	switch (cfg[idx].status)
-	{
-		case TRIGGER_STATE:
-			ULTRASONIC_TRIG_On(p);
-			delay_us(10);
-			ULTRASONIC_TRIG_Off(p);
-			__HAL_TIM_ENABLE_IT(&htim3, p->it_flag);
-
-			p->status = MEASURE_STATE;
-			break;
-
-		case MEASURE_STATE:
-			if (pData->capture_flag == 1)
-			{
-				pData->capture_flag = 0;
-
-				if (pData->ic_val2 > pData->ic_val1)
-					pData->echo_us = pData->ic_val2 - pData->ic_val1;
-				else
-					pData->echo_us = (0xFFFF - pData->ic_val1) + pData->ic_val2;
-
-				pData->raw_data = pData->echo_us / 58;
-			    __HAL_TIM_DISABLE_IT(&htim3, p->it_flag);
-
-				p->status = DONE_STATE;
-			}
-			break;
-
-		case DONE_STATE:
-			delay_ms(20, p->delay);
-			if (p->delay == 1)
-			{
-				p->delay  = 0;
-				p->status = TRIGGER_STATE;
-				idx = (idx + 1) % 3;
-			}
-			break;
-	}
+	HAL_GPIO_WritePin(cfg[idx].trig_port, cfg[idx].trig_pin, RESET);
+	__HAL_TIM_ENABLE_IT(&htim3, cfg[idx].it_flag);
 }
 
-UltraData ULTRASONIC_GetData(void)
+void ULTRASONIC_GetData(uint16_t out_dist[3])
 {
-
+	for (uint8_t i = 0; i < 3; i++)
+		out_dist[i] = uData[i].distance_cm;
 }
 
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
@@ -117,5 +75,14 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 		__HAL_TIM_SET_COUNTER(&htim3, 0);
 
 		__HAL_TIM_SET_CAPTUREPOLARITY(&htim3, p->tim_channel, TIM_INPUTCHANNELPOLARITY_RISING);
+
+		if (pData->ic_val2 > pData->ic_val1)
+			pData->echo_us 	= pData->ic_val2 - pData->ic_val1;
+		else
+			pData->echo_us 	= (0xFFFF - pData->ic_val1) + pData->ic_val2;
+		pData->distance_cm 	= pData->echo_us / 58;
+		pData->capture_flag = 0;
+
+	    __HAL_TIM_DISABLE_IT(&htim3, p->it_flag);
 	}
 }
