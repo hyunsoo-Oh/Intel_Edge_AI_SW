@@ -65,17 +65,17 @@ void AUTO_Drive(void) {
 
             motor.front_direction = DIR_FORWARD;
 
-            if (distR < 9)
+            if (distR < 25)
             {
                 motor.side_direction = DIR_LEFT;
                 motor.base_speed     = speed;
-                motor.dir_speed      = speed / 2;
+                motor.dir_speed      = speed;
             }
-            else if (distL < 9)
+            else if (distL < 25)
             {
                 motor.side_direction = DIR_RIGHT;
                 motor.base_speed     = speed;
-                motor.dir_speed      = speed / 2;
+                motor.dir_speed      = speed;
             }
             else
             {

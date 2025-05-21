@@ -11,16 +11,17 @@
 #include "motor.h"
 #include "ultrasonic.h"
 
-#define AUTO_CAR_MAX_SPEED   	80
+#define AUTO_CAR_MAX_SPEED   	75
 #define AUTO_CAR_MIN_SPEED		50
 
 #define DIST_FORWARD_FAST		50
-#define DIST_FORWARD_SLOW		23
+#define DIST_FORWARD_SLOW		25
 
 #define DIST_FORWARD_FAST_EXIT  (uint16_t)(DIST_FORWARD_FAST * 1.2)
 #define DIST_FORWARD_SLOW_EXIT  (uint16_t)(DIST_FORWARD_SLOW * 1.2)
 
-#define DISTANCE_SIDE			18
+#define DIST_REVERSE_THRESHOLD	8
+#define DISTANCE_SIDE			22
 
 #define REVERSE_TIME_MS         200
 #define ROTATE_TIME_MS          300
