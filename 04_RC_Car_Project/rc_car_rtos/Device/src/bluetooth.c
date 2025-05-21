@@ -12,13 +12,6 @@ static uint8_t cmdData[COMMAND_MAX + 1];
 static uint8_t cmdLength;
 static volatile uint8_t btFlag = 0;
 
-volatile uint8_t rxFlag = 0;
-volatile uint8_t txFlag = 0;
-
-volatile uint8_t rxFlag;
-uint8_t rxData;
-uint8_t txData[16];
-
 extern CarState_t mode;
 
 void BLUETOOTH_Init(void)
@@ -85,13 +78,5 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 				cmdLength = 0;
             }
         }
-    }
-}
-
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
-{
-    if (huart->Instance == USART2)
-    {
-        txFlag = 1;
     }
 }
